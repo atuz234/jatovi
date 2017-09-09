@@ -11,9 +11,11 @@ switch ($module) {
 	case 'page':
 		$page->dieuhuong();
 		break;
-	
+	case 'taikhoankhachang':
+		$taikhoankhachang->dieuhuong();
+		break;
 	default:
-		$page->login();
+		
 		break;
 }
 if (!isset($_SESSION['userID'])) {

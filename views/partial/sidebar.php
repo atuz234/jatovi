@@ -31,7 +31,7 @@
 				<ul>
 					<?php foreach($value['child'] as $child): ?>
 						<li class="<?=$child['hienthi']==0?"hidden":""?>">
-							<a href="<?=base_url.$child['url']?>">
+							<a href="<?=base_url.'index.php?module='.$child['url']?>">
 								<?=$child['ten']?>
 							</a>
 						</li>
