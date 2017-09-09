@@ -11,8 +11,7 @@ class page extends JATOVI_Controller
 	{
 		parent::__construct();
 	}
-
-	public function index()
+	public function dieuhuong()
 	{
 		if (isset($_GET['action'])) {
 			$this->action = $_GET['action'];
@@ -32,10 +31,9 @@ class page extends JATOVI_Controller
 				break;
 		}
 	}
-	public function login($JATOVI)
+	public function login()
 	{
-		$data['JATOVI']=$JATOVI;
-		$JATOVI->load->view('login',$data);
+		header("Location:".base_url."views/login.php");
 	}
 	public function login_check()
 	{
@@ -52,7 +50,6 @@ class page extends JATOVI_Controller
 		    
 		if ($check > 0) {
 			$_SESSION['userID'] = '1';
-			header("Location:".BASEPATH."index.php");
 		}else{
 			echo "NNOOOOOOO";
 		};  
@@ -63,5 +60,4 @@ class page extends JATOVI_Controller
 	}       
 }           
 $page = new page();
-$page->index();
 ?>

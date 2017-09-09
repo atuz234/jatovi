@@ -3,13 +3,22 @@ session_start();
 require 'cores/JATOVI_Controller.php';
 include_once BASEPATH.'/controllers/page.php';
 
-
-if (!isset($_SESSION['userID'])) {
-	// $data['JATOVI']=$JATOVI;
-	// $JATOVI->load->view('login',$data);
-	$page->login($JATOVI);
-}else{
-	$data['JATOVI']=$JATOVI;
-	$JATOVI->load->view('master',$data);
+$module='';
+if (isset($_GET['module'])) {
+	$module = $_GET['module'];
 }
+switch ($module) {
+	case 'page':
+		$page->dieuhuong();
+		break;
+	
+	default:
+		$page->login();
+		break;
+}
+if (!isset($_SESSION['userID'])) {
+	$page->login();
+}
+$data['JATOVI']=$JATOVI;
+$JATOVI->load->view('master',$data);
 ?>
