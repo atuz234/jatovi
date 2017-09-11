@@ -11,11 +11,11 @@ switch ($module) {
 	case 'page':
 		$page->dieuhuong();
 		break;
-	case 'taikhoankhachang':
-		$taikhoankhachang->dieuhuong();
+	case 'taikhoankhachhang':
+		$taikhoankhachhang->dieuhuong();
 		break;
 	default:
-		
+		$page->dieuhuong();
 		break;
 }
 if (!isset($_SESSION['userID'])) {

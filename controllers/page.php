@@ -27,7 +27,7 @@ class page extends JATOVI_Controller
 				break;
 			
 			default:
-				# code...
+				$this->login_check();
 				break;
 		}
 	}
@@ -47,9 +47,14 @@ class page extends JATOVI_Controller
 		include BASEPATH.'models/page_model.php';
 		$page_model = new page_model();
 		$check = $page_model->login($ten_taikhoan, $matkhau);
-		    
-		if ($check > 0) {
-			$_SESSION['userID'] = '1';
+		if (count($check) > 0) {
+			foreach ($check as $value) {
+				$_SESSION['userID'] = $value['id'];
+				$_SESSION['userName'] = $value['hoten'];
+				$_SESSION['userGroup'] = $value['id_nhom'];
+				$_SESSION['userChucdanh'] = $value['tennhom'];
+			}
+			
 		}else{
 			echo "NNOOOOOOO";
 		};  

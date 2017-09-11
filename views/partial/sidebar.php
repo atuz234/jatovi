@@ -1,7 +1,7 @@
 <?php 
 	include_once BASEPATH.'models/phanquyen.php';
 	$phanquyen = new phanquyen();
-	$chucnang = $phanquyen->getrole($_SESSION['userID']);
+	$chucnang = $phanquyen->getrole($_SESSION['userGroup']);
 	$menu = array();
 	foreach ($chucnang as $p) {
 		if ($p['id_parent']==0) {
@@ -19,6 +19,7 @@
 	}
 ?>
 <nav class="sidenav" id="mySidenav">
+	<h3>Xin chào: <?='('.$_SESSION['userChucdanh'].')'?> <?=$_SESSION['userName']?></h3>
 	<h3>Chức Năng</h3>
 	<?php foreach($menu as $value): ?>
 		<ul class="sidenav">
