@@ -15,12 +15,7 @@ switch ($module) {
 		$taikhoankhachhang->dieuhuong();
 		break;
 	default:
-		$page->dieuhuong();
+		$page->index();
 		break;
 }
-if (!isset($_SESSION['userID'])) {
-	$page->login();
-}
-$data['JATOVI']=$JATOVI;
-$JATOVI->load->view('master',$data);
 ?>

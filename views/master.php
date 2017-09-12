@@ -1,9 +1,8 @@
-<?php require BASEPATH.'/views/partial/header.php'; ?>
+<?php $JATOVI->load->view('partial/header'); ?>
 <div id="wrapper">
 	<?php $JATOVI->load->view('partial/sidebar') ?>
-	<a href="<?=base_url?>index.php?module=page&action=page_logout">Đăng xuất</a>
-	<div id="content">
-		<h1>This is master</h1>
+	<div id="main">
+		<?php $JATOVI->load->view($content, $contentdata) ?>
 	</div>
 </div>
-<?php require BASEPATH.'/views/partial/footer.php'; ?>
+<?php $JATOVI->load->view('partial/footer'); ?>

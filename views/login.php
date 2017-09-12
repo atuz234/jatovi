@@ -6,7 +6,7 @@
 	<title>Jatovi | Login</title>
 </head>
 <body>
-	<form id="form_log" action="<?=base_url?>index.php" method='post'>
+	<form id="form_log" action="<?=base_url?>index.php?module=page&action=page_logincheck" method='post'>
 		<table>
 			<tr>
 				<td><input type ="text" name="ten_taikhoan" placeholder="Tài khoản"></td>

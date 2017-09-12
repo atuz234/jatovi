@@ -14,6 +14,6 @@
 	<link href="public/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
 
 	<!-- Custom css: file css tùy biến đặt tại đây -->
-	<link rel="stylesheet" href="public/script/css/style.css">
+	<link rel="stylesheet" href="public/scripts/css/style.css">
 </head>
 <body>

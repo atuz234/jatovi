@@ -19,13 +19,14 @@
 	}
 ?>
 <nav class="sidenav" id="mySidenav">
-	<h3>Xin chào: <?='('.$_SESSION['userChucdanh'].')'?> <?=$_SESSION['userName']?></h3>
+	<h4>Xin chào: <?='('.$_SESSION['userChucdanh'].')'?> <?=$_SESSION['userName']?></h4>
+	<a href="<?=base_url?>index.php?module=page&action=page_logout">Đăng xuất</a>
 	<h3>Chức Năng</h3>
 	<?php foreach($menu as $value): ?>
-		<ul class="sidenav">
+		<ul>
 			<li>
-				<a>
-					<i class="<?=$value['parent']['icon']?>"></i>
+				<a class="parent_text">
+					<i class="<?=$value['parent']['icon']?> "></i>
 					<?php echo $value['parent']['ten']; ?>
 					<span class="fa fa-chevron-down"></span>
 				</a>

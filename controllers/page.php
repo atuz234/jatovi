@@ -2,14 +2,16 @@
 /**
 * 
 */
-// defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 class page extends JATOVI_Controller
 {
 
 	public $action = '';
-	function __construct()
+	public $JATOVI = '';
+	function __construct($JATOVI)
 	{
 		parent::__construct();
+		$this->JATOVI = $JATOVI;
 	}
 	public function dieuhuong()
 	{
@@ -23,13 +25,28 @@ class page extends JATOVI_Controller
 				break;
 			case 'page_logout':
 				$this->logout();
-				header('location:'.BASEPATH.'index.php');
 				break;
-			
+			case 'permision':
+				$this->permission();
+				break;
 			default:
-				$this->login_check();
+				$this->index();
 				break;
 		}
+	}
+	public function index()
+	{
+		if (!isset($_SESSION['userID'])) {
+			$this->login();
+		}
+		$data['content'] = 'page/index';
+		$data['contentdata'] = array();
+		$data['JATOVI']=$this->JATOVI;
+		$this->JATOVI->load->view('master',$data);
+	}
+	public function permission()
+	{
+		$this->JATOVI->load->view('page/permission');
 	}
 	public function login()
 	{
@@ -58,11 +75,13 @@ class page extends JATOVI_Controller
 		}else{
 			echo "NNOOOOOOO";
 		};  
+		$this->index();
 	}       
 	public function logout()
 	{       
 		unset($_SESSION['userID']);
-	}       
+		$this->index();
+	} 
 }           
-$page = new page();
+$page = new page($JATOVI);
 ?>
