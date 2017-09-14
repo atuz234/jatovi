@@ -27,5 +27,15 @@ class taikhoanadmin extends JATOVI_Controller
 				break;
 		}
 	}
+	public function index()
+	{
+		if (!isset($_SESSION['userID'])) {
+			$this->login();
+		}
+		$data['content'] = 'page/index';
+		$data['contentdata'] = array();
+		$data['JATOVI']=$this->JATOVI;
+		$this->JATOVI->load->view('master',$data);
+	}
 }
 ?>

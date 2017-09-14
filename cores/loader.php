@@ -12,8 +12,15 @@ class loader
 		
 	}
 
+	public function controller($name='',$data=array())
+	{
+		extract($data);
+		include_once BASEPATH.'controllers/'.$name.'.php';
+	}
+
 	public function model($name='',$data=array())
 	{
+		extract($data);
 		include_once BASEPATH.'models/'.$name.'.php' ;
 	}
 }
