@@ -72,3 +72,26 @@ class taikhoanadmin extends JATOVI_Controller
 }
 $taikhoanadmin = new taikhoanadmin($JATOVI);
 ?>
+
+
+contentdata => array (
+   tkdamin=>array(
+        0 => array(
+     		id=>1,
+     		mk=>,
+    	)
+    	1 => array(
+     		id=>2,
+     		mk=>3,
+    	)
+   )
+);
+
+array(
+	content => ...,
+	contentdata => $tkadmin,
+)
+$tkadmin = array(
+				taikhoan=>'a',
+				matkhau=>'b',
+			)
