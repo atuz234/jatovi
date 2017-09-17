@@ -66,8 +66,20 @@ class taikhoanadmin extends JATOVI_Controller
 	}
 
 	public function update()
-	{
-		# code...
+	{	$ten_taikhoan = $_POST['txttaikhoan'];
+		$matkhau = $_POST['txtmatkhau'];
+		$hoten = $_POST['txthoten'];
+		$gioitinh = $_POST['gender'];
+		$id_nhom = $_POST['nhom']; 
+		$trangthai = $_POST['trangthai'];
+		if () {
+			$ten_taikhoan = $_POST['txttaikhoan'];
+			$matkhau = $_POST['txtmatkhau'];
+			$hoten = $_POST['txthoten'];
+			$gioitinh = $_POST['gender'];
+			$id_nhom = $_POST['nhom']; 
+			$trangthai = $_POST['trangthai'];
+		}
 	}
 }
 $taikhoanadmin = new taikhoanadmin($JATOVI);
