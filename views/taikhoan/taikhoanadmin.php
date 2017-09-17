@@ -53,9 +53,9 @@
 
 														<label for="gender">Giới tính</label>
 														<br>	
-														<input type="radio" name="gender" id="nam" value="1" selected="selected" class="form-inline">Nam	
-														<input type="radio" name="gender" id="nu" value="0" selected="selected" class="form-inline">Nữ					
-														<input type="radio" name="gender" id="khac" value="2" selected="selected" class="form-inline">Khác	
+														<input type="radio" name="gender" id="nam" value="1" <?php if($value['gioitinh']==1){echo "checked='checked'";}?> class="form-inline">Nam	
+														<input type="radio" name="gender" id="nu" value="0" <?php if($value['gioitinh']==0){echo "checked='checked'";}?> class="form-inline">Nữ					
+														<input type="radio" name="gender" id="khac" value="2" <?php if($value['gioitinh']==2){echo "checked='checked'";}?> class="form-inline">Khác	
 
 														<br>
 														<label for="nhom">Nhóm</label>
@@ -67,7 +67,8 @@
 													</div>
 												</div>
 												<div class="modal-footer">
-													
+													<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+       												<button type="submit" class="btn btn-primary">Sửa</button>
 												</div>
 											</form>
 										</div>
