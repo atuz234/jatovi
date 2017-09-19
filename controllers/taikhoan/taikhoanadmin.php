@@ -37,10 +37,14 @@ class taikhoanadmin extends JATOVI_Controller
 		}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		
 =======
 
 >>>>>>> 052d3db594291d47f8764c203c3e1a217ba6b67e
+=======
+
+>>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
 =======
 
 >>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
@@ -76,6 +80,7 @@ class taikhoanadmin extends JATOVI_Controller
 	public function update()
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{	$ten_taikhoan = $_POST['txttaikhoan'];
 =======
 	{	
@@ -87,11 +92,17 @@ class taikhoanadmin extends JATOVI_Controller
 		$id = $_POST['txtid'];
 		$ten_taikhoan = $_POST['txttaikhoan'];
 >>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
+=======
+	{	
+		$id = $_POST['txtid'];
+		$ten_taikhoan = $_POST['txttaikhoan'];
+>>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
 		$matkhau = $_POST['txtmatkhau'];
 		$hoten = $_POST['txthoten'];
 		$gioitinh = $_POST['gender'];
 		$id_nhom = $_POST['nhom']; 
 		$trangthai = $_POST['trangthai'];
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 		if () {
@@ -106,6 +117,10 @@ class taikhoanadmin extends JATOVI_Controller
 		include BASEPATH.'models/taikhoanadmin_model.php';
 		$taikhoanadmin_model->update();
 >>>>>>> 052d3db594291d47f8764c203c3e1a217ba6b67e
+=======
+		include BASEPATH.'models/taikhoanadmin_model.php';
+		$taikhoanadmin_model->update();
+>>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
 =======
 		include BASEPATH.'models/taikhoanadmin_model.php';
 		$taikhoanadmin_model->update();

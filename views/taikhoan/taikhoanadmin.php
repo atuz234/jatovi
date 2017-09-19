@@ -1,6 +1,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
 =======
 >>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
 <script>
@@ -15,7 +18,10 @@
 	});
 </script>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 052d3db594291d47f8764c203c3e1a217ba6b67e
+=======
+>>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
 =======
 >>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
 <div class="row">
@@ -67,10 +73,15 @@
 													<div class="form-group">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 														<input type="hidden" name="txtid" value="<?=$value['idadmin']?>">
 
 >>>>>>> 052d3db594291d47f8764c203c3e1a217ba6b67e
+=======
+														<input type="hidden" name="txtid" value="<?=$value['idadmin']?>">
+
+>>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
 =======
 														<input type="hidden" name="txtid" value="<?=$value['idadmin']?>">
 
@@ -85,12 +96,17 @@
 														<br>	
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 														<input type="radio" name="gender" id="nam" value="1" <?php if($value['gioitinh']==1){echo "checked='checked'";}?> class="form-inline">Nam	
 														<input type="radio" name="gender" id="nu" value="0" <?php if($value['gioitinh']==0){echo "checked='checked'";}?> class="form-inline">Nữ					
 =======
 														<input type="radio" name="gender" id="nam" value="1" <?php if($value['gioitinh']==1){echo "checked='checked'";}?> class="form-inline">Nam 	
 														<input type="radio" name="gender" id="nu" value="0" <?php if($value['gioitinh']==0){echo "checked='checked'";}?> class="form-inline">Nữ	 				
 >>>>>>> 052d3db594291d47f8764c203c3e1a217ba6b67e
+=======
+														<input type="radio" name="gender" id="nam" value="1" <?php if($value['gioitinh']==1){echo "checked='checked'";}?> class="form-inline">Nam 	
+														<input type="radio" name="gender" id="nu" value="0" <?php if($value['gioitinh']==0){echo "checked='checked'";}?> class="form-inline">Nữ	 				
+>>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
 =======
 														<input type="radio" name="gender" id="nam" value="1" <?php if($value['gioitinh']==1){echo "checked='checked'";}?> class="form-inline">Nam 	
 														<input type="radio" name="gender" id="nu" value="0" <?php if($value['gioitinh']==0){echo "checked='checked'";}?> class="form-inline">Nữ	 				
@@ -106,7 +122,10 @@
 														</select>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
 =======
 >>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
 														
@@ -129,7 +148,10 @@
 														</div>
 													
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 052d3db594291d47f8764c203c3e1a217ba6b67e
+=======
+>>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
 =======
 >>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
 													</div>
