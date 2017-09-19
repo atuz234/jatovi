@@ -23,5 +23,5 @@ class page_model extends JATOVI_Model
 	}
 
 }
-
+$page_model = new page_model();
 ?>

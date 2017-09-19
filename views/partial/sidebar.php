@@ -19,6 +19,7 @@
 	}
 ?>
 <nav class="sidenav" id="mySidenav">
+	<a href="<?=base_url?>index.php">Trang chủ</a>
 	<h4>Xin chào: <?='('.$_SESSION['userChucdanh'].')'?> <?=$_SESSION['userName']?></h4>
 	<a href="<?=base_url?>index.php?module=page&action=page_logout">Đăng xuất</a>
 	<h3>Chức Năng</h3>

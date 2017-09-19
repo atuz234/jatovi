@@ -62,7 +62,7 @@ class page extends JATOVI_Controller
 			$matkhau = $_POST['matkhau'];
 		}
 		include BASEPATH.'models/page_model.php';
-		$page_model = new page_model();
+		
 		$check = $page_model->login($ten_taikhoan, $matkhau);
 		if (count($check) > 0) {
 			foreach ($check as $value) {
