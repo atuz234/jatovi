@@ -35,23 +35,7 @@ class taikhoanadmin extends JATOVI_Controller
 		if (!isset($_SESSION['userID'])) {
 			$this->login();
 		}
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		
-=======
-
->>>>>>> 052d3db594291d47f8764c203c3e1a217ba6b67e
-=======
-
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
-=======
-
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
->>>>>>> 2315b4442afee2b3a862b08e86bdeac99ab76f32
 		$data['content'] = 'taikhoan/taikhoanadmin';
 		$data['contentdata'] = array();
 		include BASEPATH.'models/taikhoanadmin_model.php';
