@@ -35,7 +35,7 @@ class taikhoanadmin extends JATOVI_Controller
 		if (!isset($_SESSION['userID'])) {
 			$this->login();
 		}
-		
+
 		$data['content'] = 'taikhoan/taikhoanadmin';
 		$data['contentdata'] = array();
 		include BASEPATH.'models/taikhoanadmin_model.php';
@@ -66,20 +66,16 @@ class taikhoanadmin extends JATOVI_Controller
 	}
 
 	public function update()
-	{	$ten_taikhoan = $_POST['txttaikhoan'];
+	{	
+		$id = $_POST['txtid'];
+		$ten_taikhoan = $_POST['txttaikhoan'];
 		$matkhau = $_POST['txtmatkhau'];
 		$hoten = $_POST['txthoten'];
 		$gioitinh = $_POST['gender'];
 		$id_nhom = $_POST['nhom']; 
 		$trangthai = $_POST['trangthai'];
-		if () {
-			$ten_taikhoan = $_POST['txttaikhoan'];
-			$matkhau = $_POST['txtmatkhau'];
-			$hoten = $_POST['txthoten'];
-			$gioitinh = $_POST['gender'];
-			$id_nhom = $_POST['nhom']; 
-			$trangthai = $_POST['trangthai'];
-		}
+		include BASEPATH.'models/taikhoanadmin_model.php';
+		$taikhoanadmin_model->update();
 	}
 }
 $taikhoanadmin = new taikhoanadmin($JATOVI);
