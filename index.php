@@ -23,4 +23,5 @@ switch ($module) {
 		$page->index();
 		break;
 }
+// Cap nhat index
 ?>
