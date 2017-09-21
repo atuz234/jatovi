@@ -14,9 +14,9 @@ class taikhoan_model extends JATOVI_Model
 
 	public function getlist()
 	{
-		$sql = "SELECT * from {$this->_table2} ";
+		$sql = "SELECT * FROM {$this->_table2} ";
 		$query = $this->connection->prepare($sql);
- 		$query->execute();
+		$query->execute();
 		$result = $query->fetchAll();
 		return $result;
 	}

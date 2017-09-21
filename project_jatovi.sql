@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 12, 2017 lúc 12:36 PM
+-- Thời gian đã tạo: Th9 21, 2017 lúc 03:57 AM
 -- Phiên bản máy phục vụ: 10.1.25-MariaDB
 -- Phiên bản PHP: 7.1.7
 
@@ -44,7 +44,8 @@ CREATE TABLE `tb_admin` (
 
 INSERT INTO `tb_admin` (`id`, `ten_taikhoan`, `matkhau`, `hoten`, `gioitinh`, `id_nhom`, `trangthai`) VALUES
 (1, 'admin', 'admin', 'Nguyen Anh Tuan', 1, 1, '1'),
-(2, 'quantri', 'quantri', 'Nguyen Anh Tuan', 1, 3, '1');
+(2, 'quantri', 'quantri', 'Nguyen Anh Tuan', 2, 3, '1'),
+(11, 'ad', 'asd', 'asd', 0, 1, '1');
 
 -- --------------------------------------------------------
 
@@ -94,7 +95,8 @@ INSERT INTO `tb_chucnang` (`id`, `ten`, `trangthai`, `url`, `f_order`, `id_paren
 (8, 'Danh mục sản phẩm', 1, 'danhmucsanpham', 2, 3, 'danhmucsanpham', 1, ''),
 (9, 'Tin tức', 1, '', 4, 0, '', 1, 'fa fa-news'),
 (10, 'Quản lý tin tức', 1, 'quanlytintuc', 1, 9, 'quanlytintuc', 1, ''),
-(11, 'Nhà sản xuất', 1, 'nhasanxuat', 3, 3, 'nhasanxuat', 1, '');
+(11, 'Nhà sản xuất', 1, 'nhasanxuat', 3, 3, 'nhasanxuat', 1, ''),
+(12, 'Phân quyền', 1, 'phanquyen', 3, 1, 'phanquyen', 1, '');
 
 -- --------------------------------------------------------
 
@@ -137,9 +139,15 @@ CREATE TABLE `tb_khachhang` (
   `ngaysinh` date NOT NULL,
   `gioitinh` tinyint(10) NOT NULL,
   `diachi` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `id_diachi` int(11) NOT NULL,
   `trangthai` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tb_khachhang`
+--
+
+INSERT INTO `tb_khachhang` (`id`, `email`, `matkhau`, `sodienthoai`, `ten`, `ngaysinh`, `gioitinh`, `diachi`, `trangthai`) VALUES
+(1, 'buitanthanh211098', 'tanthanh98', '0964474680', 'thanh', '2017-09-21', 1, 'xuan ai ', 1);
 
 -- --------------------------------------------------------
 
@@ -227,7 +235,8 @@ INSERT INTO `tb_phanquyen` (`id`, `id_nhom`, `id_chucnang`) VALUES
 (20, 3, 9),
 (22, 3, 10),
 (23, 1, 11),
-(24, 3, 11);
+(24, 3, 11),
+(25, 1, 12);
 
 -- --------------------------------------------------------
 
@@ -264,6 +273,7 @@ CREATE TABLE `tb_sanpham` (
 
 CREATE TABLE `tb_tintuc` (
   `id_tintuc` int(11) NOT NULL,
+  `tieude` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `hinhanh` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `noidung` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -360,7 +370,7 @@ ALTER TABLE `tb_tintuc`
 -- AUTO_INCREMENT cho bảng `tb_admin`
 --
 ALTER TABLE `tb_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT cho bảng `tb_chitietdonhang`
 --
@@ -370,7 +380,7 @@ ALTER TABLE `tb_chitietdonhang`
 -- AUTO_INCREMENT cho bảng `tb_chucnang`
 --
 ALTER TABLE `tb_chucnang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT cho bảng `tb_danhmuc`
 --
@@ -385,7 +395,7 @@ ALTER TABLE `tb_donhang`
 -- AUTO_INCREMENT cho bảng `tb_khachhang`
 --
 ALTER TABLE `tb_khachhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT cho bảng `tb_lichsunganhan`
 --
@@ -405,7 +415,7 @@ ALTER TABLE `tb_nhomnguoidung`
 -- AUTO_INCREMENT cho bảng `tb_phanquyen`
 --
 ALTER TABLE `tb_phanquyen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT cho bảng `tb_sanpham`
 --

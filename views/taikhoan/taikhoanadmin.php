@@ -100,7 +100,7 @@
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-       												<button type="submit" class="btn btn-primary">Sửa</button>
+       												<button type="submit" class="btn btn-primary">Cập nhật</button>
 												</div>
 											</form>
 										</div>

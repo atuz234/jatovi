@@ -3,6 +3,7 @@ session_start();
 require 'cores/JATOVI_Controller.php';
 include_once BASEPATH.'/controllers/page.php';
 include_once BASEPATH.'/controllers/taikhoan/taikhoanadmin.php';
+include_once BASEPATH.'/controllers/taikhoan/taikhoankhachhang.php';
 
 $module='';
 if (isset($_GET['module'])) {
