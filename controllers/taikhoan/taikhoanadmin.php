@@ -77,6 +77,18 @@ class taikhoanadmin extends JATOVI_Controller
 		include BASEPATH.'models/taikhoanadmin_model.php';
 		$taikhoanadmin_model->update();
 	}
+
+	public function insert()
+	{
+		$id = $_POST['txtid'];
+		$ten_taikhoan = $_POST['txttaikhoan'];
+		$matkhau = $_POST['txtmatkhau'];
+		$hoten = $_POST['txthoten'];
+		$gioitinh = $_POST['gender'];
+		$id_nhom = $_POST['nhom']; 
+		$trangthai = $_POST['trangthai'];
+		include BASEPATH.'models/taikhoanadmin_model.php';
+	}
 }
 $taikhoanadmin = new taikhoanadmin($JATOVI);
 ?>

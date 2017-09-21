@@ -16,6 +16,68 @@
 			<a class="btn btn-primary" data-toggle="modal" href="#addnewad"><i class="fa fa-plus-square"></i> Thêm mới</a>
 			<div class="clearfix"></div>
 		</div>
+		<div class="modal fade" id="insertdiv">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							&times;
+						</button>
+						<h4 class="modal-title">Sửa tài khoản: <?=$value['ten_taikhoan'];?></h4>
+					</div>
+					<form action="<?=base_url."index.php?module=taikhoanadmin&action=update"?>">
+						<div class="modal-body">
+							<div class="form-group">
+								<input type="hidden" name="txtid" value="<?=$value['idadmin']?>">
+
+								<label for="txttaikhoan">Tên tài khoản</label>
+								<input type="text" name="txttaikhoan" value="<?=$value['ten_taikhoan']?>" class="form-control" required="required">
+
+								<label for="txthoten">Họ tên</label>
+								<input type="text" name="txthoten" value="<?=$value['hoten']?>" class="form-control" required="required">	
+
+								<label for="gender">Giới tính</label>
+								<br>	
+								<input type="radio" name="gender" id="nam" value="1" <?php if($value['gioitinh']==1){echo "checked='checked'";}?> class="form-inline">Nam 	
+								<input type="radio" name="gender" id="nu" value="0" <?php if($value['gioitinh']==0){echo "checked='checked'";}?> class="form-inline">Nữ	 				
+								<input type="radio" name="gender" id="khac" value="2" <?php if($value['gioitinh']==2){echo "checked='checked'";}?> class="form-inline">Khác	
+
+								<br>
+								<label for="nhom">Nhóm</label>
+								<select name="nhom" id="" class="form-control" required="required">
+									<?php foreach($groups as $nhom): ?>
+										<option value="<?=$nhom['grid'];?>" <?php if($nhom['grid'] == $value['idnhom']){echo "selected='selected'";} ?> ><?=$nhom['tennhom'];?></option>
+									<?php endforeach ?>
+								</select>
+								
+								<!-- Nút chọn hiển thị dòng nhập mật khẩu mới -->
+								<div class="form-inline">
+									<label for="tennhom">Đổi mật khẩu <span class="required">*</span>
+									</label>
+									<div class="checkbox">
+										<input class="changepass" name="changepass" type="checkbox" class="js-switch">
+									</div>
+								</div>
+
+								<!-- Dòng nhập mật khẩu mới -->
+								<div class="newpass" style="display: none">
+									<label for="tennhom">Mật khẩu mới <span class="required">*</span>
+									</label>
+									
+									<input type="text" id="hoten" name="newpass" class="form-control" >
+									
+								</div>
+							
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+								<button type="submit" class="btn btn-primary">Cập nhật</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 <div class="row">
