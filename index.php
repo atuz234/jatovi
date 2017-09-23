@@ -1,5 +1,8 @@
 <?php 
 session_start();
+if ($_SESSION['userID']==NULL) {
+	header("Location: index.php");
+}
 require 'cores/JATOVI_Controller.php';
 include_once BASEPATH.'/controllers/page.php';
 include_once BASEPATH.'/controllers/taikhoan/taikhoanadmin.php';
@@ -18,6 +21,9 @@ switch ($module) {
 		break;
 	case 'taikhoanadmin':
 		$taikhoanadmin->dieuhuong();
+		break;
+	case 'phanquyen':
+		$phanquyen->dieuhuong();
 		break;
 	default:
 		$page->index();

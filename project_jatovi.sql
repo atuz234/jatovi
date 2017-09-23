@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 21, 2017 lúc 03:57 AM
+-- Thời gian đã tạo: Th9 23, 2017 lúc 03:54 AM
 -- Phiên bản máy phục vụ: 10.1.25-MariaDB
 -- Phiên bản PHP: 7.1.7
 
@@ -35,7 +35,7 @@ CREATE TABLE `tb_admin` (
   `hoten` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `gioitinh` tinyint(10) NOT NULL,
   `id_nhom` int(11) NOT NULL,
-  `trangthai` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `trangthai` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -45,7 +45,11 @@ CREATE TABLE `tb_admin` (
 INSERT INTO `tb_admin` (`id`, `ten_taikhoan`, `matkhau`, `hoten`, `gioitinh`, `id_nhom`, `trangthai`) VALUES
 (1, 'admin', 'admin', 'Nguyen Anh Tuan', 1, 1, '1'),
 (2, 'quantri', 'quantri', 'Nguyen Anh Tuan', 2, 3, '1'),
-(11, 'ad', 'asd', 'asd', 0, 1, '1');
+(11, 'abcd', '1234', 'hoten', 0, 3, '1'),
+(12, 'a', 'a', 'a', 1, 3, '1'),
+(13, 'b', 'b', 'b', 1, 1, '1'),
+(14, 'c', 'c', 'c', 0, 1, '1'),
+(15, 'd', 'd', 'd', 1, 1, '1');
 
 -- --------------------------------------------------------
 
@@ -108,6 +112,13 @@ CREATE TABLE `tb_danhmuc` (
   `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tb_danhmuc`
+--
+
+INSERT INTO `tb_danhmuc` (`id`, `name`) VALUES
+(1, 'Colllagen');
 
 -- --------------------------------------------------------
 
@@ -179,6 +190,13 @@ CREATE TABLE `tb_nhasanxuat` (
   `nsx_logo` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `nsx_mota` varchar(500) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tb_nhasanxuat`
+--
+
+INSERT INTO `tb_nhasanxuat` (`id`, `nsx_ten`, `nsx_diachi`, `nsx_sodienthoai`, `nsx_email`, `nsx_website`, `nsx_logo`, `nsx_mota`) VALUES
+(1, 'Nha san xuat', 'Ha Noi', '01232131023', 'nhasanxuat@gmail.com', '', '', 'mo ta nha san xuat');
 
 -- --------------------------------------------------------
 
@@ -255,7 +273,7 @@ CREATE TABLE `tb_sanpham` (
   `giamoi` int(30) NOT NULL,
   `ngaysanxuat` date NOT NULL,
   `hansudung` date NOT NULL,
-  `donvi` int(11) NOT NULL,
+  `donvi` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `hinhanh` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `dshinhanh` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `damua` int(20) NOT NULL,
@@ -370,7 +388,7 @@ ALTER TABLE `tb_tintuc`
 -- AUTO_INCREMENT cho bảng `tb_admin`
 --
 ALTER TABLE `tb_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT cho bảng `tb_chitietdonhang`
 --
@@ -385,7 +403,7 @@ ALTER TABLE `tb_chucnang`
 -- AUTO_INCREMENT cho bảng `tb_danhmuc`
 --
 ALTER TABLE `tb_danhmuc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT cho bảng `tb_donhang`
 --
@@ -405,7 +423,7 @@ ALTER TABLE `tb_lichsunganhan`
 -- AUTO_INCREMENT cho bảng `tb_nhasanxuat`
 --
 ALTER TABLE `tb_nhasanxuat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT cho bảng `tb_nhomnguoidung`
 --

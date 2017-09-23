@@ -24,6 +24,9 @@ class taikhoanadmin extends JATOVI_Controller
 			case 'update':
 				$this->update();
 				break;
+			case 'insert':
+				$this->insert();
+				break;
 
 			default:
 				$this->index();
@@ -67,27 +70,33 @@ class taikhoanadmin extends JATOVI_Controller
 
 	public function update()
 	{	
+		include BASEPATH.'models/taikhoanadmin_model.php';
 		$id = $_POST['txtid'];
 		$ten_taikhoan = $_POST['txttaikhoan'];
-		$matkhau = $_POST['txtmatkhau'];
 		$hoten = $_POST['txthoten'];
 		$gioitinh = $_POST['gender'];
 		$id_nhom = $_POST['nhom']; 
-		$trangthai = $_POST['trangthai'];
-		include BASEPATH.'models/taikhoanadmin_model.php';
-		$taikhoanadmin_model->update();
+		$matkhau = $_POST['newpass'];
+
+		$mang = array('ten_taikhoan'=>$ten_taikhoan, 'hoten'=>$hoten, 'matkhau'=>$matkhau, 'gioitinh'=> $gioitinh, 'id_nhom'=>$id_nhom);
+		
+		$taikhoanadmin_model->update($id,$mang);
+		header("Location:".base_url."index.php?module=taikhoanadmin");
 	}
 
 	public function insert()
 	{
-		$id = $_POST['txtid'];
-		$ten_taikhoan = $_POST['txttaikhoan'];
-		$matkhau = $_POST['txtmatkhau'];
-		$hoten = $_POST['txthoten'];
-		$gioitinh = $_POST['gender'];
-		$id_nhom = $_POST['nhom']; 
-		$trangthai = $_POST['trangthai'];
+		$ten_taikhoan = $_POST['insert_taikhoan'];
+		$matkhau = $_POST['insert_password'];
+		$hoten = $_POST['insert_hoten'];
+		$gioitinh = $_POST['insert_gender'];
+		$id_nhom = $_POST['insert_nhom']; 
 		include BASEPATH.'models/taikhoanadmin_model.php';
+
+		$mang = array('ten_taikhoan'=>$ten_taikhoan, 'hoten'=>$hoten, 'matkhau'=>$matkhau, 'gioitinh'=> $gioitinh, 'id_nhom'=>$id_nhom);
+
+		$taikhoanadmin_model->insert($mang);
+		header("Location:".base_url."index.php?module=taikhoanadmin");
 	}
 }
 $taikhoanadmin = new taikhoanadmin($JATOVI);
