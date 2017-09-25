@@ -39,9 +39,9 @@ class taikhoankhachhang extends JATOVI_Controller
 		}		
 	}
 	public function index(){
-		include "models/taikhoan_model.php";
+		include "models/taikhoankhachhang_model.php";
 		$list= $taikhoan_model->getlist();
-		$data['content'] = 'taikhoan/taikhoan';
+		$data['content'] = 'taikhoan/taikhoankhachhang';
 		$data['contentdata'] = array();
 		foreach ($list as $key => $value) {
 		$data['contentdata']['list'][$key] = $value;
@@ -54,7 +54,7 @@ class taikhoankhachhang extends JATOVI_Controller
 		if(isset($_GET['id'])){
 			$id = $_GET['id'];
 		}
-			include 'models/taikhoan_model.php';
+			include 'models/taikhoankhachhang_model.php';
 			$del = $taikhoan_model->delete($id);
 			if ($del) {
 			header("Location:".base_url."index.php?module=taikhoankhachhang");
@@ -70,8 +70,9 @@ class taikhoankhachhang extends JATOVI_Controller
 			$ngaysinh =$_POST['ngaysinh'];
 			$gioitinh = $_POST['gioitinh'];
 			$diachi = $_POST['diachi'];
-			
-			include_once 'models/taikhoan_model.php';
+
+			include_once 'models/taikhoankhachhang_model.php';
+
 			$add = $taikhoan_model->add($email, $matkhau, $sodienthoai, $ten, $ngaysinh, $gioitinh, $diachi);
 			header("Location:".base_url."index.php?module=taikhoankhachhang");
 			}
@@ -87,7 +88,9 @@ class taikhoankhachhang extends JATOVI_Controller
 				$gioitinh = $_POST['edit_gioitinh'];
 				$diachi = $_POST['edit_diachi'];
 				
-				include_once 'models/taikhoan_model.php';
+
+				include_once 'models/taikhoankhachhang_model.php';
+
 				$edit = $taikhoan_model->edit( $id, $email, $sodienthoai, $ten, $ngaysinh, $gioitinh, $diachi);
 				header("Location:".base_url."index.php?module=taikhoankhachhang");
 			}
