@@ -10,6 +10,6 @@
 define('MAHOA', 'JATOVI_MAHOA'); 
 //END PROTTECT
 
-define('base_url', 'http://localhost:8888/jatovi/');
+define('base_url', 'http://localhost/jatovi/');
 define('BASEPATH','C:/xampp/htdocs/jatovi/');
 ?>
