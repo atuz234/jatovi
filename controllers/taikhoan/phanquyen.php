@@ -43,13 +43,10 @@ class phanquyen extends JATOVI_Controller
 		$data['content'] = 'taikhoan/phanquyen';
 		$data['contentdata'] = array();
 		include BASEPATH.'models/phanquyen_model.php';
-		
-		
-		
-		foreach ($nhom as $key => $value) {
-			$data['contentdata']['groups'][$key] = $value;
+		$dulieu = $phanquyen_model->select_all();
+		foreach ($dulieu as $key => $value) {
+			$data['contentdata']['dulieu'][$key] = $value;
 		}
-
 		$data['JATOVI']=$this->JATOVI;
 		$this->JATOVI->load->view('master',$data);
 	}

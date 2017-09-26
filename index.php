@@ -7,6 +7,7 @@ require 'cores/JATOVI_Controller.php';
 include_once BASEPATH.'/controllers/page.php';
 include_once BASEPATH.'/controllers/taikhoan/taikhoanadmin.php';
 include_once BASEPATH.'/controllers/taikhoan/taikhoankhachhang.php';
+include_once BASEPATH.'/controllers/taikhoan/phanquyen.php';
 
 $module='';
 if (isset($_GET['module'])) {

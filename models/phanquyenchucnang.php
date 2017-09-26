@@ -3,7 +3,7 @@ include_once 'JATOVI_Model.php';
 /**
 * 
 */
-class phanquyen extends JATOVI_Model
+class phanquyenchucnang extends JATOVI_Model
 {
 	private $_table = "tb_phanquyen";
 	private $_table2 = "tb_chucnang";
@@ -21,4 +21,5 @@ class phanquyen extends JATOVI_Model
 		return $result;
 	}
 }
+$phanquyenchucnang = new phanquyenchucnang();
 ?>

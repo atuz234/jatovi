@@ -1,7 +1,6 @@
 <?php 
-	include_once BASEPATH.'models/phanquyen.php';
-	$phanquyen = new phanquyen();
-	$chucnang = $phanquyen->getrole($_SESSION['userGroup']);
+	include_once BASEPATH.'models/phanquyenchucnang.php';
+	$chucnang = $phanquyenchucnang->getrole($_SESSION['userGroup']);
 	$menu = array();
 	foreach ($chucnang as $p) {
 		if ($p['id_parent']==0) {

@@ -14,7 +14,7 @@ class taikhoan_model extends JATOVI_Model
 
 	public function getlist()
 	{
-		$sql = "SELECT * FROM {$this->_table2} ";
+		$sql = "SELECT *, DATE_FORMAT( ngaysinh, '%d-%m-%Y' ) as sinhnhat  FROM {$this->_table2} ";
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 		$result = $query->fetchAll();

@@ -30,7 +30,7 @@
 								<input type="text" name="ten" value="" class="form-control" required="required">	
                                 
                                 <label for="txthoten">Ngày Sinh</label>
-								<input type="text" name="ngaysinh" value="" class="form-control" required="required">		
+								<input type="date" name="ngaysinh" value="" class="form-control" required="required">		
 
 								<label for="gender">Giới tính</label>
 								<br>	
@@ -63,7 +63,7 @@
 						<th>Id</th>
 						<th>Email</th>
 						<th>Số Điện Thoại</th>
-						<th>Tện</th>
+						<th>Tên </th>
 						<th>Ngày Sinh</th>
 						<th>Giới Tính</th>
                         <th>Địa Chỉ</th>
@@ -79,7 +79,7 @@
 							<td><?=$value['email']?></td>
 							<td><?=$value['sodienthoai']?></td>
 							<td><?=$value['ten']?></td>
-                            <td><?=$value['ngaysinh']?></td>
+                            <td><?=$value['sinhnhat']?></td>
                             <td><?php if($value['gioitinh']==1){echo "Nam";}else if($value['gioitinh']==0){echo "Nữ";}else{echo "Khác";};?></td>
                             <td><?=$value['diachi']?></td>
                             <td><?=$value['trangthai']?></td>
@@ -112,7 +112,7 @@
 														<input type="text" name="edit_ten" value="<?= $value['ten']; ?>" class="form-control" required="required">	
                                                         
                                                         <label for="txthoten">Ngày Sinh</label>
-														<input type="text" name="edit_ngaysinh" value="<?= $value['ngaysinh']; ?>" class="form-control" required="required">		
+														<input type="date" name="edit_ngaysinh" value="<?= $value['ngaysinh']; ?>" class="form-control" required="required">		
 
 														<label for="gender">Giới tính</label>
 														<br>	
