@@ -47,6 +47,11 @@ class phanquyen extends JATOVI_Controller
 		foreach ($dulieu as $key => $value) {
 			$data['contentdata']['dulieu'][$key] = $value;
 		}
+
+		$nhoms = $phanquyen_model->select_nhom();
+		foreach ($nhoms as $key => $value) {
+			$data['contentdata']['nhoms'][$key] = $value;
+		}
 		$data['JATOVI']=$this->JATOVI;
 		$this->JATOVI->load->view('master',$data);
 	}

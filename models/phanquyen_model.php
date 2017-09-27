@@ -16,7 +16,16 @@ class phanquyen_model extends JATOVI_Model
 
 	public function select_all()
 	{
-		$sql = "SELECT *, pq.id as idphanquyen ,nhom.id as idnhom, cn.id as idchucnang FROM {$this->_table} pq INNER JOIN {$this->_table2} nhom ON pq.id_nhom = nhom.id INNER JOIN {$this->_table3} cn ON pq.id_chucnang = cn.id ORDER BY pq.id_nhom ASC, pq.id_chucnang ASC";
+		$sql = "SELECT pq.id as idphanquyen, pq.id_nhom,pq.id_chucnang, nhom.tennhom, cn.ten as tenchucnang FROM {$this->_table} pq INNER JOIN {$this->_table2} nhom ON pq.id_nhom = nhom.id INNER JOIN {$this->_table3} cn ON pq.id_chucnang = cn.id ORDER BY pq.id_nhom ASC, pq.id_chucnang ASC";
+		$query = $this->connection->prepare($sql);
+		$query->execute();
+		$result = $query->fetchAll();
+		return $result;
+	}
+
+	public function select_nhom()
+	{
+		$sql = "SELECT id as idnhom, tennhom FROM {$this->_table2}";
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 		$result = $query->fetchAll();
