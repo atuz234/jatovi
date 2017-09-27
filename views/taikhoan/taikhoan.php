@@ -2,12 +2,12 @@
 	<div class="col-md-12">
 		<div class="popover-title">
 			<h2>Tài khoản Khách Hàng</h2>
-            <a href="#edit" class="btn btn-primary btn-sm" data-toggle="modal">
+            <a href="#add" class="btn btn-primary " data-toggle="modal">
             <i class="fa fa-plus" aria-hidden="true"></i>
                                     Thêm mới
 								</a>
 			
-            	<div class="modal fade" id="edit">
+            	<div class="modal fade" id="add">
 									<div class="modal-dialog">
 										<div class="modal-content">
 											<div class="modal-header">
@@ -55,7 +55,7 @@
 								</div>
        
                      
-			<div class="clearfix"></div>
+
 		</div>
 	</div>
 </div>

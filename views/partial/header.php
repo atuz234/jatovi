@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>JATOVI | Admin</title>
+    <script src="public/ckeditor/ckeditor.js"></script>
 	<!-- Jquery -->
 	<script src="public/vendors/jquery/dist/jquery.min.js"></script>
 	<!-- Bootstrap -->
@@ -15,5 +16,7 @@
 
 	<!-- Custom css: file css tùy biến đặt tại đây -->
 	<link rel="stylesheet" href="public/scripts/css/style.css">
+    
+
 </head>
 <body>

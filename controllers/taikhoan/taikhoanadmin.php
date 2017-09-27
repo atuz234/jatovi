@@ -35,23 +35,7 @@ class taikhoanadmin extends JATOVI_Controller
 		if (!isset($_SESSION['userID'])) {
 			$this->login();
 		}
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		
-=======
-
->>>>>>> 052d3db594291d47f8764c203c3e1a217ba6b67e
-=======
-
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
-=======
-
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
->>>>>>> 2315b4442afee2b3a862b08e86bdeac99ab76f32
 		$data['content'] = 'taikhoan/taikhoanadmin';
 		$data['contentdata'] = array();
 		include BASEPATH.'models/taikhoanadmin_model.php';
@@ -82,64 +66,16 @@ class taikhoanadmin extends JATOVI_Controller
 	}
 
 	public function update()
-<<<<<<< HEAD
 	{	
 		$id = $_POST['txtid'];
 		$ten_taikhoan = $_POST['txttaikhoan'];
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	{	$ten_taikhoan = $_POST['txttaikhoan'];
-=======
-	{	
-		$id = $_POST['txtid'];
-		$ten_taikhoan = $_POST['txttaikhoan'];
->>>>>>> 052d3db594291d47f8764c203c3e1a217ba6b67e
-=======
-	{	
-		$id = $_POST['txtid'];
-		$ten_taikhoan = $_POST['txttaikhoan'];
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
-=======
-	{	
-		$id = $_POST['txtid'];
-		$ten_taikhoan = $_POST['txttaikhoan'];
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
->>>>>>> 2315b4442afee2b3a862b08e86bdeac99ab76f32
 		$matkhau = $_POST['txtmatkhau'];
 		$hoten = $_POST['txthoten'];
 		$gioitinh = $_POST['gender'];
 		$id_nhom = $_POST['nhom']; 
 		$trangthai = $_POST['trangthai'];
-<<<<<<< HEAD
 		include BASEPATH.'models/taikhoanadmin_model.php';
 		$taikhoanadmin_model->update();
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		if () {
-			$ten_taikhoan = $_POST['txttaikhoan'];
-			$matkhau = $_POST['txtmatkhau'];
-			$hoten = $_POST['txthoten'];
-			$gioitinh = $_POST['gender'];
-			$id_nhom = $_POST['nhom']; 
-			$trangthai = $_POST['trangthai'];
-		}
-=======
-		include BASEPATH.'models/taikhoanadmin_model.php';
-		$taikhoanadmin_model->update();
->>>>>>> 052d3db594291d47f8764c203c3e1a217ba6b67e
-=======
-		include BASEPATH.'models/taikhoanadmin_model.php';
-		$taikhoanadmin_model->update();
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
-=======
-		include BASEPATH.'models/taikhoanadmin_model.php';
-		$taikhoanadmin_model->update();
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
->>>>>>> 2315b4442afee2b3a862b08e86bdeac99ab76f32
 	}
 }
 $taikhoanadmin = new taikhoanadmin($JATOVI);

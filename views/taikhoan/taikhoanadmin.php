@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
-=======
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
->>>>>>> 2315b4442afee2b3a862b08e86bdeac99ab76f32
 <script>
 	$(document).ready(function() {
 		$(".changepass").change(function() {
@@ -20,16 +9,6 @@
 		});
 	});
 </script>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 052d3db594291d47f8764c203c3e1a217ba6b67e
-=======
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
-=======
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
->>>>>>> 2315b4442afee2b3a862b08e86bdeac99ab76f32
 <div class="row">
 	<div class="col-md-12">
 		<div class="popover-title">
@@ -77,26 +56,8 @@
 											<form action="<?=base_url."index.php?module=taikhoanadmin&action=update"?>">
 												<div class="modal-body">
 													<div class="form-group">
-<<<<<<< HEAD
 														<input type="hidden" name="txtid" value="<?=$value['idadmin']?>">
 
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-														<input type="hidden" name="txtid" value="<?=$value['idadmin']?>">
-
->>>>>>> 052d3db594291d47f8764c203c3e1a217ba6b67e
-=======
-														<input type="hidden" name="txtid" value="<?=$value['idadmin']?>">
-
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
-=======
-														<input type="hidden" name="txtid" value="<?=$value['idadmin']?>">
-
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
->>>>>>> 2315b4442afee2b3a862b08e86bdeac99ab76f32
 														<label for="txttaikhoan">Tên tài khoản</label>
 														<input type="text" name="txttaikhoan" value="<?=$value['ten_taikhoan']?>" class="form-control" required="required">
 
@@ -105,28 +66,8 @@
 
 														<label for="gender">Giới tính</label>
 														<br>	
-<<<<<<< HEAD
 														<input type="radio" name="gender" id="nam" value="1" <?php if($value['gioitinh']==1){echo "checked='checked'";}?> class="form-inline">Nam 	
 														<input type="radio" name="gender" id="nu" value="0" <?php if($value['gioitinh']==0){echo "checked='checked'";}?> class="form-inline">Nữ	 				
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-														<input type="radio" name="gender" id="nam" value="1" <?php if($value['gioitinh']==1){echo "checked='checked'";}?> class="form-inline">Nam	
-														<input type="radio" name="gender" id="nu" value="0" <?php if($value['gioitinh']==0){echo "checked='checked'";}?> class="form-inline">Nữ					
-=======
-														<input type="radio" name="gender" id="nam" value="1" <?php if($value['gioitinh']==1){echo "checked='checked'";}?> class="form-inline">Nam 	
-														<input type="radio" name="gender" id="nu" value="0" <?php if($value['gioitinh']==0){echo "checked='checked'";}?> class="form-inline">Nữ	 				
->>>>>>> 052d3db594291d47f8764c203c3e1a217ba6b67e
-=======
-														<input type="radio" name="gender" id="nam" value="1" <?php if($value['gioitinh']==1){echo "checked='checked'";}?> class="form-inline">Nam 	
-														<input type="radio" name="gender" id="nu" value="0" <?php if($value['gioitinh']==0){echo "checked='checked'";}?> class="form-inline">Nữ	 				
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
-=======
-														<input type="radio" name="gender" id="nam" value="1" <?php if($value['gioitinh']==1){echo "checked='checked'";}?> class="form-inline">Nam 	
-														<input type="radio" name="gender" id="nu" value="0" <?php if($value['gioitinh']==0){echo "checked='checked'";}?> class="form-inline">Nữ	 				
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
->>>>>>> 2315b4442afee2b3a862b08e86bdeac99ab76f32
 														<input type="radio" name="gender" id="khac" value="2" <?php if($value['gioitinh']==2){echo "checked='checked'";}?> class="form-inline">Khác	
 
 														<br>
@@ -136,17 +77,6 @@
 																<option value="<?=$nhom['grid'];?>" <?php if($nhom['grid'] == $value['idnhom']){echo "selected='selected'";} ?> ><?=$nhom['tennhom'];?></option>
 															<?php endforeach ?>
 														</select>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
-=======
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
->>>>>>> 2315b4442afee2b3a862b08e86bdeac99ab76f32
 														
 														<!-- Nút chọn hiển thị dòng nhập mật khẩu mới -->
 														<div class="form-inline">
@@ -166,16 +96,6 @@
 															
 														</div>
 													
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 052d3db594291d47f8764c203c3e1a217ba6b67e
-=======
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
-=======
->>>>>>> 50a3155e713f3eb9fea7dce27ffc010b18dd1fbb
->>>>>>> 2315b4442afee2b3a862b08e86bdeac99ab76f32
 													</div>
 												</div>
 												<div class="modal-footer">
