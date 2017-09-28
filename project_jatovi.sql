@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 23, 2017 lúc 03:54 AM
+-- Thời gian đã tạo: Th9 28, 2017 lúc 03:24 AM
 -- Phiên bản máy phục vụ: 10.1.25-MariaDB
 -- Phiên bản PHP: 7.1.7
 
@@ -293,8 +293,41 @@ CREATE TABLE `tb_tintuc` (
   `id_tintuc` int(11) NOT NULL,
   `tieude` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `hinhanh` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `noidung` text COLLATE utf8_unicode_ci NOT NULL
+  `noidung` text COLLATE utf8_unicode_ci NOT NULL,
+  `ngaydang` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `tacgia` varchar(150) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tb_tintuc`
+--
+
+INSERT INTO `tb_tintuc` (`id_tintuc`, `tieude`, `hinhanh`, `noidung`, `ngaydang`, `tacgia`) VALUES
+(22, 'dsfasdasd', '', '<p>dasdasdasdasds</p>\r\n', '2017-09-27 10:48:22', 'Nguyen Anh Tuan'),
+(23, '123', '', '<p>321</p>\r\n', '2017-09-27 10:52:34', 'Nguyen Anh Tuan'),
+(24, '123', '', '<p>321</p>\r\n', '2017-09-27 10:55:51', 'Nguyen Anh Tuan'),
+(25, '696', '20170922114419_1.jpg', '<p>asdasdasdas</p>\r\n', '2017-09-27 11:02:46', 'Nguyen Anh Tuan'),
+(26, '999', '', '<p>98564655</p>\r\n', '2017-09-27 11:11:33', 'Nguyen Anh Tuan'),
+(27, '999', '', '<p>98564655</p>\r\n', '2017-09-27 11:12:21', 'Nguyen Anh Tuan'),
+(28, 'alo', '', '<p>abc</p>\r\n', '2017-09-27 11:12:50', 'Nguyen Anh Tuan'),
+(29, 'alo', '', '<p>abc</p>\r\n', '2017-09-27 11:13:22', 'Nguyen Anh Tuan'),
+(30, 'jyfkjhf', '', '<p>;LKJHGVCX</p>\r\n', '2017-09-27 11:15:22', 'Nguyen Anh Tuan'),
+(31, 'sqdasdasd', '', '<p>asdasdasd</p>\r\n', '2017-09-27 11:16:45', 'Nguyen Anh Tuan'),
+(32, 'sqdasdasd', '', '<p>asdasdasd</p>\r\n', '2017-09-27 11:19:24', 'Nguyen Anh Tuan'),
+(33, 'sqdasdasd', '', '<p>asdasdasd</p>\r\n', '2017-09-27 12:09:25', 'Nguyen Anh Tuan'),
+(34, 'sqdasdasd', '', '<p>asdasdasd</p>\r\n', '2017-09-27 12:10:06', 'Nguyen Anh Tuan'),
+(35, 'sqdasdasd', '20170922114419_1.jpg|', '<p>asdasdasd</p>\r\n', '2017-09-27 12:10:50', 'Nguyen Anh Tuan'),
+(36, 'thanh dep trai', '20170922114419_1.jpg|', '<p>fuck</p>\r\n', '2017-09-27 12:13:40', 'Nguyen Anh Tuan'),
+(37, 'fsdfsdfsdf', '20170922114419_1.jpg|', '<p>kjhsdafkjsdhfkashj</p>\r\n', '2017-09-27 12:16:00', 'Nguyen Anh Tuan'),
+(38, 'ádasd', '', '<p>&aacute;dasd</p>\r\n', '2017-09-27 12:16:40', 'Nguyen Anh Tuan'),
+(39, 'ádasd', '', '<p>&aacute;dasd</p>\r\n', '2017-09-27 12:17:19', 'Nguyen Anh Tuan'),
+(40, 'ádasd', '', '<p>&aacute;dasd</p>\r\n', '2017-09-27 12:17:45', 'Nguyen Anh Tuan'),
+(41, 'ádasd', '19554702_471522359906870_1584439020984714227_n.jpg|21743109_510178572707915_6132071483136042634_n.jpg|20170922114419_1.jpg|', '<p>&aacute;dasd</p>\r\n', '2017-09-27 12:18:33', 'Nguyen Anh Tuan'),
+(42, 'ádasd', '19554702_471522359906870_1584439020984714227_n.jpg|21743109_510178572707915_6132071483136042634_n.jpg|20170922114419_1.jpg|', '<p>&aacute;dasd</p>\r\n', '2017-09-27 12:20:03', 'Nguyen Anh Tuan'),
+(43, 'ádasdas', '', '<p>dfasdas</p>\r\n', '2017-09-27 12:22:48', 'Nguyen Anh Tuan'),
+(44, 'ádasdas', '', '<p>dfasdas</p>\r\n', '2017-09-27 12:23:25', 'Nguyen Anh Tuan'),
+(45, 'ádasdas', '', '<p>dfasdas</p>\r\n', '2017-09-27 12:23:44', 'Nguyen Anh Tuan'),
+(46, 'đây là tiêu đề ', '19554702_471522359906870_1584439020984714227_n.jpg|21743109_510178572707915_6132071483136042634_n.jpg|20170922114419_1.jpg|', '<p>đ&acirc;y l&agrave; nội dung</p>\r\n', '2017-09-28 01:03:37', 'Bùi Tấn Thành');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -443,7 +476,7 @@ ALTER TABLE `tb_sanpham`
 -- AUTO_INCREMENT cho bảng `tb_tintuc`
 --
 ALTER TABLE `tb_tintuc`
-  MODIFY `id_tintuc` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tintuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- Các ràng buộc cho các bảng đã đổ
 --

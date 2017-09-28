@@ -97,6 +97,7 @@ class taikhoanadmin extends JATOVI_Controller
 
 		$taikhoanadmin_model->insert($mang);
 		header("Location:".base_url."index.php?module=taikhoanadmin");
+
 	}
 }
 $taikhoanadmin = new taikhoanadmin($JATOVI);
