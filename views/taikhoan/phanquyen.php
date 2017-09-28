@@ -121,7 +121,8 @@ div.tab button.active {
 			</div>
 			<!-- Tất cả chức năng -->
 			<?php foreach($nhoms as $nhom): ?>
-				<div id="<?=$nhom['idnhom']?>">
+				<div id="<?=$nhom['idnhom']?>" class="tabcontent">
+					<h3><?=$nhom['tennhom']?></h3>
 					
 				</div>
 			<?php endforeach; ?>

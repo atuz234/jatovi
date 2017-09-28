@@ -2,35 +2,35 @@
 	<div class="col-md-12">
 		<div class="popover-title">
 			<h2>Tài khoản Khách Hàng</h2>
-            <a href="#edit" class="btn btn-primary" data-toggle="modal">
-            	<i class="fa fa-plus-square"></i> Thêm mới</a>
-		</div>
-    	<div class="modal fade" id="edit">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-							&times;
-						</button>
-						<h4 class="modal-title">Thêm Tài Khoản</h4>
-					</div>
-					<form method="post" action="<?=base_url."index.php?module=taikhoankhachhang&action=add"?>">
-						<div class="modal-body">
-							<div class="form-group">
-								<label for="txttaikhoan">Email</label>
-								<input type="text" name="email" value="" class="form-control" required="required">
-                                
-                                <label for="txttaikhoan">Mật Khẩu</label>
-								<input type="password" name="matkhau" value="" class="form-control" required="required">
-                                
-                                <label for="txthoten">Số Điện Thoại</label>
-								<input type="text" name="sodienthoai" value="" class="form-control" required="required">
-                                
-								<label for="txthoten">Họ tên</label>
-								<input type="text" name="ten" value="" class="form-control" required="required">	
-                                
-                                <label for="txthoten">Ngày Sinh</label>
-								<input type="date" name="ngaysinh" value="" class="form-control" required="required">		
+            <a href="#add" class="btn btn-primary " data-toggle="modal">
+            <i class="fa fa-plus" aria-hidden="true"></i>Thêm mới</a>
+			
+            	<div class="modal fade" id="add">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+													&times;
+												</button>
+												<h4 class="modal-title">Thêm Tài Khoản</h4>
+											</div>
+											<form method="post" action="<?=base_url."index.php?module=taikhoankhachhang&action=add"?>">
+												<div class="modal-body">
+													<div class="form-group">
+														<label for="txttaikhoan">Email</label>
+														<input type="text" name="email" value="" class="form-control" required="required">
+                                                        
+                                                        <label for="txttaikhoan">Mật Khẩu</label>
+														<input type="password" name="matkhau" value="" class="form-control" required="required">
+                                                        
+                                                        <label for="txthoten">Số Điện Thoại</label>
+														<input type="text" name="sodienthoai" value="" class="form-control" required="required">
+                                                        
+														<label for="txthoten">Họ tên</label>
+														<input type="text" name="ten" value="" class="form-control" required="required">	
+                                                        
+                                                        <label for="txthoten">Ngày Sinh</label>
+														<input type="text" name="ngaysinh" value="" class="form-control" required="required">		
 
 								<label for="gender">Giới tính</label>
 								<br>	
@@ -38,20 +38,23 @@
 								<input type="radio" name="gioitinh" id="nu" value="0"  class="form-inline">Nữ					
 								<input type="radio" name="gioitinh" id="khac" value="2" class="form-inline">Khác	
 
-								<br>
-								<label for="txthoten">Địa Chỉ</label>
-								<input type="text" name="diachi" value="" class="form-control" required="required">	
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-								 <button type="submit" class="btn btn-primary">Thêm mới</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>     
-		<div class="clearfix"></div>
+														<br>
+														<label for="txthoten">Địa Chỉ</label>
+														<input type="text" name="diachi" value="" class="form-control" required="required">	
+													</div>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+      												 <button type="submit" class="btn btn-primary">Thêm mới</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+       
+                     
+
+		</div>
 	</div>
 </div>
 <div class="row">
