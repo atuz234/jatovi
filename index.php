@@ -4,11 +4,11 @@ if ($_SESSION['userID']==NULL) {
 	header("Location: index.php");
 }
 require 'cores/JATOVI_Controller.php';
-include_once BASEPATH.'/controllers/page.php';
-include_once BASEPATH.'/controllers/taikhoan/taikhoanadmin.php';
-include_once BASEPATH.'/controllers/taikhoan/taikhoankhachhang.php'; 
-include_once BASEPATH.'/controllers/taikhoan/phanquyen.php';
-include_once BASEPATH.'/controllers/quanlytintuc.php';
+include_once BASEPATH.'/controllers/admin/page.php';
+include_once BASEPATH.'/controllers/admin/taikhoan/taikhoanadmin.php';
+include_once BASEPATH.'/controllers/admin/taikhoan/taikhoankhachhang.php'; 
+include_once BASEPATH.'/controllers/admin/taikhoan/phanquyen.php';
+include_once BASEPATH.'/controllers/admin/quanlytintuc.php';
 
 
 $module='';

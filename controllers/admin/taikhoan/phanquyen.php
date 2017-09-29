@@ -40,9 +40,9 @@ class phanquyen extends JATOVI_Controller
 			$this->login();
 		}
 
-		$data['content'] = 'taikhoan/phanquyen';
+		$data['content'] = 'admin/taikhoan/phanquyen';
 		$data['contentdata'] = array();
-		include BASEPATH.'models/phanquyen_model.php';
+		include BASEPATH.'models/admin/phanquyen_model.php';
 		$dulieu = $phanquyen_model->select_all();
 		foreach ($dulieu as $key => $value) {
 			$data['contentdata']['dulieu'][$key] = $value;
@@ -53,7 +53,7 @@ class phanquyen extends JATOVI_Controller
 			$data['contentdata']['nhoms'][$key] = $value;
 		}
 		$data['JATOVI']=$this->JATOVI;
-		$this->JATOVI->load->view('master',$data);
+		$this->JATOVI->load->view('admin/master',$data);
 	}
 }
 $phanquyen = new phanquyen($JATOVI);

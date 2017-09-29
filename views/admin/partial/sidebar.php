@@ -1,5 +1,5 @@
 <?php 
-	include_once BASEPATH.'models/phanquyenchucnang.php';
+	include_once BASEPATH.'models/admin/phanquyenchucnang.php';
 	$chucnang = $phanquyenchucnang->getrole($_SESSION['userGroup']);
 	$menu = array();
 	foreach ($chucnang as $p) {

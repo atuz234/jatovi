@@ -39,9 +39,9 @@ class taikhoanadmin extends JATOVI_Controller
 			$this->login();
 		}
 
-		$data['content'] = 'taikhoan/taikhoanadmin';
+		$data['content'] = 'admin/taikhoan/taikhoanadmin';
 		$data['contentdata'] = array();
-		include BASEPATH.'models/taikhoanadmin_model.php';
+		include BASEPATH.'models/admin/taikhoanadmin_model.php';
 		$tks = $taikhoanadmin_model->select_all_admin();
 		foreach ($tks as $key => $value) {
 			$data['contentdata']['tkadmin'][$key] = $value;
@@ -52,7 +52,7 @@ class taikhoanadmin extends JATOVI_Controller
 		}
 
 		$data['JATOVI']=$this->JATOVI;
-		$this->JATOVI->load->view('master',$data);
+		$this->JATOVI->load->view('admin/master',$data);
 	}
 
 	public function delete()
@@ -61,7 +61,7 @@ class taikhoanadmin extends JATOVI_Controller
 		if (isset($_GET['id'])) {
 			$id = $_GET['id'];
 		}
-		include BASEPATH.'models/taikhoanadmin_model.php';
+		include BASEPATH.'models/admin/taikhoanadmin_model.php';
 		$del = $taikhoanadmin_model->delete($id);
 		if ($del) {
 			header("Location:".base_url."index.php?module=taikhoanadmin");
@@ -70,7 +70,7 @@ class taikhoanadmin extends JATOVI_Controller
 
 	public function update()
 	{	
-		include BASEPATH.'models/taikhoanadmin_model.php';
+		include BASEPATH.'models/admin/taikhoanadmin_model.php';
 		$id = $_POST['txtid'];
 		$ten_taikhoan = $_POST['txttaikhoan'];
 		$hoten = $_POST['txthoten'];
@@ -91,7 +91,7 @@ class taikhoanadmin extends JATOVI_Controller
 		$hoten = $_POST['insert_hoten'];
 		$gioitinh = $_POST['insert_gender'];
 		$id_nhom = $_POST['insert_nhom']; 
-		include BASEPATH.'models/taikhoanadmin_model.php';
+		include BASEPATH.'models/admin/taikhoanadmin_model.php';
 
 		$mang = array('ten_taikhoan'=>$ten_taikhoan, 'hoten'=>$hoten, 'matkhau'=>$matkhau, 'gioitinh'=> $gioitinh, 'id_nhom'=>$id_nhom);
 

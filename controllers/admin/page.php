@@ -39,18 +39,18 @@ class page extends JATOVI_Controller
 		if (!isset($_SESSION['userID'])) {
 			$this->login();
 		}
-		$data['content'] = 'page/index';
+		$data['content'] = 'admin/page/index';
 		$data['contentdata'] = array();
 		$data['JATOVI']=$this->JATOVI;
-		$this->JATOVI->load->view('master',$data);
+		$this->JATOVI->load->view('admin/master',$data);
 	}
 	public function permission()
 	{
-		$this->JATOVI->load->view('page/permission');
+		$this->JATOVI->load->view('admin/page/permission');
 	}
 	public function login()
 	{
-		header("Location:".base_url."views/login.php");
+		header("Location:".base_url."views/admin/login.php");
 	}
 	public function login_check()
 	{
@@ -61,7 +61,7 @@ class page extends JATOVI_Controller
 			$ten_taikhoan = $_POST['ten_taikhoan'];
 			$matkhau = $_POST['matkhau'];
 		}
-		include BASEPATH.'models/page_model.php';
+		include BASEPATH.'models/admin/page_model.php';
 		
 		$check = $page_model->login($ten_taikhoan, $matkhau);
 		if (count($check) > 0) {

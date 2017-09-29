@@ -1,4 +1,4 @@
-<?php include_once '../cores/define.php'; ?>
+<?php include_once '../../cores/define.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

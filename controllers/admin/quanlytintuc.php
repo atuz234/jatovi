@@ -33,15 +33,15 @@ class quanlytintuc extends JATOVI_Controller
 		}
 	}
 	public function index(){
-		include "models/quanlytintuc_model.php";
+		include "models/admin/quanlytintuc_model.php";
 		$list= $quanlytintuc_model->getlist();
-		$data['content'] = 'tintuc/quanlytintuc';
+		$data['content'] = 'admin/tintuc/quanlytintuc';
 		$data['contentdata'] = array();
 		foreach ($list as $key => $value) {
 		$data['contentdata']['list'][$key] = $value;
 		}
 		$data['JATOVI']=$this->JATOVI;
-		$this->JATOVI->load->view('master',$data);		
+		$this->JATOVI->load->view('admin/master',$data);		
 		}
 	public function add(){
 		$uploadOk=0;
@@ -60,7 +60,7 @@ class quanlytintuc extends JATOVI_Controller
 					echo "ten:{$value}<br>";
 				}
 			for($i=0; $i <count($mangfile["name"]); $i++){
-				///////////////////////////////////////////////////
+			// upload file
 			$target_file = "public/images/tintuc/" . basename($mangfile["name"][$i]);
 			$uploadOk = 0;
 			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -97,11 +97,11 @@ class quanlytintuc extends JATOVI_Controller
 					echo "Sorry, there was an error uploading your file.";
 				}
 			}
-				///////////////////////////
+			// end upload file
 			}
 			$tieude =$_POST['tieude'];
 			$noidung = $_POST['noidung'];
-			include_once 'models/quanlytintuc_model.php';
+			include_once 'models/admin/quanlytintuc_model.php';
 			$hinhanh = 
 			$add = $quanlytintuc_model->add($tieude, $hinhanh, $noidung,$tacgia);
 			//header("Location:".base_url."index.php?module=quanlytintuc");
@@ -115,7 +115,7 @@ class quanlytintuc extends JATOVI_Controller
 			$id =$_POST['edit_id'];
 			$tieude =$_POST['tieude'];
 			$noidung = $_POST['noidung'];
-			include_once 'models/quanlytintuc_model.php';
+			include_once 'models/admin/quanlytintuc_model.php';
 			$edit = $quanlytintuc_model->edit($tieude, $hinhanh, $noidung,  $tacgia, $id);
 			//header("Location:".base_url."index.php?module=quanlytintuc");
 
@@ -126,7 +126,7 @@ class quanlytintuc extends JATOVI_Controller
 		if(isset($_GET['id'])){
 			$id = $_GET['id'];
 		}
-			include 'models/quanlytintuc_model.php';
+			include 'models/admin/quanlytintuc_model.php';
 			$del = $quanlytintuc_model->delete($id);
 			if ($del) {
 			header("Location:".base_url."index.php?module=quanlytintuc");
