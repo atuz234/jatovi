@@ -31,6 +31,15 @@ class phanquyen_model extends JATOVI_Model
 		$result = $query->fetchAll();
 		return $result;
 	}
+
+	public function select_chucnang()
+	{
+		$sql = "SELECT * FROM {$this->_table3}";
+		$query = $this->connection->prepare($sql);
+		$query->execute();
+		$result = $query->fetchAll();
+		return $result;
+	}
 }
 $phanquyen_model = new phanquyen_model();
 ?>

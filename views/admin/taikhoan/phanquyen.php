@@ -4,26 +4,26 @@ body {font-family: "Lato", sans-serif;}
 
 /* Style the tab */
 div.tab {
-    float: left;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-    width: 30%;
-    height: 300px;
+	float           : left;
+	border          : 1px solid #ccc;
+	background-color: #f1f1f1;
+	width           : 30%;
+	height          : 300px;
 }
 
 /* Style the buttons inside the tab */
 div.tab button {
-    display: block;
-    background-color: inherit;
-    color: black;
-    padding: 22px 16px;
-    width: 100%;
-    border: none;
-    outline: none;
-    text-align: left;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 17px;
+	display         : block;
+	background-color: inherit;
+	color           : black;
+	padding         : 22px 16px;
+	width           : 100%;
+	border          : none;
+	outline         : none;
+	text-align      : left;
+	cursor          : pointer;
+	transition      : 0.3s;
+	font-size       : 17px;
 }
 
 /* Change background color of buttons on hover */
@@ -38,12 +38,12 @@ div.tab button.active {
 
 /* Style the tab content */
 .tabcontent {
-    float: left;
-    padding: 0px 12px;
-    border: 1px solid #ccc;
-    width: 70%;
-    border-left: none;
-    height: 300px;
+	float      : left;
+	padding    : 0px 12px;
+	border     : 1px solid #ccc;
+	width      : 70%;
+	border-left: none;
+	height     : 300px;
 }
 </style>
 <script>
@@ -122,24 +122,38 @@ div.tab button.active {
 			<!-- Tất cả chức năng -->
 			<?php foreach($nhoms as $nhom): ?>
 				<div id="<?=$nhom['idnhom']?>" class="tabcontent">
-					<h3><?=$nhom['tennhom']?></h3>
+					<table class="table table-striped">
+						<caption><?=$nhom['tennhom']?></caption>
+						<thead>
+							<tr>
+								<th>Chức năng</th>
+								<th>Chọn</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach($chucnangs as $chucnang): ?>
+								<tr>
+									<td><?php echo $chucnang['ten']; ?></td>
+									<td>
+										<input type="checkbox" name="cnchon" 
+											<?php
+												foreach ($dulieu as $value) {
+													if ($value['id_nhom']==$nhom['idnhom'] && $value['id_chucnang'] == $chucnang['id']) {
+														echo "checked='checked'";
+													}
+												}
+											?> 
+										/>
+									</td>
+								</tr>
+							<?php endforeach; ?>
+						</tbody>
+					</table>
+					
 					
 				</div>
 			<?php endforeach; ?>
-			<div id="London" class="tabcontent">
-			  <h3>London</h3>
-			  <p>London is the capital city of England.</p>
-			</div>
-
-			<div id="1" class="tabcontent">
-			  <h3>Paris</h3>
-			  <p>Paris is the capital of France.</p> 
-			</div>
-
-			<div id="3" class="tabcontent">
-			  <h3>Tokyo</h3>
-			  <p>Tokyo is the capital of Japan.</p>
-			</div>
+			
 			<script>
 			function openCity(evt, cityName) {
 			    var i, tabcontent, tablinks;

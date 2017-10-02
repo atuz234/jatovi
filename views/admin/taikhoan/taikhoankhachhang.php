@@ -67,10 +67,10 @@
 						<th>Tên </th>
 						<th>Ngày Sinh</th>
 						<th>Giới Tính</th>
-                        <th>Địa Chỉ</th>
-                        <th>Trạng Thái</th>
-                        <th>Sửa</th>
-                        <th>Xóa</th>
+						<th>Địa Chỉ</th>
+						<th>Trạng Thái</th>
+						<th>Sửa</th>
+						<th>Xóa</th>
 					</tr>
 				</thead>
 				<tbody>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 28, 2017 lúc 03:24 AM
+-- Thời gian đã tạo: Th9 29, 2017 lúc 10:34 AM
 -- Phiên bản máy phục vụ: 10.1.25-MariaDB
 -- Phiên bản PHP: 7.1.7
 
@@ -49,7 +49,8 @@ INSERT INTO `tb_admin` (`id`, `ten_taikhoan`, `matkhau`, `hoten`, `gioitinh`, `i
 (12, 'a', 'a', 'a', 1, 3, '1'),
 (13, 'b', 'b', 'b', 1, 1, '1'),
 (14, 'c', 'c', 'c', 0, 1, '1'),
-(15, 'd', 'd', 'd', 1, 1, '1');
+(15, 'd', 'd', 'd', 1, 1, '1'),
+(16, 'adf', 'adf', 'adfs', 0, 3, '1');
 
 -- --------------------------------------------------------
 
@@ -158,7 +159,8 @@ CREATE TABLE `tb_khachhang` (
 --
 
 INSERT INTO `tb_khachhang` (`id`, `email`, `matkhau`, `sodienthoai`, `ten`, `ngaysinh`, `gioitinh`, `diachi`, `trangthai`) VALUES
-(1, 'buitanthanh211098', 'tanthanh98', '0964474680', 'thanh', '2017-09-21', 1, 'xuan ai ', 1);
+(1, 'buitanthanh211098', 'tanthanh98', '0964474680', 'thanh', '2017-09-21', 1, 'xuan ai ', 1),
+(2, 'asdf', 'adsf', '1231', 'adf', '2017-09-29', 1, 'asdf', 0);
 
 -- --------------------------------------------------------
 
@@ -304,12 +306,9 @@ CREATE TABLE `tb_tintuc` (
 
 INSERT INTO `tb_tintuc` (`id_tintuc`, `tieude`, `hinhanh`, `noidung`, `ngaydang`, `tacgia`) VALUES
 (22, 'dsfasdasd', '', '<p>dasdasdasdasds</p>\r\n', '2017-09-27 10:48:22', 'Nguyen Anh Tuan'),
-(23, '123', '', '<p>321</p>\r\n', '2017-09-27 10:52:34', 'Nguyen Anh Tuan'),
 (24, '123', '', '<p>321</p>\r\n', '2017-09-27 10:55:51', 'Nguyen Anh Tuan'),
 (25, '696', '20170922114419_1.jpg', '<p>asdasdasdas</p>\r\n', '2017-09-27 11:02:46', 'Nguyen Anh Tuan'),
-(26, '999', '', '<p>98564655</p>\r\n', '2017-09-27 11:11:33', 'Nguyen Anh Tuan'),
 (27, '999', '', '<p>98564655</p>\r\n', '2017-09-27 11:12:21', 'Nguyen Anh Tuan'),
-(28, 'alo', '', '<p>abc</p>\r\n', '2017-09-27 11:12:50', 'Nguyen Anh Tuan'),
 (29, 'alo', '', '<p>abc</p>\r\n', '2017-09-27 11:13:22', 'Nguyen Anh Tuan'),
 (30, 'jyfkjhf', '', '<p>;LKJHGVCX</p>\r\n', '2017-09-27 11:15:22', 'Nguyen Anh Tuan'),
 (31, 'sqdasdasd', '', '<p>asdasdasd</p>\r\n', '2017-09-27 11:16:45', 'Nguyen Anh Tuan'),
@@ -326,7 +325,6 @@ INSERT INTO `tb_tintuc` (`id_tintuc`, `tieude`, `hinhanh`, `noidung`, `ngaydang`
 (42, 'ádasd', '19554702_471522359906870_1584439020984714227_n.jpg|21743109_510178572707915_6132071483136042634_n.jpg|20170922114419_1.jpg|', '<p>&aacute;dasd</p>\r\n', '2017-09-27 12:20:03', 'Nguyen Anh Tuan'),
 (43, 'ádasdas', '', '<p>dfasdas</p>\r\n', '2017-09-27 12:22:48', 'Nguyen Anh Tuan'),
 (44, 'ádasdas', '', '<p>dfasdas</p>\r\n', '2017-09-27 12:23:25', 'Nguyen Anh Tuan'),
-(45, 'ádasdas', '', '<p>dfasdas</p>\r\n', '2017-09-27 12:23:44', 'Nguyen Anh Tuan'),
 (46, 'đây là tiêu đề ', '19554702_471522359906870_1584439020984714227_n.jpg|21743109_510178572707915_6132071483136042634_n.jpg|20170922114419_1.jpg|', '<p>đ&acirc;y l&agrave; nội dung</p>\r\n', '2017-09-28 01:03:37', 'Bùi Tấn Thành');
 
 --
@@ -421,7 +419,7 @@ ALTER TABLE `tb_tintuc`
 -- AUTO_INCREMENT cho bảng `tb_admin`
 --
 ALTER TABLE `tb_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT cho bảng `tb_chitietdonhang`
 --
@@ -446,7 +444,7 @@ ALTER TABLE `tb_donhang`
 -- AUTO_INCREMENT cho bảng `tb_khachhang`
 --
 ALTER TABLE `tb_khachhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT cho bảng `tb_lichsunganhan`
 --
