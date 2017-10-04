@@ -34,9 +34,9 @@
 			$this->login();
 		}
 		
-		$data['content'] = 'sanpham/quanlysanpham';
+		$data['content'] = 'admin/sanpham/quanlysanpham';
 		$data['contentdata'] = array();
-		include BASEPATH.'models/quanlysanpham_model.php';
+		include BASEPATH.'models/admin/quanlysanpham_model.php';
 		$sanpham = $quanlysanpham_model->select_all_product();
 		foreach ($sanpham as $key => $value) {
 			$data['contentdata']['sanpham'][$key] = $value;
@@ -50,7 +50,7 @@
 			$data['contentdata']['nsx'][$key] = $value;
 		}
 		$data['JATOVI']=$this->JATOVI;
-		$this->JATOVI->load->view('master',$data);
+		$this->JATOVI->load->view('admin/master',$data);
 	}
 	public function delete()
 	{
@@ -58,7 +58,7 @@
 		if(isset($_GET['id'])){
 			$id = $_GET['id'];
 		}
-		include BASEPATH.'models/quanlysanpham_model.php';
+		include BASEPATH.'models/admin/quanlysanpham_model.php';
 		$del = $quanlysanpham_model->delete($id);
 		if($del) {
 			header("Location:".base_url."index.php?module=quanlysanpham");
@@ -66,19 +66,19 @@
 	}
 	public function update()
 	{
-		include BASEPATH.'models/quanlysanpham_model.php';
-		$ten = $_POST['ten'];
-		$mota = $_POST['mota'];
-		$id_danhmuc = $_POST['id_danhmuc'];
-		$id_nsx = $_POST['id_nsx'];
-		$xuatsu = $_POST['xuatsu'];
-		$giacu = $_POST['giacu'];
-		$giamoi = $_POST['giamoi'];
-		$ngaysanxuat = $_POST['ngaysanxuat'];
-		$hansudung = $_POST['hansudung'];
-		$donvi = $_POST['donvi'];
+		include BASEPATH.'models/admin/quanlysanpham_model.php';
+		$ten = $_POST['txtten'];
+		$mota = $_POST['txtmota'];
+		$id_danhmuc = $_POST['txtid_danhmuc'];
+		$id_nsx = $_POST['txtid_nsx'];
+		$giacu = $_POST['txtgiacu'];
+		$giamoi = $_POST['txtgiamoi'];
+		$ngaysanxuat = $_POST['txtngaysanxuat'];
+		$hansudung = $_POST['txthansudung'];
+		$donvi = $_POST['txtdonvi'];
+		$hinhanh = $_POST['txthinhanh'];
 		
-		$mang = array('ten' => $ten, 'mota' => $mota, 'id_danhmuc' => $id_danhmuc, 'id_nsx' => $id_nsx ,'xuatsu' =>$xuatsu, 'giacu' => $giacu, 'giamoi' =>$giamoi, 'ngaysanxuat' => $ngaysanxuat, 'hansudung'=> $hansudung, 'donvi' => $donvi);
+		$mang = array('ten' => $ten, 'mota' => $mota, 'id_danhmuc' => $id_danhmuc, 'id_nsx' => $id_nsx ,'xuatsu' =>$xuatsu, 'giacu' => $giacu, 'giamoi' =>$giamoi, 'ngaysanxuat' => $ngaysanxuat, 'hansudung'=> $hansudung, 'donvi' => $donvi, 'hinhanh' => $hinhanh);
 		$quanlysanpham_model->update($mang);
 		//header("Location:".base_url."index.php?module=quanlysanpham");
 	}
@@ -96,7 +96,8 @@
 		$ngaysanxuat = $_POST['ngaysanxuat'];
 		$hansudung = $_POST['hansudung'];
 		$donvi = $_POST['donvi'];
-		include BASEPATH.'models/quanlysanpham_model.php';
+		
+		include BASEPATH.'models/admin/quanlysanpham_model.php';
 		$mang = array('ten' => $ten, 'mota' => $mota, 'id_danhmuc' => $id_danhmuc, 'id_nsx' => $id_nsx ,'xuatsu' =>$xuatsu, 'giacu' => $giacu, 'giamoi' =>$giamoi, 'ngaysanxuat' => $ngaysanxuat, 'hansudung'=> $hansudung, 'donvi' => $donvi);
 
 		$quanlysanpham_model->insert($mang);

@@ -6,7 +6,6 @@ include_once 'JATOVI_Model.php';
 class danhmucsanpham_model extends JATOVI_Model
 {
 	private $_table = 'tb_danhmuc';
-	private $_table2 = 'tb_sanpham';
 	
 	function __construct()
 	{

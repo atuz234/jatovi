@@ -9,6 +9,9 @@ include_once BASEPATH.'/controllers/admin/taikhoan/taikhoanadmin.php';
 include_once BASEPATH.'/controllers/admin/taikhoan/taikhoankhachhang.php'; 
 include_once BASEPATH.'/controllers/admin/taikhoan/phanquyen.php';
 include_once BASEPATH.'/controllers/admin/quanlytintuc.php';
+include_once BASEPATH.'controllers/admin/sanpham/quanlysanpham.php';
+include_once BASEPATH.'controllers/admin/sanpham/nhasanxuat.php';
+include_once BASEPATH.'controllers/admin/sanpham/danhmucsanpham.php';
 
 
 $module='';
@@ -30,6 +33,15 @@ switch ($module) {
 		break;
 	case 'quanlytintuc':
 		$quanlytintuc->dieuhuong();
+		break;
+	case 'quanlysanpham':
+		$quanlysanpham->dieuhuong();
+		break;
+	case 'nhasanxuat':
+		$nhasanxuat->dieuhuong();
+		break;
+	case 'danhmucsanpham':
+		$danhmucsanpham->dieuhuong();
 		break;
 	default:
 		$page->index();

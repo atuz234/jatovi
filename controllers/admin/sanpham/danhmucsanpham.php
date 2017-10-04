@@ -39,16 +39,16 @@ public function index()
 	if (!isset($_SESSION['userID'])) {
 		$this->login();
 	}
-	$data['content'] = 'sanpham/danhmucsanpham';
+	$data['content'] = 'admin/sanpham/danhmucsanpham';
 	$data['contentdata'] = array();
-	include BASEPATH.'models/danhmucsanpham_model.php';
+	include BASEPATH.'models/admin/danhmucsanpham_model.php';
 	$danhmuc = $danhmucsanpham_model->select_all_danhmuc();
 	foreach ($danhmuc as $key => $value) {
 		$data['contentdata']['danhmuc'][$key] = $value;
 	}
 
 	$data['JATOVI'] = $this->JATOVI;
-	$this->JATOVI->load->view('master', $data);
+	$this->JATOVI->load->view('admin/master', $data);
 }
 	public function delete()
 	{
@@ -56,7 +56,7 @@ public function index()
 		if (isset($_GET['id'])) {
 			$id = $_GET['id'];
 		}
-		include BASEPATH.'models/danhmucsanpham_model.php';
+		include BASEPATH.'models/admin/danhmucsanpham_model.php';
 		$del = $danhmucsanpham_model->delete($id);
 		if ($del) {
 			header("Location:".base_url."index.php?module=danhmucsanpham");
@@ -64,7 +64,7 @@ public function index()
 	}
 	public function update()
 	{
-		include BASEPATH.'models/danhmucsanpham_model.php';
+		include BASEPATH.'models/admin/danhmucsanpham_model.php';
 		$id =$_POST['txtid'];
 		$name = $_POST['txtname'];
 
@@ -76,7 +76,7 @@ public function index()
 
 	public function insert()
 	{
-		include BASEPATH.'models/danhmucsanpham_model.php';
+		include BASEPATH.'models/admin/danhmucsanpham_model.php';
 		$name = $_POST['name'];
 
 		 $mang = array('name' => $name);
