@@ -1,3 +1,9 @@
+<script>
+	function myFunction() {
+		$("#chonfile").append("<input type='file' name='hinhanh[]'>");
+}
+</script>
+
 <div class="row">
 	<div class="col-md-12">
 		<div class="popover-title">
@@ -15,7 +21,7 @@
 							</button>
 							<h4 class="modal-title">Thêm sản phẩm</h4>
 						</div>
-						<form method="post" action="<?=base_url."index.php?module=quanlysanpham&action=insert"?>">
+						<form enctype="multipart/form-data" method="post" action="<?=base_url."index.php?module=quanlysanpham&action=insert"?>" action="view/upload/xuly.php?id=<?php echo $id ?>">
 							<div class="modal-body">
 								<div class="form-group">
 									<label for="ten">Tên sản phẩm</label>
@@ -57,7 +63,17 @@
 									<label for="donvi">Đơn vị</label>
 									<input type="text" name="donvi" value="" class="form-control" required="required">
 
-									
+									<label for="">Hình ảnh</label>
+                                                         <div id="chonfile">
+															<input type="file" name="hinhanh[]"required="required" multiple>
+                                                        </div>
+                                                        <div onclick="myFunction()"   class="btn btn-primary  btn-sm "  id="themanh">
+                                                            
+               													 <i class="fa fa-plus" aria-hidden="true" ></i>
+                                       										 
+                                   							
+                                                         </div>
+                                                          <br />
 									
 								</div>
 								<div class="modal-footer">

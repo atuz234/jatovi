@@ -1,3 +1,9 @@
+<script>
+	function myFunction() {
+		$("#chonfile").append("<input type='file' name='logo[]'>");
+}
+</script>
+
 <div class="row">
 	<div class="col-md-12">
 		<div class="popover-title">
@@ -28,8 +34,14 @@
 											<label for="Website">Website</label>
 											<input type="website" name="website" value="" class="form-control" required="required">
 
-											<label for="logo">Logo</label>
-											<input type="file" name="logo" class="form-control" required="required">
+											<label for="">Logo</label>
+											<div id="chonfile">
+											<input type="file" name="logo[]"required="required">
+											</div>
+											<div onclick="myFunction()"  class="btn btn-primary btn-sm" id="themanh">
+												<i class="fa fa-plus" aria-hidden="true"></i>
+											</div>
+											<br/>
 											
 
 

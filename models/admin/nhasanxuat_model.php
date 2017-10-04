@@ -14,7 +14,9 @@ class nhasanxuat_model extends JATOVI_Model
 
 	public function select_all_nsx()
 	{
-		$sql = "SELECT nsx.*, nsx.id as idnsx, sp.id as idsanpham, sp.id_nsx FROM {$this->_table} nsx INNER JOIN {$this->_table2} sp WHERE nsx.id  ORDER BY nsx.id";
+		$sql = "SELECT nsx.*, nsx.id as idnsx
+		FROM tb_nhasanxuat nsx
+		ORDER BY nsx.id";
 			$query = $this->connection->prepare($sql);
 		$query->execute();
 		$result = $query->fetchAll();
@@ -23,15 +25,14 @@ class nhasanxuat_model extends JATOVI_Model
 	
 	public function delete($id)
 	{
-		$sql = "DELETE FROM {$this->_table} WHERE id ={$id}";
+		$sql = "DELETE FROM {$this->_table} WHERE id={$id}";
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 		if ($query->execute()) {
-			return TRUE;
+			return True;
 		}
-		return FALSE;
-	}
-
+		return False;
+}
 	public function update($id = '', $mang = array('nsx_ten' =>'', 'nsx_diachi'=>'',  'nsx_sodienthoai' =>'', 'nsx_email'=>'', 'nsx_website'=>'', 'nsx_logo'=>'', 'nsx_mota'=>'') )
 	{
 		extract($mang);
@@ -44,7 +45,6 @@ class nhasanxuat_model extends JATOVI_Model
 	{
 		extract($mang);
 		$sql = "INSERT INTO {$this->_table}(nsx_ten, nsx_diachi, nsx_sodienthoai, nsx_email, nsx_website,  nsx_mota) VALUES('{$nsx_ten}','{$nsx_diachi}', '{$nsx_sodienthoai}', '{$nsx_email}', '{$nsx_website}','{$nsx_mota}')";
-		echo $sql;
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 	}

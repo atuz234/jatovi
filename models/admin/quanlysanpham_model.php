@@ -15,6 +15,7 @@ class quanlysanpham_model extends JATOVI_Model
 	public function select_all_product()
 	{
 		$sql = "SELECT sp.*, sp.id as idsanpham, sp.ten, nsx.id as idnsx, nsx.nsx_ten, DATE_FORMAT(sp.ngaysanxuat, '%d-%m-%Y') as datesanxuat, DATE_FORMAT(sp.hansudung, '%d-%m-%Y') as datesudung FROM {$this->_table} sp INNER JOIN {$this->_table2} dm ON sp.id_danhmuc = dm.id INNER JOIN {$this->_table3} nsx ON sp.id_nsx = nsx.id   ORDER BY sp.id";
+		
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 		$result = $query->fetchALL();
@@ -48,15 +49,15 @@ class quanlysanpham_model extends JATOVI_Model
 		return False;
 	}
 
-	public function update ($id='', $mang = array('ten' => '', 'mota' => '', 'id_danhmuc' => '', 'id_nsx' => '', 'xuatsu' => '', 'giacu' => '', 'giamoi' => '', 'ngaysanxuat' => '', 'hansudung' => '', 'donvi' => ''))
+	public function update ($id='', $mang = array('ten' => '', 'mota' => '', 'id_danhmuc' => '', 'id_nsx' => '', 'xuatsu' => '', 'giacu' => '', 'giamoi' => '', 'ngaysanxuat' => '', 'hansudung' => '', 'donvi' => '', 'hinhanh' => ''))
 	{
 		extract($mang);
-		$sql = "UPDATE {$this->_table} SET ten = '{$ten}', mota = '{$mota}', id_danhmuc = '{$id_danhmuc}', id_nsx = '{$id_nsx}', xuatsu = '{$xuatsu}', giacu = '{$giacu}', giamoi = '{$giamoi}', ngaysanxuat = '{$ngaysanxuat}', hansudung = '{$hansudung}', donvi = '{$donvi}' WHERE id = '{$id}'";
+		$sql = "UPDATE {$this->_table} SET ten = '{$ten}', mota = '{$mota}', id_danhmuc = '{$id_danhmuc}', id_nsx = '{$id_nsx}', xuatsu = '{$xuatsu}', giacu = '{$giacu}', giamoi = '{$giamoi}', ngaysanxuat = '{$ngaysanxuat}', hansudung = '{$hansudung}', donvi = '{$donvi}', hinhanh = '{$hinhanh}' WHERE id = '{$id}'";
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 	}
 
-	public function insert($mang = array('ten' => '', 'mota' => '', 'id_danhmuc' => '', 'id_nsx' =>'', 'xuatsu' => '', 'giacu' => '', 'giamoi' => '', 'ngaysanxuat' =>'', 'hansudung' =>'', 'donvi' => ''))
+	public function insert($mang = array('ten' => '', 'mota' => '', 'id_danhmuc' => '', 'id_nsx' =>'', 'xuatsu' => '', 'giacu' => '', 'giamoi' => '', 'ngaysanxuat' =>'', 'hansudung' =>'', 'donvi' => '', 'hinhanh' => ''))
 	{
 		extract($mang);
 		$sql = "INSERT INTO {$this->_table}(ten, mota, id_danhmuc, id_nsx, xuatsu, giacu, giamoi, ngaysanxuat, hansudung, donvi) values ('{$ten}', '{$mota}', '{$id_danhmuc}', '{$id_nsx}', '{$xuatsu}', {$giacu}, {$giamoi}, '{$ngaysanxuat}', '{$hansudung}', '{$donvi}')";
