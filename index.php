@@ -14,6 +14,8 @@ include_once BASEPATH.'controllers/admin/sanpham/nhasanxuat.php';
 include_once BASEPATH.'controllers/admin/sanpham/danhmucsanpham.php';
 
 
+include_once BASEPATH.'controllers/site/home.php';
+
 $module='';
 if (isset($_GET['module'])) {
 	$module = $_GET['module'];
@@ -44,7 +46,7 @@ switch ($module) {
 		$danhmucsanpham->dieuhuong();
 		break;
 	default:
-		$page->index();
+		$home->index();
 		break;
 }
 ?>

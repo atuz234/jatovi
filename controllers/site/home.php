@@ -28,10 +28,8 @@ class home extends JATOVI_Controller
 	}
 	public function index()
 	{
-		if (!isset($_SESSION['userID'])) {
-			
-		}
-		$data['content'] = 'site/home/index';
+		
+		$data['content'] = '';
 		$data['contentdata'] = array();
 		$data['JATOVI']=$this->JATOVI;
 		$this->JATOVI->load->view('site/home',$data);

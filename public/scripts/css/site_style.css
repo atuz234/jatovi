@@ -1,0 +1,66 @@
+.wrapper .header .header-top {
+  background-color: #FF4B82; }
+  .wrapper .header .header-top i {
+    color: white; }
+  .wrapper .header .header-top :hover {
+    color: #222; }
+  .wrapper .header .header-top a {
+    color: #daf3f9;
+    border-right: 1px solid white; }
+  .wrapper .header .header-top :hover {
+    color: white;
+    text-decoration: none; }
+  .wrapper .header .header-top .widget ul li {
+    list-style-type: none;
+    float: left;
+    padding-right: 10px;
+    margin-top: 10px; }
+.wrapper .footer {
+  color: #fff;
+  background-color: #FF4B82; }
+  .wrapper .footer .footer_top {
+    position: relative;
+    padding: 0 0; }
+    .wrapper .footer .footer_top .footer-logo {
+      display: inline-block;
+      margin-bottom: 5px; }
+    .wrapper .footer .footer_top .social-icons {
+      margin-top: 30px;
+      text-align: center; }
+      .wrapper .footer .footer_top .social-icons ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: inline-block; }
+        .wrapper .footer .footer_top .social-icons ul li {
+          float: left;
+          margin-right: 8px; }
+          .wrapper .footer .footer_top .social-icons ul li a {
+            color: #fff;
+            height: 36px;
+            width: 36px;
+            line-height: 36px;
+            display: block;
+            font-size: 16px;
+            opacity: 0.8;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            line-height: 33px; }
+          .wrapper .footer .footer_top .social-icons ul li :hover {
+            opacity: 1;
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+            color: #fff; }
+      .wrapper .footer .footer_top .social-icons :last-child {
+        margin-right: 0; }
+
+.navbar-default {
+  background-color: #FFD0E4; }
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: white;
+  background-color: #FF4B82; }
+
+/*# sourceMappingURL=site_style.css.map */
