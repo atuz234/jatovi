@@ -44,7 +44,7 @@ switch ($module) {
 		$danhmucsanpham->dieuhuong();
 		break;
 	default:
-		$home->index();
+		$page->index();
 		break;
 }
 ?>
