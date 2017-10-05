@@ -11,5 +11,5 @@ define('MAHOA', 'JATOVI_MAHOA');
 //END PROTTECT
 
 define('base_url', 'http://localhost/jatovi/admin/');
-define('BASEPATH','C:/xampp/htdocs/jatovi/admin');
+define('BASEPATH','C:/xampp/htdocs/jatovi/admin/');
 ?>
