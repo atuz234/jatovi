@@ -1,8 +1,6 @@
 <?php 
 session_start();
-if ($_SESSION['userID']==NULL) {
-	header("Location: index.php");
-}
+
 require 'cores/JATOVI_Controller.php';
 include_once BASEPATH.'/controllers/admin/page.php';
 include_once BASEPATH.'/controllers/admin/taikhoan/taikhoanadmin.php';
