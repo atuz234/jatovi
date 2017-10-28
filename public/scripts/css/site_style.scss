@@ -1,0 +1,138 @@
+.wrapper
+{
+	.header
+	{
+		.header-top
+		{
+			background-color: #FF4B82;
+			i
+			{
+				
+			}
+			i:hover
+			{
+				color: black;
+			}
+			a
+			{
+				
+			}
+			a:hover
+			{
+				
+				text-decoration: none;
+			}
+			._widget
+			{
+				ul
+				{
+					li
+					{
+						list-style-type: none;
+						float: left;
+						padding-right: 10px;
+						margin-top: 10px;
+					}
+				}	
+			}
+		}
+		.header-nav
+		{
+
+			
+		}
+	}
+	.footer
+	{
+		color: #fff;
+		background-color: #FF4B82;
+		.footer_top
+		{
+			position: relative;
+			padding: 0 0;
+			.footer-logo
+			{
+				display: inline-block;
+				margin-bottom: 5px;
+			}
+			.social-icons {
+				margin-top:30px;
+				text-align: center;
+				ul
+				{
+					list-style-type: none;
+					padding: 0;
+					margin: 0;
+					display: inline-block;
+					li
+					{
+						float: left;
+						margin-right: 8px;
+						a
+						{
+							color:#fff;
+							height: 36px;
+							width: 36px;
+							line-height: 36px;
+							display: block;
+							font-size: 16px;
+							opacity: 0.8;
+							background-color: rgba(0,0,0,.2);
+							border-radius: 4px;
+							line-height: 33px;
+						}:hover{
+							opacity: 1;
+							-webkit-transform: scale(1.2);
+							transform: scale(1.2);
+							color: #fff;
+						}
+					} 
+				}:last-child
+				{
+					margin-right: 0;
+				}
+			}
+		}
+	}
+}
+.navbar-default
+{
+	background-color: #FFD0E4;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: white;
+  background-color: #FF4B82;
+}
+nav 
+{
+	ul
+	{
+		li 
+		{
+			a
+			{
+				margin: 0px 5px 0px 5px;
+				border-top-left-radius: 20px;
+				border-bottom-right-radius: 20px;
+			}
+		}
+		li :hover{
+			cursor: pointer;
+			box-shadow: 0px 5px 10px 0px #A10088;
+			border-top-left-radius: 20px;
+			border-bottom-right-radius: 20px;
+		}
+	}
+}	
+.textwhite
+{
+	color: white;
+}
+.slsp
+{
+	background-color: white;
+	padding: 2px;
+	border-radius: 20px;
+}
