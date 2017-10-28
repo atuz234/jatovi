@@ -15,7 +15,6 @@ class danhmucsanpham_model extends JATOVI_Model
 	public function select_all_danhmuc()
 	{
 		$sql = "SELECT * FROM {$this->_table} ";
-		echo $sql;
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 		$result = $query->fetchAll();

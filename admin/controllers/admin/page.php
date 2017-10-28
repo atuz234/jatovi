@@ -41,6 +41,28 @@ class page extends JATOVI_Controller
 		}
 		$data['content'] = 'admin/page/index';
 		$data['contentdata'] = array();
+		include BASEPATH.'models/admin/page_model.php';
+		// don hang
+		$countdh = $page_model->countdh();
+		$sodh = count($countdh);
+		$data['contentdata']['sodh']= $sodh;
+		// san pham
+		$countsp = $page_model->countsp();
+		$sosp = count($countdh);
+		$data['contentdata']['sosp']= $sosp;
+		//tintuc
+		$counttt = $page_model->counttt();
+		$sott = count($counttt);
+		$data['contentdata']['sott']= $sott;
+		//thanh vien
+		$countadmin = $page_model->countadmin();
+		$soadmin = count($countadmin);
+		$data['contentdata']['soadmin']= $soadmin;
+		//khach hang
+		$countkh = $page_model->countkh();
+		$sokh = count($countkh);
+		$data['contentdata']['sokh']= $sokh;
+		
 		$data['JATOVI']=$this->JATOVI;
 		$this->JATOVI->load->view('admin/master',$data);
 	}

@@ -10,11 +10,16 @@ include_once BASEPATH.'/controllers/admin/quanlytintuc.php';
 include_once BASEPATH.'controllers/admin/sanpham/quanlysanpham.php';
 include_once BASEPATH.'controllers/admin/sanpham/nhasanxuat.php';
 include_once BASEPATH.'controllers/admin/sanpham/danhmucsanpham.php';
+include_once BASEPATH.'controllers/admin/quanlydonhang.php';
 
 
 include_once BASEPATH.'controllers/site/home.php';
-
 $module='';
+$search ="";
+if(isset ($_GET['timkiem'])){
+			$search = $_GET['timkiem'];
+}
+
 if (isset($_GET['module'])) {
 	$module = $_GET['module'];
 }
@@ -42,6 +47,9 @@ switch ($module) {
 		break;
 	case 'danhmucsanpham':
 		$danhmucsanpham->dieuhuong();
+		break;
+	case 'quanlydonhang':
+		$quanlydonhang->dieuhuong();
 		break;
 	default:
 		$page->index();

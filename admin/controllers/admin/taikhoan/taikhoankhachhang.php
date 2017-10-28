@@ -32,6 +32,9 @@ class taikhoankhachhang extends JATOVI_Controller
 			case 'edit':
 					$this->edit();
 					break;
+			case 'timkiem':
+					$this->timkiem();
+					break;
 			
 			default:
 				$this->index();
@@ -39,12 +42,39 @@ class taikhoankhachhang extends JATOVI_Controller
 		}		
 	}
 	public function index(){
+		$limit = 10;
+		$batdau =0;	
+		$search="";
+		$list ="";
 		include "models/admin/taikhoankhachhang_model.php";
-		$list= $taikhoan_model->getlist();
 		$data['content'] = 'admin/taikhoan/taikhoankhachhang';
 		$data['contentdata'] = array();
-		foreach ($list as $key => $value) {
-		$data['contentdata']['list'][$key] = $value;
+		$p = "";
+		if (isset($_GET['search'])){
+			$search = $_GET['search'];
+			$data['contentdata']['search']= $search;
+			}else if(isset ($_POST['timkiem']) ){
+			$search = $_POST['timkiem'];
+			$data['contentdata']['search']= $search;
+			}else{$search="";
+			$data['contentdata']['search']= $search;
+			}
+		if(isset($_GET['p'])){
+			$p = $_GET['p'];			
+			}else{$p=1;}
+			$data['contentdata']['p']= $p;
+			$batdau = ($p -1)*$limit;
+		$list= $taikhoan_model->getlist($search, $limit, $batdau);
+		if ($list!=NULL	) {
+			foreach ($list as $key => $value) {
+			$data['contentdata']['list'][$key] = $value;
+			$tongdong =$taikhoan_model->sodong();
+			$data['contentdata']['tongdong']= $tongdong;
+		}
+		}else{
+			$tongdong =0;
+			$data['contentdata']['tongdong']= $tongdong;
+			$data['contentdata']['list'] = "";
 		}
 		$data['JATOVI']=$this->JATOVI;
 		$this->JATOVI->load->view('admin/master',$data);
@@ -53,12 +83,13 @@ class taikhoankhachhang extends JATOVI_Controller
 		$id = '';
 		if(isset($_GET['id'])){
 			$id = $_GET['id'];
-		}
+		
 			include 'models/admin/taikhoankhachhang_model.php';
 			$del = $taikhoan_model->delete($id);
 			if ($del) {
 			header("Location:".base_url."index.php?module=taikhoankhachhang");
 			}
+		}
 		}
 	public function add(){
 		$email = $sodienthoai = $ngaysinh = $gioitinh = $matkhau = $diachi= $ten = "";
@@ -95,7 +126,26 @@ class taikhoankhachhang extends JATOVI_Controller
 				header("Location:".base_url."index.php?module=taikhoankhachhang");
 			}
 		}
-		
+	
+		public function timkiem(){
+			$search="";
+		if(isset($_POST['timkiem'])){
+			$search = $_POST['timkiem'];
+			include "models/admin/taikhoankhachhang_model.php";
+			$list = $taikhoan_model->timkiem($search);
+			if($list !=""){
+				$data['content'] = 'admin/taikhoan/taikhoankhachhang';
+			$data['contentdata'] = array();
+			foreach ($list as $key => $value) {
+			$data['contentdata']['list'][$key] = $value;
+			}
+			$data['JATOVI']=$this->JATOVI;
+			$this->JATOVI->load->view('admin/master',$data);
+			}
+			}else{
+			}
+		}	
+				
 }
 $taikhoankhachhang = new taikhoankhachhang($JATOVI);
 ?>

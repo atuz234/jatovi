@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule "jatovi.com" "index.php"
+RewriteRule "index.php?quanlytintuc" "index.php?module=quanlytintuc"

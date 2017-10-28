@@ -21,6 +21,46 @@ class page_model extends JATOVI_Model
 		$result = $query->fetchAll();
 		return $result;
 	}
+	public function countdh()
+	{
+		$sql = "SELECT id_donhang FROM tb_donhang ";
+		$query = $this->connection->prepare($sql);
+ 		$query->execute();
+		$result = $query->fetchAll();
+		return $result;
+	}
+	public function countsp()
+	{
+		$sql = "SELECT id FROM tb_sanpham ";
+		$query = $this->connection->prepare($sql);
+ 		$query->execute();
+		$result = $query->fetchAll();
+		return $result;
+	}
+	public function counttt()
+	{
+		$sql = "SELECT id_tintuc FROM tb_tintuc ";
+		$query = $this->connection->prepare($sql);
+ 		$query->execute();
+		$result = $query->fetchAll();
+		return $result;
+	}
+	public function countadmin()
+	{
+		$sql = "SELECT id FROM tb_admin ";
+		$query = $this->connection->prepare($sql);
+ 		$query->execute();
+		$result = $query->fetchAll();
+		return $result;
+	}
+	public function countkh()
+	{
+		$sql = "SELECT id FROM tb_khachhang ";
+		$query = $this->connection->prepare($sql);
+ 		$query->execute();
+		$result = $query->fetchAll();
+		return $result;
+	}
 
 }
 $page_model = new page_model();
