@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 29, 2017 lúc 10:34 AM
+-- Thời gian đã tạo: Th10 05, 2017 lúc 03:59 AM
 -- Phiên bản máy phục vụ: 10.1.25-MariaDB
 -- Phiên bản PHP: 7.1.7
 
@@ -285,6 +285,13 @@ CREATE TABLE `tb_sanpham` (
   `trangthai` tinyint(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `tb_sanpham`
+--
+
+INSERT INTO `tb_sanpham` (`id`, `ten`, `mota`, `id_danhmuc`, `id_nsx`, `xuatsu`, `giacu`, `giamoi`, `ngaysanxuat`, `hansudung`, `donvi`, `hinhanh`, `dshinhanh`, `damua`, `luotxem`, `moicapnhat`, `chuacapnhat`, `trangthai`) VALUES
+(1, 'a', 'a', 1, 1, 'a', 1, 2, '2017-10-04', '2017-10-05', 'q', '', '', 0, 0, '0000-00-00 00:00:00', '2017-10-04 12:23:01', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -469,7 +476,7 @@ ALTER TABLE `tb_phanquyen`
 -- AUTO_INCREMENT cho bảng `tb_sanpham`
 --
 ALTER TABLE `tb_sanpham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT cho bảng `tb_tintuc`
 --
