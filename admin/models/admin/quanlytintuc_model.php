@@ -11,14 +11,14 @@ class quanlytintuc_model extends JATOVI_Model
 	{
 		parent::__construct();
 	}
-
-	public function getlist()
+	public function sodong($search)
 	{
-		$sql = "SELECT * from {$this->_table} ";
+		$sql = "SELECT id_tintuc from {$this->_table} where tieude like '%{$search}%' ";
 		$query = $this->connection->prepare($sql);
  		$query->execute();
 		$result = $query->fetchAll();
 		return $result;
+		
 	}
 	public function add($tieude, $hinhanh, $noidung, $tacgia)
 	{
@@ -41,9 +41,16 @@ class quanlytintuc_model extends JATOVI_Model
 		date_default_timezone_set('Asia/Ho_Chi_Minh');
 		$ngaydang =date("Y-m-d h:i:s");
 		$sql = "UPDATE {$this->_table} SET tieude = '{$tieude}', hinhanh = '{$hinhanh}', noidung = '{$noidung}',  tacgia = '{$tacgia}', ngaydang ='{$ngaydang}'  WHERE id_tintuc={$id}";
-		print $sql;
 		$query = $this->connection->prepare($sql);
  		$query->execute();
+	}
+	public function search 	($search, $limit, $batdau)
+	{
+		$sql = "SELECT * from {$this->_table} where tieude like '%{$search}%' limit {$batdau},{$limit}  ";
+		$query = $this->connection->prepare($sql);
+ 		$query->execute();
+		$result = $query->fetchAll();
+		return $result;
 	}	
 }
 $quanlytintuc_model = new quanlytintuc_model();

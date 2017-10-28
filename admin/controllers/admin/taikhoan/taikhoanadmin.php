@@ -38,13 +38,39 @@ class taikhoanadmin extends JATOVI_Controller
 		if (!isset($_SESSION['userID'])) {
 			$this->login();
 		}
-
+		$limit = 10;
+		$batdau =0;	
+		$search="";
+		$list ="";
 		$data['content'] = 'admin/taikhoan/taikhoanadmin';
 		$data['contentdata'] = array();
 		include BASEPATH.'models/admin/taikhoanadmin_model.php';
-		$tks = $taikhoanadmin_model->select_all_admin();
-		foreach ($tks as $key => $value) {
+		$p = "";
+		if (isset($_GET['search'])){
+			$search = $_GET['search'];
+			$data['contentdata']['search']= $search;
+			}else if(isset ($_POST['timkiem']) ){
+			$search = $_POST['timkiem'];
+			$data['contentdata']['search']= $search;
+			}else{$search="";
+			$data['contentdata']['search']= $search;
+			}
+		if(isset($_GET['p'])){
+			$p = $_GET['p'];			
+			}else{$p=1;}
+			$data['contentdata']['p']= $p;
+			$batdau = ($p -1)*$limit;
+		$tks = $taikhoanadmin_model->select_all_admin($search, $limit, $batdau);
+		if ($tks!=NULL	) {
+			foreach ($tks as $key => $value) {
 			$data['contentdata']['tkadmin'][$key] = $value;
+			$tongdong =$taikhoanadmin_model->sodong();
+			$data['contentdata']['tongdong']= $tongdong;
+		}
+		}else{
+			$tongdong =0;
+			$data['contentdata']['tongdong']= $tongdong;
+			$data['contentdata']['tkadmin'] = "";
 		}
 		$nhom = $taikhoanadmin_model->select_nhom();
 		foreach ($nhom as $key => $value) {

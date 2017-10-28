@@ -12,10 +12,17 @@ class quanlysanpham_model extends JATOVI_Model
 		parent::__construct();
 	}
 
-	public function select_all_product()
+	public function sodong($search)
 	{
-		$sql = "SELECT sp.*, sp.id as idsanpham, sp.ten, nsx.id as idnsx, nsx.nsx_ten, DATE_FORMAT(sp.ngaysanxuat, '%d-%m-%Y') as datesanxuat, DATE_FORMAT(sp.hansudung, '%d-%m-%Y') as datesudung FROM {$this->_table} sp INNER JOIN {$this->_table2} dm ON sp.id_danhmuc = dm.id INNER JOIN {$this->_table3} nsx ON sp.id_nsx = nsx.id   ORDER BY sp.id";
-		
+		$sql = "SELECT  sp.id FROM {$this->_table} sp INNER JOIN {$this->_table2} dm ON sp.id_danhmuc = dm.id INNER JOIN {$this->_table3} nsx ON sp.id_nsx = nsx.id  where sp.ten like '%$search%' ORDER BY sp.id";		
+		$query = $this->connection->prepare($sql);
+		$query->execute();
+		$result = $query->fetchALL();
+		return $result;
+	} 
+	public function select_all_product($search, $limit, $batdau)
+	{
+		$sql = "SELECT sp.*, sp.id as idsanpham, sp.ten, nsx.id as idnsx, nsx.nsx_ten, DATE_FORMAT(sp.ngaysanxuat, '%d-%m-%Y') as datesanxuat, DATE_FORMAT(sp.hansudung, '%d-%m-%Y') as datesudung FROM {$this->_table} sp INNER JOIN {$this->_table2} dm ON sp.id_danhmuc = dm.id INNER JOIN {$this->_table3} nsx ON sp.id_nsx = nsx.id  where sp.ten like '%$search%' ORDER BY sp.id limit $batdau, $limit";		
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 		$result = $query->fetchALL();
@@ -40,7 +47,6 @@ class quanlysanpham_model extends JATOVI_Model
 	public function delete($id)
 	{
 		$sql = "DELETE FROM {$this->_table} WHERE id={$id}";
-		echo $sql;
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 		if ($query->execute()) {

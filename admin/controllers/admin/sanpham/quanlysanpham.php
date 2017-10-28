@@ -30,16 +30,46 @@
 	}
 	public function index()
 	{
+		$sanpham ='';
 		if (!isset($_SESSION['userID'])) {
 			$this->login();
 		}
 		
+		$limit = 10;
+		$batdau =0;	
+		$search="";
+		$list ="";
 		$data['content'] = 'admin/sanpham/quanlysanpham';
 		$data['contentdata'] = array();
 		include BASEPATH.'models/admin/quanlysanpham_model.php';
-		$sanpham = $quanlysanpham_model->select_all_product();
-		foreach ($sanpham as $key => $value) {
-			$data['contentdata']['sanpham'][$key] = $value;
+		$p = "";
+	if (isset($_GET['search'])){
+			$search = $_GET['search'];
+			$data['contentdata']['search']= $search;
+			}
+			else if(isset ($_POST['timkiem']) ){
+			$search = $_POST['timkiem'];
+			$data['contentdata']['search']= $search;
+		}
+		else{$search="";
+		$data['contentdata']['search']= "";
+		}
+		if(isset($_GET['p'])){
+			$p = $_GET['p'];			
+			}else{$p=1;}
+			$data['contentdata']['p']= $p;
+			$batdau = ($p -1)*$limit;
+		$list = $quanlysanpham_model->select_all_product($search, $limit, $batdau);
+		if ($list!=NULL	) {
+			foreach ($list as $key => $value) {
+			$data['contentdata']['list'][$key] = $value;
+			$tongdong =$quanlysanpham_model->sodong($search);
+			$data['contentdata']['tongdong']= $tongdong;
+		}
+		}else{
+			$tongdong =0;
+			$data['contentdata']['tongdong']= $tongdong;
+			$data['contentdata']['list'] = "";
 		}
 		$danhmuc = $quanlysanpham_model->select_danhmuc();
 		foreach ($danhmuc as $key => $value) {

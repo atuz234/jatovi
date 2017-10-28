@@ -13,6 +13,12 @@
 	<div class="col-md-12">
 		<div class="popover-title">
 			<h2>Tài khoản admin</h2>
+            <div align="center" id="timkiem">
+            	<form method="post" action="<?=base_url."index.php?module=taikhoanadmin&action=index"?>">
+                	<input type="text" name="timkiem"  placeholder="Search..."   value="" />
+                 	<input type="submit" value="Tìm Kiếm"    class="btn btn-primary btn-sm" >
+            	</form>
+            </div>
 			<a class="btn btn-primary" data-toggle="modal" href="#insertdiv"><i class="fa fa-plus-square"></i> Thêm mới</a>
 			<div class="clearfix"></div>
 		</div>
@@ -29,7 +35,7 @@
 						<div class="modal-body">
 							<div class="form-group">
 
-								<label for="insert_taikhoan">Tên tài khoản</label>
+								<label for="insert_taikhoan">Tài Khoản</label>
 								<input type="text" name="insert_taikhoan" value="" class="form-control" required="required">
 
 								<label for="insert_hoten">Họ tên</label>
@@ -79,6 +85,31 @@
 					</tr>
 				</thead>
 				<tbody>
+                 <?php
+				
+				 $total_records = count($tongdong);
+				
+				 	$current_page =$p;
+					
+       				 $limit = 10;
+					 //tinh so trang
+					 $total_page = ceil($total_records / $limit);
+					 // Giới hạn current_page trong khoảng 1 đến total_page
+					 for($i = 1; $i<=$total_page; $i++){
+						 
+						 }
+					if ($current_page > $total_page){
+						$current_page = $total_page;
+					}
+					else if ($current_page < 1){
+						$current_page =1;
+					}
+									?>
+                        <?php if ($tkadmin==NULL){ ?>
+                        <tr>
+							<td colspan="15">Không Có Tài Khoản Nào</td>
+						</tr>
+					<?php }else { ?>
 					<?php foreach ($tkadmin as $value): ?>
 						<tr>
 							<td><?=$value['ten_taikhoan']?></td>
@@ -177,8 +208,40 @@
 							</td>
 						</tr>
 					<?php endforeach;?>
+                    <?php }?>
 				</tbody>
 			</table>
+            <?php
+            if($total_records>10){ ?>
+             <div  align="center">
+           <?php 
+            // PHẦN HIỂN THỊ PHÂN TRANG
+            // BƯỚC 7: HIỂN THỊ PHÂN TRANG
+
+            // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
+             if ($current_page > 1 && $total_page > 1){
+                echo '<a href="index.php?module=taikhoanadmin&action=index&search='.$search.'&p='.($current_page-1).'">Prev</a>     &nbsp; ';
+            }            
+             //Lặp khoảng giữa
+            for ($i = 1; $i <= $total_page; $i++){
+               //  Nếu là trang hiện tại thì hiển thị thẻ span
+                // ngược lại hiển thị thẻ a
+                if ($i == $current_page){
+                    echo '<span>'.$i.'</span>    &nbsp;  ';
+                }
+                else{
+				   
+                    echo '<a href="index.php?module=taikhoanadmin&action=index&search='.$search.'&p='.$i.'">'.$i.'</a>  ';
+                }
+            }
+            
+            // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+            if ($current_page < $total_page && $total_page > 1){
+                echo '<a href="index.php?module=taikhoanadmin&action=index&search='.$search.'&p='.($current_page+1).' ">     &nbsp;Next</a> ';
+				
+            }		
+           ?>
 		</div>
+        <?php }?>
 	</div>
 </div>

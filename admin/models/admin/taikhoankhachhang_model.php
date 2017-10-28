@@ -11,10 +11,17 @@ class taikhoan_model extends JATOVI_Model
 	{
 		parent::__construct();
 	}
-
-	public function getlist()
+	public function sodong()
 	{
-		$sql = "SELECT *, DATE_FORMAT( ngaysinh, '%d-%m-%Y' ) as sinhnhat  FROM {$this->_table2} ";
+		$sql = "SELECT id FROM {$this->_table2} ";
+		$query = $this->connection->prepare($sql);
+		$query->execute();
+		$result = $query->fetchAll();
+		return $result;
+	}
+	public function getlist($search, $limit, $batdau)
+	{
+		$sql = "SELECT *, DATE_FORMAT( ngaysinh, '%d-%m-%Y' ) as sinhnhat  FROM {$this->_table2} where email like '%$search%' limit $batdau,$limit";
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 		$result = $query->fetchAll();
@@ -41,6 +48,14 @@ class taikhoan_model extends JATOVI_Model
 		$sql = "UPDATE {$this->_table2} SET email = '{$email}', sodienthoai = {$sodienthoai}, ten = '{$ten}', ngaysinh = '{$ngaysinh}', gioitinh = {$gioitinh}, diachi = '{$diachi}' WHERE id={$id}";
 		$query = $this->connection->prepare($sql);
  		$query->execute();
+	}
+	public function timkiem($search)
+	{
+		$sql = "SELECT *, DATE_FORMAT( ngaysinh, '%d-%m-%Y' ) as sinhnhat  FROM {$this->_table2} where email like '%{$search}%' or ten like '%{$search}%' ";
+		$query = $this->connection->prepare($sql);
+		$query->execute();
+		$result = $query->fetchAll();
+		return $result;
 	}
 	
 }

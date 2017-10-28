@@ -11,10 +11,17 @@ class taikhoanadmin_model extends JATOVI_Model
 	{
 		parent::__construct();
 	}
-
-	public function select_all_admin()
+	public function sodong()
 	{
-		$sql = "SELECT ad.*, ad.id as idadmin,gr.id as idnhom, gr.tennhom FROM {$this->_table} ad INNER JOIN {$this->_table2} gr WHERE ad.id_nhom = gr.id ORDER BY ad.id";
+		$sql = "SELECT  ad.id FROM {$this->_table} ad INNER JOIN {$this->_table2} gr WHERE ad.id_nhom = gr.id ORDER BY ad.id";
+		$query = $this->connection->prepare($sql);
+		$query->execute();
+		$result = $query->fetchAll();
+		return $result;
+	}
+	public function select_all_admin($search, $limit, $batdau)
+	{
+		$sql = "SELECT ad.*, ad.id as idadmin,gr.id as idnhom, gr.tennhom FROM {$this->_table} ad INNER JOIN {$this->_table2} gr WHERE ad.id_nhom = gr.id and ten_taikhoan like '%$search%' ORDER BY ad.id limit $batdau, $limit";
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 		$result = $query->fetchAll();
