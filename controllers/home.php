@@ -36,6 +36,11 @@ class home extends JATOVI_Controller
 		foreach ($menus as $key => $value) {
 			$data['menus'][$key] = $value;
 		}
+
+		$spnb = $home_controller->select_spnb();
+		foreach ($spnb as $key => $value) {
+			$data['contentdata']['spnb'][$key] = $value;
+		}
 		$data['JATOVI']=$this->JATOVI;
 		$this->JATOVI->load->view('master',$data);
 	}
