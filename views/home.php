@@ -31,5 +31,23 @@
         <div class="spnb_title">
             Sản phẩm nổi bật
         </div>
+        <div class="spnb_items">
+            <div class="row">
+                <?php foreach($spnb as $key=>$value) : ?>
+                    <div class="col-md-3">
+                        <div class="spnb_image">
+                            
+                        </div>
+                        <div class="spnb_name">
+                            <?=$value['ten'];?>
+                        </div>
+                        <div class="spnb_price">
+                            <span class="old_price"><?=$value['giacu']?></span>
+                            <span class="new_price"><?=$value['giamoi'] ?></span>  
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
     </div>
 </div>
