@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 05, 2017 lúc 03:59 AM
+-- Thời gian đã tạo: Th10 29, 2017 lúc 04:07 AM
 -- Phiên bản máy phục vụ: 10.1.25-MariaDB
 -- Phiên bản PHP: 7.1.7
 
@@ -119,7 +119,11 @@ CREATE TABLE `tb_danhmuc` (
 --
 
 INSERT INTO `tb_danhmuc` (`id`, `name`) VALUES
-(1, 'Colllagen');
+(1, 'Colllagen'),
+(2, 'Chăm sóc da'),
+(3, 'Chăm sóc tóc'),
+(4, 'Trang điểm'),
+(5, 'Thực phẩm chức năng');
 
 -- --------------------------------------------------------
 
@@ -179,6 +183,30 @@ CREATE TABLE `tb_lichsunganhan` (
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `tb_menu`
+--
+
+CREATE TABLE `tb_menu` (
+  `id` int(11) NOT NULL,
+  `tieude` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '#',
+  `trangthai` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tb_menu`
+--
+
+INSERT INTO `tb_menu` (`id`, `tieude`, `url`, `trangthai`) VALUES
+(2, 'Collagen', '#', 1),
+(3, 'Chăm sóc da', '#', 1),
+(4, 'Chăm sóc tóc', '#', 1),
+(5, 'Trang điểm', '#', 1),
+(6, 'Thực phẩm chức năng', '#', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `tb_nhasanxuat`
 --
 
@@ -198,7 +226,10 @@ CREATE TABLE `tb_nhasanxuat` (
 --
 
 INSERT INTO `tb_nhasanxuat` (`id`, `nsx_ten`, `nsx_diachi`, `nsx_sodienthoai`, `nsx_email`, `nsx_website`, `nsx_logo`, `nsx_mota`) VALUES
-(1, 'Nha san xuat', 'Ha Noi', '01232131023', 'nhasanxuat@gmail.com', '', '', 'mo ta nha san xuat');
+(1, 'Nha san xuat', 'Ha Noi', '01232131023', 'nhasanxuat@gmail.com', '', '', 'mo ta nha san xuat'),
+(2, 'Shiseido', 'Nhật Bản', '', '', 'http://www.shiseido.co.jp', '', 'mo ta'),
+(3, 'Kraice', 'Nhật Bản', '', '', '', '', 'mo ta'),
+(4, 'DHC', 'Nhật Bản', '', '', '', '', 'mota DHC');
 
 -- --------------------------------------------------------
 
@@ -271,8 +302,8 @@ CREATE TABLE `tb_sanpham` (
   `id_danhmuc` int(11) NOT NULL,
   `id_nsx` int(11) NOT NULL,
   `xuatsu` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `giacu` int(30) NOT NULL,
-  `giamoi` int(30) NOT NULL,
+  `giacu` float NOT NULL,
+  `giamoi` float NOT NULL,
   `ngaysanxuat` date NOT NULL,
   `hansudung` date NOT NULL,
   `donvi` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
@@ -280,8 +311,7 @@ CREATE TABLE `tb_sanpham` (
   `dshinhanh` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `damua` int(20) NOT NULL,
   `luotxem` int(20) NOT NULL,
-  `moicapnhat` datetime NOT NULL,
-  `chuacapnhat` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `tgcapnhat` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `trangthai` tinyint(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -289,8 +319,14 @@ CREATE TABLE `tb_sanpham` (
 -- Đang đổ dữ liệu cho bảng `tb_sanpham`
 --
 
-INSERT INTO `tb_sanpham` (`id`, `ten`, `mota`, `id_danhmuc`, `id_nsx`, `xuatsu`, `giacu`, `giamoi`, `ngaysanxuat`, `hansudung`, `donvi`, `hinhanh`, `dshinhanh`, `damua`, `luotxem`, `moicapnhat`, `chuacapnhat`, `trangthai`) VALUES
-(1, 'a', 'a', 1, 1, 'a', 1, 2, '2017-10-04', '2017-10-05', 'q', '', '', 0, 0, '0000-00-00 00:00:00', '2017-10-04 12:23:01', 0);
+INSERT INTO `tb_sanpham` (`id`, `ten`, `mota`, `id_danhmuc`, `id_nsx`, `xuatsu`, `giacu`, `giamoi`, `ngaysanxuat`, `hansudung`, `donvi`, `hinhanh`, `dshinhanh`, `damua`, `luotxem`, `tgcapnhat`, `trangthai`) VALUES
+(1, 'a', 'a', 1, 1, 'a', 1, 2, '2017-10-04', '2017-10-05', 'q', '', '', 0, 0, '2017-10-04 12:23:01', 0),
+(2, 'b', 'b', 1, 1, 'b', 12, 123, '2017-10-28', '2017-10-29', 'cai', '', '', 0, 0, '2017-10-28 08:49:05', 0),
+(3, 'sanpham1', 'mota1', 3, 1, 'vn', 15, 10, '2017-10-29', '2017-10-29', 'hop', '', '', 2, 5, '2017-10-29 01:35:58', 0),
+(5, 'sanpham2', 'mota2', 5, 1, 'japan', 20, 19, '2017-10-29', '2017-10-29', 'lo', '', '', 5, 10, '2017-10-29 01:36:53', 0),
+(6, 'sanpham3', 'mota3', 4, 1, 'vn', 19, 17, '2017-10-29', '2017-10-29', 'hop', '', '', 1, 10, '2017-10-29 01:37:32', 0),
+(7, 'sanpham4', 'mota4', 2, 1, 'vn', 19, 15, '2017-10-29', '2017-10-29', 'hop', '', '', 0, 19, '2017-10-29 01:38:32', 0),
+(8, 'son duong moi', 'mota son', 3, 3, 'Nhật bản', 20, 18, '2017-10-29', '2017-10-29', 'hop', '', '', 9, 20, '2017-10-29 01:44:04', 0);
 
 -- --------------------------------------------------------
 
@@ -385,6 +421,12 @@ ALTER TABLE `tb_lichsunganhan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `tb_menu`
+--
+ALTER TABLE `tb_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `tb_nhasanxuat`
 --
 ALTER TABLE `tb_nhasanxuat`
@@ -441,7 +483,7 @@ ALTER TABLE `tb_chucnang`
 -- AUTO_INCREMENT cho bảng `tb_danhmuc`
 --
 ALTER TABLE `tb_danhmuc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT cho bảng `tb_donhang`
 --
@@ -458,10 +500,15 @@ ALTER TABLE `tb_khachhang`
 ALTER TABLE `tb_lichsunganhan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT cho bảng `tb_menu`
+--
+ALTER TABLE `tb_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT cho bảng `tb_nhasanxuat`
 --
 ALTER TABLE `tb_nhasanxuat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT cho bảng `tb_nhomnguoidung`
 --
@@ -476,7 +523,7 @@ ALTER TABLE `tb_phanquyen`
 -- AUTO_INCREMENT cho bảng `tb_sanpham`
 --
 ALTER TABLE `tb_sanpham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT cho bảng `tb_tintuc`
 --

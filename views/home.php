@@ -34,18 +34,27 @@
         <div class="spnb_items">
             <div class="row">
                 <?php foreach($spnb as $key=>$value) : ?>
+                    
                     <div class="col-md-3">
-                        <div class="spnb_image">
-                            
-                        </div>
-                        <div class="spnb_name">
-                            <?=$value['ten'];?>
-                        </div>
+                        <a href="<?=$value['url']?>">
+                            <div class="spnb_image">
+                                <img src="<?=$value['hinhanh']?>">
+                            </div>
+                            <div class="spnb_name">
+                                <?=$value['ten'];?>
+                            </div>
+                        </a>
                         <div class="spnb_price">
                             <span class="old_price"><?=$value['giacu']?></span>
                             <span class="new_price"><?=$value['giamoi'] ?></span>  
                         </div>
+                        <a href="#">
+                            <div class="btn btn-default">
+                                Thêm vào giỏ
+                            </div>
+                        </a>
                     </div>
+                    
                 <?php endforeach; ?>
             </div>
         </div>

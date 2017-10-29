@@ -4,21 +4,26 @@
 	{
 		.spnb
 		{
-			.spnb_items
-			{
-				.spnb_price
-				{
-					.old_price
-					{
-						
-						{
-							color: #737373;
-							text-decoration: line-through;
-						}
-							
-					}
-				}
-			}
+			
 		}
 	}
 }
+.spnb_items
+{
+	text-align: center;
+	.spnb_price
+	{
+		text-align: center;
+		.old_price
+		{
+			color: #737373;
+			text-decoration: line-through;
+		}
+		.new_price
+		{
+			font-size: 18px;
+			font-weight: bold;
+		}
+	}
+}
+	
