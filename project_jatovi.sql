@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 29, 2017 lúc 04:07 AM
+-- Thời gian đã tạo: Th10 30, 2017 lúc 02:56 AM
 -- Phiên bản máy phục vụ: 10.1.25-MariaDB
 -- Phiên bản PHP: 7.1.7
 
@@ -298,7 +298,7 @@ INSERT INTO `tb_phanquyen` (`id`, `id_nhom`, `id_chucnang`) VALUES
 CREATE TABLE `tb_sanpham` (
   `id` int(11) NOT NULL,
   `ten` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `mota` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `mota` varchar(999) COLLATE utf8_unicode_ci NOT NULL,
   `id_danhmuc` int(11) NOT NULL,
   `id_nsx` int(11) NOT NULL,
   `xuatsu` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
@@ -326,7 +326,8 @@ INSERT INTO `tb_sanpham` (`id`, `ten`, `mota`, `id_danhmuc`, `id_nsx`, `xuatsu`,
 (5, 'sanpham2', 'mota2', 5, 1, 'japan', 20, 19, '2017-10-29', '2017-10-29', 'lo', '', '', 5, 10, '2017-10-29 01:36:53', 0),
 (6, 'sanpham3', 'mota3', 4, 1, 'vn', 19, 17, '2017-10-29', '2017-10-29', 'hop', '', '', 1, 10, '2017-10-29 01:37:32', 0),
 (7, 'sanpham4', 'mota4', 2, 1, 'vn', 19, 15, '2017-10-29', '2017-10-29', 'hop', '', '', 0, 19, '2017-10-29 01:38:32', 0),
-(8, 'son duong moi', 'mota son', 3, 3, 'Nhật bản', 20, 18, '2017-10-29', '2017-10-29', 'hop', '', '', 9, 20, '2017-10-29 01:44:04', 0);
+(8, 'son duong moi', 'mota son', 3, 3, 'Nhật bản', 20, 18, '2017-10-29', '2017-10-29', 'hop', '', '', 9, 20, '2017-10-29 01:44:04', 0),
+(9, 'sanpham5', 'mote', 3, 2, 'vietnam', 100, 99, '2017-10-27', '2017-10-31', 'hop', '', '', 0, 0, '2017-10-29 03:12:25', 0);
 
 -- --------------------------------------------------------
 
@@ -523,7 +524,7 @@ ALTER TABLE `tb_phanquyen`
 -- AUTO_INCREMENT cho bảng `tb_sanpham`
 --
 ALTER TABLE `tb_sanpham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT cho bảng `tb_tintuc`
 --
