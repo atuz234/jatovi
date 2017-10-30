@@ -13,14 +13,6 @@ class home_controller extends JATOVI_Model
 	{
 		parent::__construct();
 	}
-	public function select_menu()
-	{
-		$sql = "SELECT * FROM {$this->_table} WHERE trangthai = 1";
-		$query = $this->connection->prepare($sql);
-		$query->execute();
-		$result = $query->fetchAll();
-		return $result;
-	}
 
 	public function select_spnb()
 	{

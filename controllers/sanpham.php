@@ -3,9 +3,8 @@
 * 
 */
 defined('BASEPATH') OR exit('No direct script access allowed');
-class home extends JATOVI_Controller
+class sanpham extends JATOVI_Controller
 {
-
 	public $action = '';
 	public $JATOVI = '';
 	function __construct($JATOVI)
@@ -20,30 +19,32 @@ class home extends JATOVI_Controller
 		}
 
 		switch ($this->action) {
-			case 'viewproduct':
-				$this->viewproduct;
-				break;
 			default:
 				$this->index();
 				break;
 		}
 	}
+
+
 	public function index()
 	{
-		
-		$data['content'] = 'home';
+		$data['content'] = 'sanpham';
 		$data['contentdata'] = array();
-		include_once 'models/home_model.php';
-		
-
-		$spnb = $home_controller->select_spnb();
-		foreach ($spnb as $key => $value) {
-			$data['contentdata']['spnb'][$key] = $value;
+		$id = '';
+		if (isset($_GET['id'])) {
+			$id = $_GET['id'];
 		}
+		include_once 'models/sanpham_model.php';
+
+		$sanphams = $sanpham_model->select_sanpham($id);
+
+		foreach ($sanphams as $key => $value) {
+			$data['contentdata']['sanphams'] = $value;
+		}
+
 		$data['JATOVI']=$this->JATOVI;
 		$this->JATOVI->load->view('master',$data);
 	}
-	
-}           
-$home = new home($JATOVI);
+}
+$sanpham = new sanpham($JATOVI);
 ?>
