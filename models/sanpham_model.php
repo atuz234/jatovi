@@ -25,7 +25,7 @@ class sanpham_model extends JATOVI_Model
 
 	public function select_splienquan($id)
 	{
-		$sql = "SELECT * FROM {$this->_table} WHERE id_danhmuc = (SELECT id_danhmuc FROM {$this->_table} WHERE id = {$id}) AND id != {$id}";
+		$sql = "SELECT * FROM {$this->_table} WHERE (id_danhmuc = (SELECT id_danhmuc FROM {$this->_table} WHERE id = {$id})  OR (SELECT id_nsx  FROM {$this->_table} WHERE id = {$id}) ) AND id != {$id}";
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 		$result = $query->fetchAll();

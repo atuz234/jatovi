@@ -88,7 +88,7 @@
                         <nav class="collapse navbar-collapse" id="myNavbar">
                             <ul class="nav navbar-nav">
                                 <li class="active">
-                                    <a href="#">
+                                    <a href="<?=base_url?>index.php">
                                         Trang chủ
                                     </a>
                                 </li>
