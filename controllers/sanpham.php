@@ -41,7 +41,6 @@ class sanpham extends JATOVI_Controller
 		foreach ($sanphams as $key => $value) {
 			$data['contentdata']['sanphams'] = $value;
 		}
-
 		$splienquan = $sanpham_model->select_splienquan($id);
 		foreach ($splienquan as $key => $value) {
 			$data['contentdata']['splienquan'][$key] = $value; 
