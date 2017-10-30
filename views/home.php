@@ -36,7 +36,7 @@
                 <?php foreach($spnb as $key=>$value) : ?>
                     
                     <div class="col-md-3">
-                        <a href="<?=$value['url']?>">
+                        <a href="<?=base_url?>index.php?module=sanpham&id=<?=$value['id']?>">
                             <div class="spnb_image">
                                 <img src="<?=$value['hinhanh']?>">
                             </div>

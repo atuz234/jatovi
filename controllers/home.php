@@ -20,7 +20,9 @@ class home extends JATOVI_Controller
 		}
 
 		switch ($this->action) {
-			
+			case 'viewproduct':
+				$this->viewproduct;
+				break;
 			default:
 				$this->index();
 				break;
@@ -32,10 +34,7 @@ class home extends JATOVI_Controller
 		$data['content'] = 'home';
 		$data['contentdata'] = array();
 		include_once 'models/home_model.php';
-		$menus = $home_controller->select_menu();
-		foreach ($menus as $key => $value) {
-			$data['menus'][$key] = $value;
-		}
+		
 
 		$spnb = $home_controller->select_spnb();
 		foreach ($spnb as $key => $value) {

@@ -92,6 +92,9 @@
                                         Trang chủ
                                     </a>
                                 </li>
+                                <?php include_once BASEPATH.'models/menu_model.php'; 
+                                    $menus = $menu_controller->select_menu();
+                                ?>
                                 <?php foreach ($menus as $menu): ?>
                                     <li>
                                         <a href="<?=$menu['url']?>">
