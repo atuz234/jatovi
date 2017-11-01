@@ -1,6 +1,9 @@
-.spnb_items {
+.nhomsp_title {
+  color: red; }
+
+.nhomsp_items {
   text-align: center; }
-  .spnb_items .spnb_price {
+  .nhomsp_items .spnb_price {
     text-align: center; }
 
 .old_price {

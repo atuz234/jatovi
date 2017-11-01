@@ -38,8 +38,19 @@ class home extends JATOVI_Controller
 
 		$spnb = $home_controller->select_spnb();
 		foreach ($spnb as $key => $value) {
-			$data['contentdata']['spnb'][$key] = $value;
+			$data['contentdata']['nhomsp']['Sản phẩm nổi bật'][$key] = $value;
 		}
+
+		$spbc = $home_controller->select_spbc();
+		foreach ($spbc as $key => $value) {
+			$data['contentdata']['nhomsp']['Sản phẩm bán chạy'][$key] = $value;
+		}
+
+		$spm = $home_controller->select_spm();
+		foreach ($spm as $key => $value) {
+			$data['contentdata']['nhomsp']['Sản phẩm mới'][$key] = $value;
+		}
+
 		$data['JATOVI']=$this->JATOVI;
 		$this->JATOVI->load->view('master',$data);
 	}

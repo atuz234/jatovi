@@ -46,6 +46,8 @@ class sanpham extends JATOVI_Controller
 			$data['contentdata']['splienquan'][$key] = $value; 
 		}
 
+		
+		
 		$data['JATOVI']=$this->JATOVI;
 		$this->JATOVI->load->view('master',$data);
 	}

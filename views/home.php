@@ -26,37 +26,37 @@
         <span class="dot" onclick="currentSlide(3)"></span>
     </div>
 </div>
-<div class="contrainer">
-    <div class="spnb">
-        <div class="spnb_title">
-            Sản phẩm nổi bật
-        </div>
-        <div class="spnb_items">
-            <div class="row">
-                <?php foreach($spnb as $key=>$value) : ?>
-                    
-                    <div class="col-md-3">
-                        <a href="<?=base_url?>index.php?module=sanpham&id=<?=$value['id']?>">
-                            <div class="spnb_image">
-                                <img src="<?=$value['hinhanh']?>">
+<div class="container">
+    <?php foreach ($nhomsp as $key => $value): ?>
+        <div class="nhomsp" style="margin-top: 15px; margin-bottom: 15px; ">
+            <div class="nhomsp_title" style="font-size: 20px;">
+               <span style="padding:10px;border-top-left-radius: 20px; border-bottom-right-radius: 20px; background-color: #FF4B82;"><?=$key ?></span>
+            </div>
+            <div class="nhomsp_items">
+                <div class="row">
+                    <?php foreach($value as $v) : ?>
+                            <div class="col-md-3">
+                                <a href="<?=base_url?>index.php?module=sanpham&id=<?=$v['id']?>">
+                                    <div class="spbc_image">
+                                        <img src="<?=$v['hinhanh']?>">
+                                    </div>
+                                    <div class="spbc_name">
+                                        <?=$v['ten'];?>
+                                    </div>
+                                </a>
+                                <div class="spbc_price">
+                                    <span class="old_price"><?=$v['giacu']?></span>
+                                    <span class="new_price"><?=$v['giamoi'] ?></span>  
+                                </div>
+                                <a href="#">
+                                    <div class="btn btn-default">
+                                        Thêm vào giỏ
+                                    </div>
+                                </a>
                             </div>
-                            <div class="spnb_name">
-                                <?=$value['ten'];?>
-                            </div>
-                        </a>
-                        <div class="spnb_price">
-                            <span class="old_price"><?=$value['giacu']?></span>
-                            <span class="new_price"><?=$value['giamoi'] ?></span>  
-                        </div>
-                        <a href="#">
-                            <div class="btn btn-default">
-                                Thêm vào giỏ
-                            </div>
-                        </a>
-                    </div>
-                    
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div> 
             </div>
         </div>
-    </div>
+    <?php endforeach ?>
 </div>
