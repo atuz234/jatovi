@@ -109,10 +109,13 @@
                         <nav class="collapse navbar-collapse" id="myNavbar">
                             <ul class="nav navbar-nav">
                                 <li class="active">
-                                    <a href="#">
+                                    <a href="<?=base_url?>index.php">
                                         Trang chủ
                                     </a>
                                 </li>
+                                <?php include_once BASEPATH.'models/menu_model.php'; 
+                                    $menus = $menu_controller->select_menu();
+                                ?>
                                 <?php foreach ($menus as $menu): ?>
                                     <li>
                                         <a href="base_url.<?=$menu['url']?>">

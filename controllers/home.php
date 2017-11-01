@@ -20,6 +20,9 @@ class home extends JATOVI_Controller
 		}
 
 		switch ($this->action) {
+			case 'viewproduct':
+				$this->viewproduct;
+				break;
 			default:
 				$this->index();
 				break;
@@ -29,7 +32,7 @@ class home extends JATOVI_Controller
 	{	$data['content'] = 'home';
 		$data['contentdata'] = array();
 		include_once 'models/home_model.php';
-		
+		/*
 		$limit = 2;
 		$batdau =0;	
 		$spnb = "";
@@ -72,6 +75,22 @@ class home extends JATOVI_Controller
 			foreach ($menus as $key => $value) {
 			$data['menus'][$key] = $value;
 			}
+   */
+
+		$spnb = $home_controller->select_spnb();
+		foreach ($spnb as $key => $value) {
+			$data['contentdata']['nhomsp']['Sản phẩm nổi bật'][$key] = $value;
+		}
+
+		$spbc = $home_controller->select_spbc();
+		foreach ($spbc as $key => $value) {
+			$data['contentdata']['nhomsp']['Sản phẩm bán chạy'][$key] = $value;
+		}
+
+		$spm = $home_controller->select_spm();
+		foreach ($spm as $key => $value) {
+			$data['contentdata']['nhomsp']['Sản phẩm mới'][$key] = $value;
+		}
 
 		$data['JATOVI']=$this->JATOVI;
 		$this->JATOVI->load->view('master',$data);

@@ -1,12 +1,19 @@
-.spnb_items {
+
+.nhomsp_title {
+  color: red; }
+
+.nhomsp_items {
   text-align: center; }
-  .spnb_items .spnb_price {
+  .nhomsp_items .spnb_price {
     text-align: center; }
-    .spnb_items .spnb_price .old_price {
-      color: #737373;
-      text-decoration: line-through; }
-    .spnb_items .spnb_price .new_price {
-      font-size: 18px;
-      font-weight: bold; }
+
+.old_price {
+  color: #737373;
+  text-decoration: line-through; }
+
+
+.new_price {
+  font-size: 18px;
+  font-weight: bold; }
 
 /*# sourceMappingURL=content_style.css.map */
