@@ -6,7 +6,28 @@
     <link rel="shortcut icon" href="public/images/site/jatovi_icon.png">
     <title>JATOVI | Trang chủ</title>
     <?php $JATOVI->load->view('partial/header'); ?>
+<?php
+	$ok=1;
+	if(isset($_SESSION['cart']))
+	{
+		foreach($_SESSION['cart'] as $k=>$v)
+		{
+			if(isset($k))
+			{
+			$ok=2;
+			}
+		}
+	}
 
+	if ($ok != 2)
+	 {
+		$sosp=0;
+	} else {
+		$items = $_SESSION['cart'];
+		$sosp = count($items);
+		
+	}
+	?>
 </head>
 <body>
     <div class="wrapper">
@@ -39,10 +60,10 @@
                             <div class="_widget">
                                 <ul class="pull-right">
                                     <li>
-                                        <a class="" href="#"><i class="fa fa-shopping-cart"></i> 0đ <span class="slsp">0 sản phẩm</span></a>
+                                        <a class="" href="<?=base_url."index.php?module=giohang&action=index"?>"><div><i class="fa fa-shopping-cart"></i>&nbsp; &nbsp;<span class="slsp"><?= $sosp?> sản phẩm</span></div></a>
                                     </li>
                                     <li>
-                                        <a class="" href="#"><i class="fa fa-check">Thanh toán</i></a>
+                                        <a class="" href="#"<?php //session_unset($_SESSION['cart']);?> ><i class="fa fa-check">Thanh toán</i></a>
                                     </li>
                                     <li>
                                         <a class="" id="login" onclick="document.getElementById('id01').style.display='block'"  style="width: auto; cursor: pointer;"> <i class="fa fa-user"></i> Đăng nhập</a>
@@ -97,15 +118,15 @@
                                 ?>
                                 <?php foreach ($menus as $menu): ?>
                                     <li>
-                                        <a href="<?=$menu['url']?>">
+                                        <a href="base_url.<?=$menu['url']?>">
                                             <?=$menu['tieude']?>
                                         </a>
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
-                            <form class="navbar-form navbar-right">
+                            <form class="navbar-form navbar-right" action="<?=base_url."index.php?module=home&action=index"?>" method="post">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search">
+                                    <input type="text" name="timkiem" class="form-control" placeholder="Search">
                                     <div class="input-group-btn">
                                         <button class="btn btn-default" type="submit">
                                             <i class="fa fa-search"></i>
