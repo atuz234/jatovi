@@ -85,12 +85,7 @@ class quanlytintuc extends JATOVI_Controller
 			
 			
 			$mangfile = $_FILES["hinhanh"];
-			print_r($mangfile);
-			echo "<br>";
-			echo count($mangfile["name"]);
-			echo "lay ten <br>";
 			foreach($mangfile['name'] as $value){
-					echo "ten:{$value}<br>";
 				}
 			for($i=0; $i <count($mangfile["name"]); $i++){
 			// upload file
@@ -135,9 +130,11 @@ class quanlytintuc extends JATOVI_Controller
 			$tieude =$_POST['tieude'];
 			$noidung = $_POST['noidung'];
 			include_once 'models/admin/quanlytintuc_model.php';
-			$hinhanh = 
+			//nỗi chuỗi cách nhau bởi |
+			$hinhanh = implode("|", $mangfile["name"]);
+			//tách chuỗi  $a = explode('|', $hinhanh);
 			$add = $quanlytintuc_model->add($tieude, $hinhanh, $noidung,$tacgia);
-			//header("Location:".base_url."index.php?module=quanlytintuc");
+			header("Location:".base_url."index.php?module=quanlytintuc");
 			}
 		}
 	public function edit(){

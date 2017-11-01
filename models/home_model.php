@@ -21,10 +21,26 @@ class home_controller extends JATOVI_Model
 		$result = $query->fetchAll();
 		return $result;
 	}
+	public function sodong($search)
+	{
+		$sql = "SELECT id FROM tb_sanpham where ten like '%$search%'";
+		$query = $this->connection->prepare($sql);
+		$query->execute();
+		$result = $query->fetchAll();
+		return $result;
+	}
 
 	public function select_spnb()
 	{
 		$sql = "SELECT * FROM {$this->_table4} ORDER BY luotxem DESC LIMIT 0,10";
+		$query = $this->connection->prepare($sql);
+		$query->execute();
+		$result = $query->fetchAll();
+		return $result;
+	}
+	public function search($search, $limit, $batdau)
+	{
+		$sql = "SELECT * FROM tb_sanpham where ten like '%$search%' ORDER BY luotxem DESC LIMIT {$batdau},{$limit}";
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 		$result = $query->fetchAll();
