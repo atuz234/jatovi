@@ -138,14 +138,14 @@ class quanlytintuc extends JATOVI_Controller
 			}
 		}
 	public function edit(){
-		$hinhanh = $tieude = $noidung = $id	="";
+	 $tieude = $noidung = $id	="";
 		if(isset($_POST['tieude'])&& isset($_POST['noidung'])){
 			
 			$id =$_POST['edit_id'];
 			$tieude =$_POST['tieude'];
 			$noidung = $_POST['noidung'];
 			include_once 'models/admin/quanlytintuc_model.php';
-			$edit = $quanlytintuc_model->edit($tieude, $hinhanh, $noidung,  $tacgia, $id);
+			$edit = $quanlytintuc_model->edit($tieude,$noidung, $id);
 			header("Location:".base_url."index.php?module=quanlytintuc");
 
 			}

@@ -1,0 +1,77 @@
+#contact ul .address
+{
+	list-style-type: none;
+	margin-top: 30px;
+  	list-style: none;
+  	padding: 0;
+  	margin: 0;
+}
+.address li
+{
+	color: #fff;
+}
+.address li a
+{
+	text-decoration: none;
+}
+.address li a:hover
+{
+	color: blue;
+}
+#contact
+{
+	overflow: hidden;
+	position: relative;
+	padding-top: 45px;
+  	padding-bottom: 0;
+  	background-image:url(../../images/site/contact-bg.jpg);
+  	padding-bottom: 90px; 
+	color:#FFF;
+}
+#contact
+{
+	-webkit-transition-property: opacity;
+	transition-property: opacity;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.form-group {
+  margin-bottom: 30px;
+}
+.contact-info {
+  padding-left:70px;
+  font-weight: 300;
+}
+.contact-info ul li a {
+  color: #fff;
+}
+ul.address {
+  margin-top: 30px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.formgroup {
+  margin-bottom: 30px;
+}
+textarea.formcontrol {
+  min-height: 180px;
+  resize:none;
+  width: 100%
+}
+.formcontrol {
+  background-color: transparent;
+  border-color: rgba(255,255,255,.1);
+  height: 50px;
+  border-radius: 0;
+  box-shadow: none;
+}
+.btn-submit {
+  display: block;
+  padding: 12px;
+  width: 100%;
+  color: #fff;
+  border:0;
+  margin-top: 40px;
+  background-color: #0683b8;
+}

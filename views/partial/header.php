@@ -13,3 +13,5 @@
 <link rel="stylesheet" href="public/scripts/css/site_style.css">
 <link rel="stylesheet" href="public/scripts/css/slide.css">
 <link rel="stylesheet" href="public/scripts/css/content_style.css">
+<link rel="stylesheet" href="public/scripts/css/animate.min.css">
+<link rel="stylesheet" href="public/scripts/css/contact.css">

@@ -118,7 +118,7 @@
                                 ?>
                                 <?php foreach ($menus as $menu): ?>
                                     <li>
-                                        <a href="base_url.<?=$menu['url']?>">
+                                        <a href="<?=base_url.$menu['url']?>">
                                             <?=$menu['tieude']?>
                                         </a>
                                     </li>

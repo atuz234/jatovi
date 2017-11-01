@@ -6,5 +6,5 @@ $i =0; ?>
 	<?= "đây là tiêu đề".$value['tieude']."<br>"?>
 	<?="hinh anh";?><img width="150px" height="150px" src="admin/public/images/tintuc/<?=$a[0]?>"/><br>
 	<?= "đây là noi dung".$value['noidung']."<br>" ?>
-	<?="Được Đăng Bởi".$value['tacgia']."<br>"?>
-	<?php endforeach; echo count($a);?>
+	<?="Được Đăng Bởi &nbsp;".$value['tacgia']."<br>"?>
+	<?php endforeach;?>

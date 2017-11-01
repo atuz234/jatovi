@@ -29,13 +29,15 @@
 							<td colspan="15">Không Có Tin Tức </td>
 						</tr>
 					<?php }else { ?>
-					<?php foreach ($list as $value): $a = explode('|', $value['hinhanh']);?>
+					<?php foreach ($list as $value): 
+					$mota = explode('.',$value['noidung']);?>
+                    <?php $a = explode('|', $value['hinhanh']);?>
 						<tr>
                         
 							<td><?=$value['tieude']?></td>
 							<td><img width="150px" height="150px" src="admin/public/images/tintuc/<?=$a[0]?>"/>
                             </td>
-							<td><?=$value['noidung']?></td>
+							<td><?=$mota[0]. ".".$mota[1]."."?></td>
 							<td><?=$value['tacgia']?></td>
                             <td><a href="<?=base_url."index.php?module=tintuc&action=chitiet&id=".$value['id_tintuc']?>">Xem Chi Tiet</a></td>
 								</tr>

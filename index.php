@@ -6,6 +6,7 @@ include_once BASEPATH.'controllers/dangky.php';
 include_once BASEPATH.'controllers/giohang.php';
 include_once BASEPATH.'controllers/tintuc.php';
 include_once BASEPATH.'controllers/sanpham.php';
+include_once BASEPATH.'controllers/lienhe.php';
 
 $module='';
 if (isset($_GET['module'])) {
@@ -20,10 +21,12 @@ switch ($module) {
 		break;
 	case "tintuc" :
 		$tintuc->dieuhuong();
-	$dangky->dieuhuong();
 	break;
 	case 'sanpham':
 		$sanpham->dieuhuong();
+		break;
+	case 'lienhe':
+		$lienhe->dieuhuong();
 		break;
 	default:
 		$home->index();
