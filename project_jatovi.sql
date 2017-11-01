@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 29, 2017 lúc 04:07 AM
+-- Thời gian đã tạo: Th10 01, 2017 lúc 03:06 PM
 -- Phiên bản máy phục vụ: 10.1.25-MariaDB
 -- Phiên bản PHP: 7.1.7
 
@@ -202,7 +202,9 @@ INSERT INTO `tb_menu` (`id`, `tieude`, `url`, `trangthai`) VALUES
 (3, 'Chăm sóc da', '#', 1),
 (4, 'Chăm sóc tóc', '#', 1),
 (5, 'Trang điểm', '#', 1),
-(6, 'Thực phẩm chức năng', '#', 1);
+(6, 'Thực phẩm chức năng', '#', 1),
+(7, 'Tin tức', 'index.php?module=tintuc', 1),
+(8, 'Liên lạc', 'index.php?module=lienlac', 1);
 
 -- --------------------------------------------------------
 
@@ -226,7 +228,7 @@ CREATE TABLE `tb_nhasanxuat` (
 --
 
 INSERT INTO `tb_nhasanxuat` (`id`, `nsx_ten`, `nsx_diachi`, `nsx_sodienthoai`, `nsx_email`, `nsx_website`, `nsx_logo`, `nsx_mota`) VALUES
-(1, 'Nha san xuat', 'Ha Noi', '01232131023', 'nhasanxuat@gmail.com', '', '', 'mo ta nha san xuat'),
+(1, 'Doanh nghiep dia phuong', 'Ha Noi', '01232131023', 'nhasanxuat@gmail.com', '', '', 'mo ta nha san xuat'),
 (2, 'Shiseido', 'Nhật Bản', '', '', 'http://www.shiseido.co.jp', '', 'mo ta'),
 (3, 'Kraice', 'Nhật Bản', '', '', '', '', 'mo ta'),
 (4, 'DHC', 'Nhật Bản', '', '', '', '', 'mota DHC');
@@ -298,7 +300,7 @@ INSERT INTO `tb_phanquyen` (`id`, `id_nhom`, `id_chucnang`) VALUES
 CREATE TABLE `tb_sanpham` (
   `id` int(11) NOT NULL,
   `ten` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `mota` varchar(999) COLLATE utf8_unicode_ci NOT NULL,
+  `mota` longtext COLLATE utf8_unicode_ci NOT NULL,
   `id_danhmuc` int(11) NOT NULL,
   `id_nsx` int(11) NOT NULL,
   `xuatsu` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
@@ -320,14 +322,14 @@ CREATE TABLE `tb_sanpham` (
 --
 
 INSERT INTO `tb_sanpham` (`id`, `ten`, `mota`, `id_danhmuc`, `id_nsx`, `xuatsu`, `giacu`, `giamoi`, `ngaysanxuat`, `hansudung`, `donvi`, `hinhanh`, `dshinhanh`, `damua`, `luotxem`, `tgcapnhat`, `trangthai`) VALUES
-(1, 'a', 'a', 1, 1, 'a', 1, 2, '2017-10-04', '2017-10-05', 'q', '', '', 0, 0, '2017-10-04 12:23:01', 0),
-(2, 'b', 'b', 1, 1, 'b', 12, 123, '2017-10-28', '2017-10-29', 'cai', '', '', 0, 0, '2017-10-28 08:49:05', 0),
-(3, 'sanpham1', 'mota1', 3, 1, 'vn', 15, 10, '2017-10-29', '2017-10-29', 'hop', '', '', 2, 5, '2017-10-29 01:35:58', 0),
-(5, 'sanpham2', 'mota2', 5, 1, 'japan', 20, 19, '2017-10-29', '2017-10-29', 'lo', '', '', 5, 10, '2017-10-29 01:36:53', 0),
-(6, 'sanpham3', 'mota3', 4, 1, 'vn', 19, 17, '2017-10-29', '2017-10-29', 'hop', '', '', 1, 10, '2017-10-29 01:37:32', 0),
-(7, 'sanpham4', 'mota4', 2, 1, 'vn', 19, 15, '2017-10-29', '2017-10-29', 'hop', '', '', 0, 19, '2017-10-29 01:38:32', 0),
-(8, 'son duong moi', 'mota son', 3, 3, 'Nhật bản', 20, 18, '2017-10-29', '2017-10-29', 'hop', '', '', 9, 20, '2017-10-29 01:44:04', 0);
-
+(1, 'a', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n', 1, 1, 'a', 1, 2, '2017-10-04', '2017-10-05', 'q', '', '', 0, 0, '2017-10-30 01:59:34', 0),
+(2, 'b', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 1, 'b', 12, 123, '2017-10-28', '2017-10-29', 'cai', '', '', 0, 0, '2017-10-30 01:59:41', 0),
+(3, 'sanpham1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 3, 1, 'vn', 15, 10, '2017-10-29', '2017-10-29', 'hop', '', '', 2, 5, '2017-10-30 01:59:46', 0),
+(5, 'sanpham2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 5, 1, 'japan', 20, 19, '2017-10-29', '2017-10-29', 'lo', '', '', 5, 10, '2017-10-30 01:59:55', 0),
+(6, 'sanpham3', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 4, 1, 'vn', 19, 17, '2017-10-29', '2017-10-29', 'hop', '', '', 1, 10, '2017-10-30 02:00:04', 0),
+(7, 'sanpham4', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 2, 1, 'vn', 19, 15, '2017-10-29', '2017-10-29', 'hop', '', '', 0, 19, '2017-10-30 02:00:10', 0),
+(8, 'son duong moi', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 3, 3, 'Nhật bản', 20, 18, '2017-10-29', '2017-10-29', 'hop', '', '', 9, 20, '2017-10-30 02:00:18', 0),
+(9, 'sanpham5', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 3, 2, 'vietnam', 100, 99, '2017-10-27', '2017-10-31', 'hop', '', '', 0, 0, '2017-10-30 02:00:26', 0);
 
 -- --------------------------------------------------------
 
@@ -369,7 +371,8 @@ INSERT INTO `tb_tintuc` (`id_tintuc`, `tieude`, `hinhanh`, `noidung`, `ngaydang`
 (42, 'ádasd', '19554702_471522359906870_1584439020984714227_n.jpg|21743109_510178572707915_6132071483136042634_n.jpg|20170922114419_1.jpg|', '<p>&aacute;dasd</p>\r\n', '2017-09-27 12:20:03', 'Nguyen Anh Tuan'),
 (43, 'ádasdas', '', '<p>dfasdas</p>\r\n', '2017-09-27 12:22:48', 'Nguyen Anh Tuan'),
 (44, 'ádasdas', '', '<p>dfasdas</p>\r\n', '2017-09-27 12:23:25', 'Nguyen Anh Tuan'),
-(46, 'đây là tiêu đề ', '19554702_471522359906870_1584439020984714227_n.jpg|21743109_510178572707915_6132071483136042634_n.jpg|20170922114419_1.jpg|', '<p>đ&acirc;y l&agrave; nội dung</p>\r\n', '2017-09-28 01:03:37', 'Bùi Tấn Thành');
+(46, 'đây là tiêu đề ', '19554702_471522359906870_1584439020984714227_n.jpg|21743109_510178572707915_6132071483136042634_n.jpg|20170922114419_1.jpg|', '<p>đ&acirc;y l&agrave; nội dung</p>\r\n', '2017-09-28 01:03:37', 'Bùi Tấn Thành'),
+(47, 'bài viết mới', 'perfect moment.jpg', '', '2017-11-01 13:18:32', 'Nguyen Anh Tuan');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -504,7 +507,7 @@ ALTER TABLE `tb_lichsunganhan`
 -- AUTO_INCREMENT cho bảng `tb_menu`
 --
 ALTER TABLE `tb_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT cho bảng `tb_nhasanxuat`
 --
@@ -524,13 +527,12 @@ ALTER TABLE `tb_phanquyen`
 -- AUTO_INCREMENT cho bảng `tb_sanpham`
 --
 ALTER TABLE `tb_sanpham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT cho bảng `tb_tintuc`
 --
 ALTER TABLE `tb_tintuc`
-  MODIFY `id_tintuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id_tintuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- Các ràng buộc cho các bảng đã đổ
 --

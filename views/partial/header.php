@@ -13,3 +13,4 @@
 <link rel="stylesheet" href="public/scripts/css/site_style.css">
 <link rel="stylesheet" href="public/scripts/css/slide.css">
 <link rel="stylesheet" href="public/scripts/css/content_style.css">
+<link rel="stylesheet" href="public/scripts/css/form-login.css">
