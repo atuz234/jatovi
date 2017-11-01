@@ -48,7 +48,7 @@
                                     <span class="old_price"><?=$v['giacu']?></span>
                                     <span class="new_price"><?=$v['giamoi'] ?></span>  
                                 </div>
-                                <a href="#">
+                                <a href="<?=base_url."index.php?module=giohang&action=themsp&id=".$v['id']?>">
                                     <div class="btn btn-default">
                                         Thêm vào giỏ
                                     </div>
@@ -58,5 +58,5 @@
                 </div> 
             </div>
         </div>
-    <?php endforeach ?>
+    <?php endforeach ;?>
 </div>

@@ -36,11 +36,11 @@ class quanlytintuc_model extends JATOVI_Model
 		}
 		return False;
 	}		
-		public function edit($tieude, $hinhanh, $noidung, $tacgia, $id )
+		public function edit($tieude, $noidung, $id )
 	{
 		date_default_timezone_set('Asia/Ho_Chi_Minh');
 		$ngaydang =date("Y-m-d h:i:s");
-		$sql = "UPDATE {$this->_table} SET tieude = '{$tieude}', hinhanh = '{$hinhanh}', noidung = '{$noidung}',  tacgia = '{$tacgia}', ngaydang ='{$ngaydang}'  WHERE id_tintuc={$id}";
+		$sql = "UPDATE {$this->_table} SET tieude = '{$tieude}', noidung = '{$noidung}',  tacgia = '{$tacgia}', ngaydang ='{$ngaydang}'  WHERE id_tintuc={$id}";
 		$query = $this->connection->prepare($sql);
  		$query->execute();
 	}
