@@ -73,15 +73,15 @@
 			                    <div class="col-md-3">
 			                        <a href="<?=base_url?>index.php?module=sanpham&id=<?=$value['id']?>">
 			                            <div class="sp_image">
-			                                <img src="<?=$value['hinhanh']?>">
+			                                <img src="public/images/sanpham/<?=$value['hinhanh']?>">
 			                            </div>
 			                            <div class="sp_name" >
 			                                <?=$value['ten'];?>
 			                            </div>
 			                        </a>
 			                        <div class="sp_price">
-			                            <span class="old_price"><?=$value['giacu']?></span>
-			                            <span class="new_price"><?=$value['giamoi'] ?></span>  
+			                            <span class="old_price"><?=number_format($value['giacu'])?></span>
+			                            <span class="new_price"><?=number_format($value['giamoi']) ?></span>  
 			                        </div>
 			                        <a href="#">
 			                            <div class="btn btn-default">

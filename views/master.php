@@ -103,9 +103,6 @@
                                 <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">
                                     Thoát
                                 </button>
-                                <span class="psw">
-                                    Quên <a href="#">mật khẩu ?</a>
-                                </span>
                                 <span>
                                     Chưa có tài khoản?<a class="" id="login" onclick="document.getElementById('formdangky').style.display='block';document.getElementById('id01').style.display='none'"  style="width: auto; cursor: pointer;"> Đăng ký</a>
                                 </span>

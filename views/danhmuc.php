@@ -27,15 +27,15 @@
                                 <div class="col-md-3">
                                     <a href="<?=base_url?>index.php?module=sanpham&id=<?=$v['id']?>">
                                         <div class="sp_image">
-                                            <img src="<?=$v['hinhanh']?>">
+                                            <img src="public/images/sanpham/<?=$v['hinhanh']?>">
                                         </div>
                                         <div class="sp_name">
                                             <?=$v['ten'];?>
                                         </div>
                                     </a>
                                     <div class="sp_price">
-                                        <span class="old_price"><?=$v['giacu']?></span>
-                                        <span class="new_price"><?=$v['giamoi'] ?></span>  
+                                        <span class="old_price"><?=number_format($v['giacu'])?></span>
+                                        <span class="new_price"><?=number_format($v['giamoi']) ?></span>  
                                     </div>
                                     <a href="<?=base_url."index.php?module=giohang&action=themsp&id=".$v['id']?>">
                                         <div class="btn btn-default">

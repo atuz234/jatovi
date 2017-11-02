@@ -16,7 +16,7 @@ class home_controller extends JATOVI_Model
 
 	public function select_spnb()
 	{
-		$sql = "SELECT * FROM {$this->_table4} ORDER BY luotxem DESC LIMIT 0,10";
+		$sql = "SELECT * FROM {$this->_table4} ORDER BY luotxem DESC LIMIT 0,8";
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 		$result = $query->fetchAll();
@@ -24,7 +24,7 @@ class home_controller extends JATOVI_Model
 	}
 	public function select_spbc()
 	{
-		$sql = "SELECT * FROM {$this->_table4} ORDER BY damua DESC LIMIT 0,10";
+		$sql = "SELECT * FROM {$this->_table4} ORDER BY damua DESC LIMIT 0,8";
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 		$result = $query->fetchAll();
@@ -33,7 +33,7 @@ class home_controller extends JATOVI_Model
 
 	public function select_spm()
 	{
-		$sql = "SELECT * FROM {$this->_table4} ORDER BY tgcapnhat DESC LIMIT 0,10";
+		$sql = "SELECT * FROM {$this->_table4} ORDER BY tgcapnhat DESC LIMIT 0,8";
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 		$result = $query->fetchAll();
