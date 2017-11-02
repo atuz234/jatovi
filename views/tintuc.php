@@ -38,8 +38,7 @@
 							<td><?=$value['tieude']?></td>
 							<td><img width="150px" height="150px" src="admin/public/images/tintuc/<?=$a[0]?>"/>
                             </td>
-							<td><?=$mota[0]. ".".$mota[1].".<br>"?><a href="<?=base_url."index.php?module=tintuc&action=chitiet&id=".$value['id_tintuc']?>">Xem Chi Tiết</a></td>
-                           <a href="<?=base_url."index.php?module=tintuc&action=chitiet&id=".$value['id_tintuc']?>">Xem Chi Tiet</a>
+							<td><?=$mota[0]. ".".$mota[1].".<br>"?><a href="<?=base_url."index.php?module=tintuc&action=chitiet&id=".$value['id_tintuc']?>">Xem Chi Tiet</a></td>
 								</tr>
 					<?php endforeach;?>
                     <?php }?>

@@ -36,6 +36,7 @@ class home extends JATOVI_Controller
 		$data['contentdata'] = array();
 		include_once 'models/home_model.php';
 
+
 		$spnb = $home_controller->select_spnb();
 		foreach ($spnb as $key => $value) {
 			$data['contentdata']['nhomsp']['Sản phẩm nổi bật'][$key] = $value;
@@ -96,6 +97,7 @@ class home extends JATOVI_Controller
 				$data['contentdata']['tongdong']= $tongdong;
 				$data['contentdata']['list']="";
 				}	
+
 		$data['JATOVI']=$this->JATOVI;
 		$this->JATOVI->load->view('master',$data);
 
