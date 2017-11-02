@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<h1>Xin chào: <?=$_SESSION['khachhang_Name']?></h1>
-=======
 <?php include_once BASEPATH.'controllers/khachhang.php';?>
 <h1>Xin chào: <?=$_SESSION['khachhang_Name']?></h1>
 <table border="1">
@@ -11,7 +8,7 @@
     <th>Ngày Đặt Hàng</th>
     <th>Trạng Thái</th>
 </tr>
-<?php $i=0; if ($lichsu==NULL){ ?>
+<?php $i=0; if (!isset($lichsu) ){ ?>
 						<tr>
 							<td colspan="15">Không Có Tin Tức </td>
 						</tr>
@@ -29,4 +26,3 @@
 						</tr>
 					<?php endforeach;}?>
 </table>
->>>>>>> 7fb9388bd022edf9c4cd161300cf6dd2fb571b74

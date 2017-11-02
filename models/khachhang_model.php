@@ -29,7 +29,7 @@ class khachhang_model extends JATOVI_Model
 	}
 	public function lichsu($id_kh)
 	{
-		echo $sql = "SELECT *,DATE_FORMAT(tb_donhang.ngaydathang, '%d-%m-%Y') as datedathang FROM tb_donhang WHERE id_khachhang ='{$id_kh}' ";
+		$sql = "SELECT *,DATE_FORMAT(tb_donhang.ngaydathang, '%d-%m-%Y') as datedathang FROM tb_donhang WHERE id_khachhang ='{$id_kh}' ";
 		$query = $this->connection->prepare($sql);
  		$query->execute();
 		$result = $query->fetchAll();

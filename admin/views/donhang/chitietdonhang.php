@@ -20,15 +20,21 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach ($list as $value):?>
+					<?php if (isset($list)): ?>
+						<?php foreach ($list as $value):?>
+							<tr>
+								<td><?= $value['ten'];?></td>
+								<td><?= $value['ngaydathang'];?></td>
+								<td><?= $value['soluong'];?></td>
+	                            <td><?= $value['dongia'];?></td>
+								<td><?php $hanhtien =$value['soluong'] * $value['dongia'];
+								echo $hanhtien;?></td>
+						<?php endforeach;?>
+					<?php else: ?>
 						<tr>
-							<td><?= $value['ten'];?></td>
-							<td><?= $value['ngaydathang'];?></td>
-							<td><?= $value['soluong'];?></td>
-                            <td><?= $value['dongia'];?></td>
-							<td><?php $hanhtien =$value['soluong'] * $value['dongia'];
-							echo $hanhtien;?></td>
-					<?php endforeach;?>
+							<td colspan="5">Không có dữ liệu</td>
+						</tr>
+					<?php endif; ?>
 				</tbody>
 			</table>
 		</div>

@@ -29,7 +29,9 @@
 						</tr>
 					<?php }else { ?>
 					<?php foreach ($list as $value): 
-					$mota = explode('.',$value['noidung']);?>
+					$mota = explode('.',$value['noidung']);
+					?>
+
                     <?php $a = explode('|', $value['hinhanh']);?>
 						<tr>
                         

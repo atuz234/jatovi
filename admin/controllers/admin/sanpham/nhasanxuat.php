@@ -67,23 +67,22 @@ public function index()
 	public function update()
 	{
 		$nsx_ten = $nsx_diachi = $nsx_sodienthoai = $nsx_email = $nsx_website = $nsx_logo = $nsx_mota = $id ="";
-		if(isset($_POST['update_nsx_ten'])&& isset($_POST['update_nsx_diachi'])&&isset($_POST['update_nsx_sodienthoai'])&&isset($_POST['update_nsx_email'])&&isset($_POST['update_nsx_website'])&&isset($_POST['update_nsx_logo'])&&isset($_POST['update_nsx_mota'])){
-		$id = $_POST['txtid'];
-		$nsx_ten = $_POST['txtten'];
-		$nsx_diachi = $_POST['txtdiachi'];
-		$nsx_sodienthoai = $_POST['txtsodienthoai'];
-		$nsx_email = $_POST['txtemail'];
-		$nsx_website = $_POST['txtwebsite'];
-		$nsx_logo = $_POST['logo'];
-		$nsx_mota = $_POST['mota'];
-
-		include_once 'models/admin/nhasanxuat_model.php';
-		$update = $nhasanxuat_model->update($id, $nsx_ten, $nsx_diachi, $nsx_sodienthoai, $nsx_email, $nsx_website, $nsx_logo, $nsx_mota);
-
+		if(isset($_POST['txtnhasanxuat']))
+		{
+			$id = $_POST['txtid'];
+			$nsx_ten = $_POST['txtnhasanxuat'];
+			$nsx_diachi = $_POST['txtdiachi'];
+			$nsx_sodienthoai = $_POST['txtsodienthoai'];
+			$nsx_email = $_POST['txtemail'];
+			$nsx_website = $_POST['txtwebsite'];
+			$nsx_mota = $_POST['txtmota'];
+			echo "<h1>CO";
+			include_once 'models/admin/nhasanxuat_model.php';
+			$update = $nhasanxuat_model->update($id, $nsx_ten, $nsx_diachi, $nsx_sodienthoai, $nsx_email, $nsx_website, $nsx_mota);
+			header("Location:index.php?module=nhasanxuat");	
+		}
 		
-	header("Location:".base_url."index.php?module=nhasanxuat");
 	}
-}
 	public function insert()
 	{
 		$nsx_ten = $diachi = $nsx_sodienthoai = $email = $nsx_website = $nsx_mota ="";

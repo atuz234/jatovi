@@ -19,9 +19,6 @@ class phanquyen extends JATOVI_Controller
 			$this->action = $_GET['action'];
 		}
 		switch ($this->action) {
-			case 'delete':
-				$this->delete();
-				break;
 			case 'update':
 				$this->update();
 				break;

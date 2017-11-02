@@ -13,6 +13,7 @@ include_once BASEPATH.'controllers/admin/sanpham/quanlysanpham.php';
 include_once BASEPATH.'controllers/admin/sanpham/nhasanxuat.php';
 include_once BASEPATH.'controllers/admin/sanpham/danhmucsanpham.php';
 include_once BASEPATH.'controllers/admin/quanlydonhang.php';
+include_once BASEPATH.'controllers/admin/lienhe.php';
 
 
 include_once BASEPATH.'controllers/site/home.php';
@@ -26,6 +27,9 @@ if (isset($_GET['module'])) {
 	$module = $_GET['module'];
 }
 switch ($module) {
+	case 'lienhe':
+		$lienhe->dieuhuong();
+		break;
 	case 'page':
 		$page->dieuhuong();
 		break;

@@ -55,8 +55,9 @@ div.tab button.active {
 	<div class="col-md-12">
 		<div class="popover-title">
 			<h2>Phân quyền</h2>
-			<a class="btn btn-primary" data-toggle="modal" href="#insertdiv"><i class="fa fa-plus-square"></i> Thêm mới</a>
-			<div class="clearfix"></div>
+			<!-- <a class="btn btn-primary" data-toggle="modal" href="#insertdiv"><i class="fa fa-plus-square"></i> Thêm nhóm</a>
+			<a class="btn btn-primary" data-toggle="modal" href="#insertdiv2"><i class="fa fa-plus-square"></i> Thêm chức năng</a>
+			<div class="clearfix"></div> -->
 		</div>
 		<!-- <div class="modal fade" id="insertdiv">
 			<div class="modal-dialog">
@@ -65,35 +66,42 @@ div.tab button.active {
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 							&times;
 						</button>
-						<h4 class="modal-title">Thêm tài khoản</h4>
+						<h4 class="modal-title">Thêm nhóm mới</h4>
 					</div>
-					<form action="<?=base_url."index.php?module=taikhoanadmin&action=insert"?>" method="post">
+					<form action="<?=base_url."index.php?module=phanquyen&action=insertnhom"?>" method="post">
 						<div class="modal-body">
 							<div class="form-group">
-
-								<label for="insert_taikhoan">Tên tài khoản</label>
-								<input type="text" name="insert_taikhoan" value="" class="form-control" required="required">
-
-								<label for="insert_hoten">Họ tên</label>
-								<input type="text" name="insert_hoten" value="" class="form-control" required="required">	
-								
-								<label for="insert_gender">Giới tính</label>
-								<br>	
-								<input type="radio" name="insert_gender" id="nam" value="1" checked="checked" class="form-inline">Nam 	
-								<input type="radio" name="insert_gender" id="nu" value="0" class="form-inline">Nữ	 				
-								<input type="radio" name="insert_gender" id="khac" value="2" class="form-inline">Khác	
-
+								<label for="insert_taikhoan">Tên nhóm</label>
+								<input type="text" name="insert_nhom" value="" class="form-control" required="required">
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+								<button type="submit" class="btn btn-primary">Thêm</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="insertdiv2">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							&times;
+						</button>
+						<h4 class="modal-title">Thêm chức năng</h4>
+					</div>
+					<form action="<?=base_url."index.php?module=phanquyen&action=insertcn"?>" method="post">
+						<div class="modal-body">
+							<div class="form-group">
+								<label for="insert_taikhoan">Tên chức năng  </label>
+								<input type="text" name="insert_nhom" value="" class="form-control" required="required">
+								<label for="insert_taikhoan">Trạng thái  </label>
+								<input type="checkbox" name="insert_trangthai" value="" checked='checked'>
 								<br>
-								<label for="insert_nhom">Nhóm</label>
-								<select name="insert_nhom" id="" class="form-control" required="required">
-									<?php foreach($groups as $nhom): ?>
-										<option value="<?=$nhom['grid'];?>" ><?=$nhom['tennhom'];?></option>
-									<?php endforeach ?>
-								</select>
-								
-								<label for="insert_password">Mật khẩu</label>
-								<input type="password" name="insert_password" value="" class="form-control" required="required">
-							
+								<label for="insert_taikhoan">URL </label>
+								<input type="text" name="insert_nhom" value="" class="form-control" required="required">
 							</div>
 						</div>
 						<div class="modal-footer">
@@ -113,7 +121,7 @@ div.tab button.active {
 			<div class="tab">
 				<?php foreach($nhoms as $nhom): ?>
 					<?php  
-						echo"<button class='tablinks' onclick='openCity(event, {$nhom['idnhom']})'";
+						echo"<button class='tablinks' onclick='openphanquyen(event, {$nhom['idnhom']})'";
 						if($nhom['idnhom']==1){echo "id='defaultOpen'";}
 						echo">{$nhom['tennhom']}</button>";
 					?>
@@ -149,13 +157,11 @@ div.tab button.active {
 							<?php endforeach; ?>
 						</tbody>
 					</table>
-					
-					
 				</div>
 			<?php endforeach; ?>
 			
 			<script>
-			function openCity(evt, cityName) {
+			function openphanquyen(evt, name_pq) {
 			    var i, tabcontent, tablinks;
 			    tabcontent = document.getElementsByClassName("tabcontent");
 			    for (i = 0; i < tabcontent.length; i++) {
@@ -165,7 +171,7 @@ div.tab button.active {
 			    for (i = 0; i < tablinks.length; i++) {
 			        tablinks[i].className = tablinks[i].className.replace(" active", "");
 			    }
-			    document.getElementById(cityName).style.display = "block";
+			    document.getElementById(name_pq).style.display = "block";
 			    evt.currentTarget.className += " active";
 			}
 
