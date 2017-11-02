@@ -32,6 +32,9 @@ switch ($module) {
 	case 'lienhe':
 		$lienhe->dieuhuong();
 		break;
+	case 'timkiem':
+		$home->dieuhuong();
+		break;
 	default:
 		$home->index();
 		break;

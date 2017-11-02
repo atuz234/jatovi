@@ -14,10 +14,10 @@ class quanlydonhang_model extends JATOVI_Model
 		parent::__construct();
 	}
 
-public function sodong()
+public function sodong($search)
 	{
 		$sql = "SELECT tb_donhang.id_donhang
-				FROM (tb_donhang INNER JOIN tb_khachhang ON tb_khachhang.id = tb_donhang.id_khachhang) ";
+				FROM tb_donhang INNER JOIN tb_khachhang ON tb_khachhang.id = tb_donhang.id_khachhang where tb_khachhang.email like '%$search%' ";
 		$query = $this->connection->prepare($sql);
  		$query->execute();
 		$result = $query->fetchAll();
@@ -48,17 +48,6 @@ public function sodong()
 	{
 		$sql = "UPDATE tb_donhang SET tinhtrang = '{$tinhtrang}' WHERE `tb_donhang`.`id_donhang` = '{$id_donhang}' ";
 		echo $sql;
-		$query = $this->connection->prepare($sql);
- 		$query->execute();
-		$result = $query->fetchAll();
-		return $result;
-	}
-	
-	public function search($search)
-	{
-		$sql = "SELECT tb_donhang.diachi, tb_donhang.ngaydathang, tb_donhang.sotien, tb_donhang.tinhtrang,tb_donhang.id_donhang, tb_khachhang.email, tb_khachhang.sodienthoai
-				FROM (tb_donhang INNER JOIN tb_khachhang ON tb_khachhang.id = tb_donhang.id_khachhang)
-				where tb_khachhang.email LIKE '%{$search}%' ";
 		$query = $this->connection->prepare($sql);
  		$query->execute();
 		$result = $query->fetchAll();

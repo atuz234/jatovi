@@ -6,7 +6,6 @@
 						<th>Tiêu Đề </th>
 						<th>Hình Ảnh</th>
 						<th>Nội Dung</th>
-                        <th>Đăng Bởi</th>
 					</tr>
 				</thead>
  <?php
@@ -15,7 +14,7 @@
 				
 				 	$current_page =$p;
 					
-       				 $limit = 6;
+       				 $limit = 4;
 					 $total_page = ceil($total_records / $limit);
 					if ($current_page > $total_page){
 						$current_page = $total_page;
@@ -37,16 +36,15 @@
 							<td><?=$value['tieude']?></td>
 							<td><img width="150px" height="150px" src="admin/public/images/tintuc/<?=$a[0]?>"/>
                             </td>
-							<td><?=$mota[0]. ".".$mota[1]."."?></td>
-							<td><?=$value['tacgia']?></td>
-                            <td><a href="<?=base_url."index.php?module=tintuc&action=chitiet&id=".$value['id_tintuc']?>">Xem Chi Tiet</a></td>
+							<td><?=$mota[0]. ".".$mota[1].".<br>"?><a href="<?=base_url."index.php?module=tintuc&action=chitiet&id=".$value['id_tintuc']?>">Xem Chi Tiết</a></td>
+                           <a href="<?=base_url."index.php?module=tintuc&action=chitiet&id=".$value['id_tintuc']?>">Xem Chi Tiet</a>
 								</tr>
 					<?php endforeach;?>
                     <?php }?>
 				</tbody>
 			</table>
             <?php
-            if($total_records>6){ ?>
+            if($total_records>4){ ?>
             <div  align="center">
            <?php 
             // PHẦN HIỂN THỊ PHÂN TRANG

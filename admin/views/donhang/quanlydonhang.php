@@ -3,8 +3,8 @@
 		<div class="popover-title">
 			<h2>Quản Lý Đơn Hàng</h2>
             <div  id="timkiem">
-            	<form method="post" action="<?=base_url."index.php?module=quanlydonhang&action=timkiem"?>">
-                	<input type="text" name="timkiem" placeholder="Search..."      value="" />
+            	<form method="post" action="<?=base_url."index.php?module=quanlydonhang&action=index"?>">
+                	<input type="text" name="timkiem" placeholder="Search..."      value="<?= $search;?>" />
       		
                  	<input type="submit" value="Tìm Kiếm" class="btn btn-primary btn-sm" >
             	</form>
@@ -37,7 +37,7 @@
 				
 				 	$current_page =$p;
 					
-       				 $limit = 10;
+       				 $limit = 2;
 					 $total_page = ceil($total_records / $limit);
 					if ($current_page > $total_page){
 						$current_page = $total_page;
@@ -58,7 +58,7 @@
 							<td><?= $value['sodienthoai'];?></td>
                             <td><?= $value['diachi'];?></td>
                             <td><?= $value['ngaydathang'];?></td>
-							<td><?= $value['sotien'];?></td>
+							<td><?=number_format($value['sotien'])."&nbsp; VNĐ";?></td>
                             <td><?php if($value['tinhtrang']==0){echo "Đã Huỷ";}
 										else if($value['tinhtrang']==1){echo "Đăng Xử Lý";}
 										else if($value['tinhtrang']==2){echo "Hoàn Thành";}?></td>
@@ -110,7 +110,7 @@
 				</tbody>
 			</table>
              <?php
-            if($total_records>10){ ?>
+            if($total_records>2){ ?>
               <div  align="center">
            <?php 
             // PHẦN HIỂN THỊ PHÂN TRANG

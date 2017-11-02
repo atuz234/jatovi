@@ -23,6 +23,9 @@ class home extends JATOVI_Controller
 			case 'viewproduct':
 				$this->viewproduct;
 				break;
+			case 'timkiem':
+				$this->timkiem();
+				break;
 			default:
 				$this->index();
 				break;
@@ -32,6 +35,10 @@ class home extends JATOVI_Controller
 	{	$data['content'] = 'home';
 		$data['contentdata'] = array();
 		include_once 'models/home_model.php';
+<<<<<<< HEAD
+		
+=======
+>>>>>>> 9df5d1c5088cbcb95a26c6501ca88450b2f4e970
 
 		$spnb = $home_controller->select_spnb();
 		foreach ($spnb as $key => $value) {
@@ -48,8 +55,57 @@ class home extends JATOVI_Controller
 			$data['contentdata']['nhomsp']['Sản phẩm mới'][$key] = $value;
 		}
 
+<<<<<<< HEAD
 		$data['JATOVI']=$this->JATOVI;
 		$this->JATOVI->load->view('master',$data);
+	}
+	public function timkiem(){
+		$limit = 9;
+		$batdau =0;	
+		$spnb = "";
+		$p = 1;
+		$data['content'] = 'timkiem';
+		$data['contentdata'] = array();
+		include_once 'models/home_model.php';
+		if (isset($_GET['search']))
+		{
+			$search = $_GET['search'];
+			$data['contentdata']['search']= $search;
+		}
+		else if(isset($_POST['timkiem']) )
+		{
+			$search = $_POST['timkiem'];
+			$data['contentdata']['search']= $search;
+		}
+		else
+		{
+			$search="";
+			$data['contentdata']['search']= "";
+		}
+		if(isset($_GET['p']))
+		{
+			$p = $_GET['p'];			
+		}
+		
+		else{$p=1;}
+			$data['contentdata']['p']= $p;
+			$batdau = ($p -1)*$limit;
+			$list = $home_controller->search($search, $limit, $batdau);
+			if($list != NULL){
+			foreach ($list as $key => $value) {
+			$data['contentdata']['list'][$key] = $value;}
+			$tongdong =$home_controller->sodong($search);
+			$data['contentdata']['tongdong']= $tongdong;
+			}else{
+				$tongdong = 0;
+				$data['contentdata']['tongdong']= $tongdong;
+				$data['contentdata']['list']="";
+				}	
+=======
+>>>>>>> 9df5d1c5088cbcb95a26c6501ca88450b2f4e970
+		$data['JATOVI']=$this->JATOVI;
+		$this->JATOVI->load->view('master',$data);
+
 	}
 	
 }           

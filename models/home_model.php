@@ -39,6 +39,14 @@ class home_controller extends JATOVI_Model
 		$result = $query->fetchAll();
 		return $result;
 	}
+	public function sodong($search)
+	{
+		$sql = "SELECT id FROM {$this->_table4} where ten like '%{$search}%' ORDER BY luotxem DESC";
+		$query = $this->connection->prepare($sql);
+		$query->execute();
+		$result = $query->fetchAll();
+		return $result;
+	}
 	public function search($search, $limit, $batdau)
 	{
 		$sql = "SELECT * FROM tb_sanpham where ten like '%$search%' ORDER BY luotxem DESC LIMIT {$batdau},{$limit}";

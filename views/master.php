@@ -63,6 +63,12 @@
                                         <a class="" href="<?=base_url."index.php?module=giohang&action=index"?>"><div><i class="fa fa-shopping-cart"></i>&nbsp; &nbsp;<span class="slsp"><?= $sosp?> sản phẩm</span></div></a>
                                     </li>
                                     <li>
+<<<<<<< HEAD
+                                        <a class="" href="#"><i class="fa fa-check">Thanh toán</i></a>
+                                    </li>
+                                    <li>
+=======
+>>>>>>> 9df5d1c5088cbcb95a26c6501ca88450b2f4e970
                                     <?php if (isset($_SESSION['khachhang_ID'])){ ?>
                                         <a href="<?=base_url?>index.php?module=khachhang"><i class="fa fa-cog"></i>Tài khoản</a>
                                         <a href="<?=base_url?>index.php?module=khachhang&action=dangxuat"><i class="fa fa-sign-out "></i>Đăng xuất</a>
@@ -79,7 +85,7 @@
             </div>
             <!--Form login-->
             <div id="id01" class="modal" style="z-index: 999999;">
-                <form class="modal-content animate" action="<?=base_url?>index.php?module=khachhang&action=dangnhap" method="post">
+                <form class="modal-content animate" action="<?=base_url?>index.php?module=khachhang&action=dangnhap" id="dangnhap" method="post">
                     <div class="imgcontainer" style="opacity: 0.6;">
                         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                     </div>
@@ -92,7 +98,7 @@
                                 <label><b>Mật khẩu</b></label><span class="error_form" id="psw_error"></span>
                                 <input type="password" name="mk" id="form_psw" placeholder="Điền mật khẩu của bạn" required="required">
 
-                                <button type="submit">Đăng nhập</button>
+                                <button type="submit" >Đăng nhập</button>
                             </div>
                         </div>
                     </div>
@@ -216,9 +222,13 @@
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
+<<<<<<< HEAD
                             <form class="navbar-form navbar-right" action="<?=base_url."index.php?module=home&action=index"?>" method="post" style="margin-top: -2px; margin-bottom: 0px;">
+=======
+                            <form class="navbar-form navbar-right" action="<?=base_url."index.php?module=timkiem&action=timkiem"?>" method="post">
+>>>>>>> 7fb9388bd022edf9c4cd161300cf6dd2fb571b74
                                 <div class="input-group">
-                                    <input type="text" name="timkiem" class="form-control" placeholder="Search">
+                                    <input type="text" name="timkiem" class="form-control" placeholder="Search Product...">
                                     <div class="input-group-btn">
                                         <button class="btn btn-default" type="submit">
                                             <i class="fa fa-search"></i>

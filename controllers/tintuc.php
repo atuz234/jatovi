@@ -27,7 +27,7 @@ class tintuc extends JATOVI_Controller
 		}
 	}
 	public function index(){
-		$limit = 6;
+		$limit = 4;
 		$batdau =0;	
 		$list ="";
 		$data['content'] = 'tintuc';

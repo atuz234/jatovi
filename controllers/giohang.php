@@ -55,8 +55,7 @@ public function capnhatsoluong()
 				}		
 			} 
 			header("Location:".base_url."index.php?module=giohang");
-		}
-		if(isset($_POST['submit']))
+		}else if(isset($_POST['submit']))
 		{	$i=0;
 			$data['content'] = 'thanhtoan';
 			$data['contentdata'] = array();
@@ -71,7 +70,10 @@ public function capnhatsoluong()
 				foreach($list as $key =>$value){
 				$data['contentdata']['list'][$key] = $value;
 				}
-		} 
+		
+		} else{
+			header("Location:".base_url."index.php?module=giohang");
+			}
 		$data['JATOVI']=$this->JATOVI;
 		$this->JATOVI->load->view('master',$data);		
 
@@ -145,8 +147,17 @@ public function xoasp(){
 	header ("Location: http://localhost/jatovi/index.php?module=giohang");	
 	}
 public function dathang(){
-	echo date("Y-m-d");
-	
+	if(isset($_POST['diachi']) and $_POST['diachi']!="" ){
+		$id_kh = $_POST['idkh'];
+		$diachi = $_POST['diachi'];
+		$sotien = $_POST['tongtien'];
+		$ngaydathang = date("Y-m-d");
+		$tinhtrang = 1;
+		include_once 'models/giohang_model.php';
+		$dathang= $giohang_model->dathang($id_kh,$diachi,$sotien,$ngaydathang,$tinhtrang);
+		unset($_SESSION['cart']);
+		header ("Location: http://localhost/jatovi/index.php");
+		}else {header ("Location: http://localhost/jatovi/index.php?module=giohang");}
 	}
 }           
 $giohang = new giohang($JATOVI);
