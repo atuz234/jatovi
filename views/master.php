@@ -63,12 +63,9 @@
                                         <a class="" href="<?=base_url."index.php?module=giohang&action=index"?>"><div><i class="fa fa-shopping-cart"></i>&nbsp; &nbsp;<span class="slsp"><?= $sosp?> sản phẩm</span></div></a>
                                     </li>
                                     <li>
-<<<<<<< HEAD
                                         <a class="" href="#"><i class="fa fa-check">Thanh toán</i></a>
                                     </li>
                                     <li>
-=======
->>>>>>> 9df5d1c5088cbcb95a26c6501ca88450b2f4e970
                                     <?php if (isset($_SESSION['khachhang_ID'])){ ?>
                                         <a href="<?=base_url?>index.php?module=khachhang"><i class="fa fa-cog"></i>Tài khoản</a>
                                         <a href="<?=base_url?>index.php?module=khachhang&action=dangxuat"><i class="fa fa-sign-out "></i>Đăng xuất</a>

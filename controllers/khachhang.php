@@ -36,14 +36,23 @@ class khachhang extends JATOVI_Controller
 
 
 	public function index()
-	{
+	{	
+		
+		$batdau = "2016-01-01";
+		$ketthuc = date("Y-m-d");
 		$list="";
 		$data['content'] = 'khachhang';
 		$data['contentdata'] = array();
 		include_once 'models/khachhang_model.php';
+		if(isset($_POST['ngaybatdau'])){
+		$batdau = $_POST['ngaybatdau'];	
+		}
+		if(isset($_POST['ngayketthuc'])){
+		$ketthuc = $_POST['ngayketthuc'];	
+		}
 		
 		$id_kh = $_SESSION['khachhang_ID'];
-		$lichsu = $khachhang_model->lichsu($id_kh);
+		$lichsu = $khachhang_model->lichsu($id_kh,$batdau,$ketthuc);
 		foreach($lichsu as $key => $value) {
 		$data['contentdata']['lichsu'][$key] = $value;
 		}
