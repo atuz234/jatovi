@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 01, 2017 lúc 03:06 PM
+-- Thời gian đã tạo: Th10 02, 2017 lúc 04:02 PM
 -- Phiên bản máy phục vụ: 10.1.25-MariaDB
 -- Phiên bản PHP: 7.1.7
 
@@ -67,6 +67,14 @@ CREATE TABLE `tb_chitietdonhang` (
   `thanhtien` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `tb_chitietdonhang`
+--
+
+INSERT INTO `tb_chitietdonhang` (`id`, `id_sanpham`, `id_donhang`, `soluong`, `dongia`, `thanhtien`) VALUES
+(1, 8, 2, 1, 180000, 180000),
+(2, 8, 3, 1, 180000, 180000);
+
 -- --------------------------------------------------------
 
 --
@@ -101,7 +109,8 @@ INSERT INTO `tb_chucnang` (`id`, `ten`, `trangthai`, `url`, `f_order`, `id_paren
 (9, 'Tin tức', 1, '', 4, 0, '', 1, 'fa fa-news'),
 (10, 'Quản lý tin tức', 1, 'quanlytintuc', 1, 9, 'quanlytintuc', 1, ''),
 (11, 'Nhà sản xuất', 1, 'nhasanxuat', 3, 3, 'nhasanxuat', 1, ''),
-(12, 'Phân quyền', 1, 'phanquyen', 3, 1, 'phanquyen', 1, '');
+(12, 'Phân quyền', 1, 'phanquyen', 3, 1, 'phanquyen', 1, ''),
+(13, 'Liên hệ', 1, 'lienhe', 3, 9, 'lienhe', 1, '');
 
 -- --------------------------------------------------------
 
@@ -111,19 +120,20 @@ INSERT INTO `tb_chucnang` (`id`, `ten`, `trangthai`, `url`, `f_order`, `id_paren
 
 CREATE TABLE `tb_danhmuc` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `dm_url` varchar(999) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tb_danhmuc`
 --
 
-INSERT INTO `tb_danhmuc` (`id`, `name`) VALUES
-(1, 'Colllagen'),
-(2, 'Chăm sóc da'),
-(3, 'Chăm sóc tóc'),
-(4, 'Trang điểm'),
-(5, 'Thực phẩm chức năng');
+INSERT INTO `tb_danhmuc` (`id`, `name`, `dm_url`) VALUES
+(1, 'Colllagen', 'index.php?module=danhmuc&dm=1'),
+(2, 'Chăm sóc da', 'index.php?module=danhmuc&dm=2'),
+(3, 'Chăm sóc tóc', 'index.php?module=danhmuc&dm=3'),
+(4, 'Trang điểm', 'index.php?module=danhmuc&dm=4'),
+(5, 'Thực phẩm chức năng', 'index.php?module=danhmuc&dm=5');
 
 -- --------------------------------------------------------
 
@@ -139,6 +149,15 @@ CREATE TABLE `tb_donhang` (
   `ngaydathang` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `tinhtrang` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tb_donhang`
+--
+
+INSERT INTO `tb_donhang` (`id_donhang`, `id_khachhang`, `diachi`, `sotien`, `ngaydathang`, `tinhtrang`) VALUES
+(1, 3, 'my dinh, hanoi', 360000, '2017-11-01 17:00:00', '1'),
+(2, 3, 'hanoi', 180000, '2017-11-01 17:00:00', '1'),
+(3, 3, 'hanoi', 180000, '2017-11-01 17:00:00', '1');
 
 -- --------------------------------------------------------
 
@@ -164,21 +183,38 @@ CREATE TABLE `tb_khachhang` (
 
 INSERT INTO `tb_khachhang` (`id`, `email`, `matkhau`, `sodienthoai`, `ten`, `ngaysinh`, `gioitinh`, `diachi`, `trangthai`) VALUES
 (1, 'buitanthanh211098', 'tanthanh98', '0964474680', 'thanh', '2017-09-21', 1, 'xuan ai ', 1),
-(2, 'asdf', 'adsf', '1231', 'adf', '2017-09-29', 1, 'asdf', 0);
+(2, 'asdf', 'adsf', '1231', 'adf', '2017-09-29', 1, 'asdf', 0),
+(3, 'khachhang', 'khachhang', '0988234234', 'tuan', '2017-11-01', 1, 'hanoi', 0),
+(4, 'a', 'a', '12', 'a', '2017-11-02', 1, 'a', 0),
+(5, 'a', 'a', '12', 'a', '2017-11-02', 1, 'a', 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tb_lichsunganhan`
+-- Cấu trúc bảng cho bảng `tb_lienhe`
 --
 
-CREATE TABLE `tb_lichsunganhan` (
+CREATE TABLE `tb_lienhe` (
   `id` int(11) NOT NULL,
-  `id_admin` int(11) NOT NULL,
-  `id_sanpham` int(11) NOT NULL,
-  `ngaycapnhat` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `noidung` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `ten` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `tieude` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `noidung` varchar(225) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tb_lienhe`
+--
+
+INSERT INTO `tb_lienhe` (`id`, `ten`, `email`, `tieude`, `noidung`) VALUES
+(1, 'ádasda', '0964474680', 'sdsđsa', 'ádasd'),
+(2, 'ádasda', '0964474680', 'Kem dưỡng chất collagen trắng da', 'dfsdfsdf'),
+(3, 'ádasda', '0964474680', 'sdsđsa', 'ádasd'),
+(8, 'Nguyễn Anh Tuấn', 'anhtuan@gmail.com', 'Phản hồi', 'Nội dung phản hồi'),
+(10, 'Họ tên', 'Email@gmail.com', 'Tiêu đề', 'Phản hồi'),
+(11, 'Họ tên', 'Email@gmail.com', 'Tiêu đề', 'Phản hồi'),
+(12, 'Họ tên', 'Email@gmail.com', 'Tiêu đề', 'Phản hồi'),
+(13, 'teen', 'email@gmail.com', 'tieude', 'phanhoi');
 
 -- --------------------------------------------------------
 
@@ -198,13 +234,13 @@ CREATE TABLE `tb_menu` (
 --
 
 INSERT INTO `tb_menu` (`id`, `tieude`, `url`, `trangthai`) VALUES
-(2, 'Collagen', '#', 1),
-(3, 'Chăm sóc da', '#', 1),
-(4, 'Chăm sóc tóc', '#', 1),
-(5, 'Trang điểm', '#', 1),
-(6, 'Thực phẩm chức năng', '#', 1),
+(2, 'Collagen', 'index.php?module=danhmuc&dm=1', 1),
+(3, 'Chăm sóc da', 'index.php?module=danhmuc&dm=2', 1),
+(4, 'Chăm sóc tóc', 'index.php?module=danhmuc&dm=3', 1),
+(5, 'Trang điểm', 'index.php?module=danhmuc&dm=4', 1),
+(6, 'Thực phẩm chức năng', 'index.php?module=danhmuc&dm=5', 1),
 (7, 'Tin tức', 'index.php?module=tintuc', 1),
-(8, 'Liên lạc', 'index.php?module=lienlac', 1);
+(8, 'Liên hệ', 'index.php?module=lienhe', 1);
 
 -- --------------------------------------------------------
 
@@ -219,7 +255,6 @@ CREATE TABLE `tb_nhasanxuat` (
   `nsx_sodienthoai` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `nsx_email` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `nsx_website` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `nsx_logo` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `nsx_mota` varchar(500) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -227,11 +262,11 @@ CREATE TABLE `tb_nhasanxuat` (
 -- Đang đổ dữ liệu cho bảng `tb_nhasanxuat`
 --
 
-INSERT INTO `tb_nhasanxuat` (`id`, `nsx_ten`, `nsx_diachi`, `nsx_sodienthoai`, `nsx_email`, `nsx_website`, `nsx_logo`, `nsx_mota`) VALUES
-(1, 'Doanh nghiep dia phuong', 'Ha Noi', '01232131023', 'nhasanxuat@gmail.com', '', '', 'mo ta nha san xuat'),
-(2, 'Shiseido', 'Nhật Bản', '', '', 'http://www.shiseido.co.jp', '', 'mo ta'),
-(3, 'Kraice', 'Nhật Bản', '', '', '', '', 'mo ta'),
-(4, 'DHC', 'Nhật Bản', '', '', '', '', 'mota DHC');
+INSERT INTO `tb_nhasanxuat` (`id`, `nsx_ten`, `nsx_diachi`, `nsx_sodienthoai`, `nsx_email`, `nsx_website`, `nsx_mota`) VALUES
+(1, 'Doanh nghiep dia phuong', 'Ha Noi', '01232131023', 'nhasanxuat@gmail.com', '', 'mo ta nha san xuat'),
+(2, 'Shiseido', 'Nhật Bản', '', '', 'http://www.shiseido.co.jp', 'mo ta'),
+(3, 'Kraice', 'Nhật Bản', '0922', '', 'www.web.com', 'mo ta'),
+(4, 'DHC', 'Nhật Bản', '09876543221', 'email@gmail.com', '', 'mota DHC');
 
 -- --------------------------------------------------------
 
@@ -289,7 +324,8 @@ INSERT INTO `tb_phanquyen` (`id`, `id_nhom`, `id_chucnang`) VALUES
 (22, 3, 10),
 (23, 1, 11),
 (24, 3, 11),
-(25, 1, 12);
+(25, 1, 12),
+(26, 1, 13);
 
 -- --------------------------------------------------------
 
@@ -309,7 +345,7 @@ CREATE TABLE `tb_sanpham` (
   `ngaysanxuat` date NOT NULL,
   `hansudung` date NOT NULL,
   `donvi` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `hinhanh` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `hinhanh` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'public/images/sanpham/noimage.png',
   `dshinhanh` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `damua` int(20) NOT NULL,
   `luotxem` int(20) NOT NULL,
@@ -322,14 +358,14 @@ CREATE TABLE `tb_sanpham` (
 --
 
 INSERT INTO `tb_sanpham` (`id`, `ten`, `mota`, `id_danhmuc`, `id_nsx`, `xuatsu`, `giacu`, `giamoi`, `ngaysanxuat`, `hansudung`, `donvi`, `hinhanh`, `dshinhanh`, `damua`, `luotxem`, `tgcapnhat`, `trangthai`) VALUES
-(1, 'a', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n', 1, 1, 'a', 1, 2, '2017-10-04', '2017-10-05', 'q', '', '', 0, 0, '2017-10-30 01:59:34', 0),
-(2, 'b', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 1, 'b', 12, 123, '2017-10-28', '2017-10-29', 'cai', '', '', 0, 0, '2017-10-30 01:59:41', 0),
-(3, 'sanpham1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 3, 1, 'vn', 15, 10, '2017-10-29', '2017-10-29', 'hop', '', '', 2, 5, '2017-10-30 01:59:46', 0),
-(5, 'sanpham2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 5, 1, 'japan', 20, 19, '2017-10-29', '2017-10-29', 'lo', '', '', 5, 10, '2017-10-30 01:59:55', 0),
-(6, 'sanpham3', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 4, 1, 'vn', 19, 17, '2017-10-29', '2017-10-29', 'hop', '', '', 1, 10, '2017-10-30 02:00:04', 0),
-(7, 'sanpham4', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 2, 1, 'vn', 19, 15, '2017-10-29', '2017-10-29', 'hop', '', '', 0, 19, '2017-10-30 02:00:10', 0),
-(8, 'son duong moi', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 3, 3, 'Nhật bản', 20, 18, '2017-10-29', '2017-10-29', 'hop', '', '', 9, 20, '2017-10-30 02:00:18', 0),
-(9, 'sanpham5', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 3, 2, 'vietnam', 100, 99, '2017-10-27', '2017-10-31', 'hop', '', '', 0, 0, '2017-10-30 02:00:26', 0);
+(1, 'a', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n', 1, 1, 'a', 1, 20000, '2017-10-04', '2017-10-05', 'q', 'public/images/sanpham/noimage.png', '', 0, 0, '2017-11-02 07:54:56', 0),
+(2, 'b', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 1, 'b', 12, 12000, '2017-10-28', '2017-10-29', 'cai', 'public/images/sanpham/noimage.png', '', 0, 0, '2017-11-02 07:55:00', 0),
+(3, 'sanpham1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 3, 1, 'vn', 15, 100000, '2017-10-29', '2017-10-29', 'hop', 'public/images/sanpham/noimage.png', '', 2, 5, '2017-11-02 07:55:05', 0),
+(5, 'sanpham2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 5, 1, 'japan', 20, 190000, '2017-10-29', '2017-10-29', 'lo', 'public/images/sanpham/noimage.png', '', 5, 10, '2017-11-02 07:55:08', 0),
+(6, 'sanpham3', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 4, 1, 'vn', 19, 170000, '2017-10-29', '2017-10-29', 'hop', 'public/images/sanpham/noimage.png', '', 1, 10, '2017-11-02 07:55:13', 0),
+(7, 'sanpham4', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 2, 1, 'vn', 19, 150000, '2017-10-29', '2017-10-29', 'hop', 'public/images/sanpham/noimage.png', '', 0, 19, '2017-11-02 07:55:16', 0),
+(8, 'son duong moi', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 3, 3, 'Nhật bản', 20, 180000, '2017-10-29', '2017-10-29', 'hop', 'public/images/sanpham/noimage.png', '', 9, 20, '2017-11-02 07:55:19', 0),
+(9, 'sanpham5', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 3, 2, 'vietnam', 100, 99000, '2017-10-27', '2017-10-31', 'hop', 'public/images/sanpham/noimage.png', '', 0, 0, '2017-11-02 07:55:23', 0);
 
 -- --------------------------------------------------------
 
@@ -351,28 +387,13 @@ CREATE TABLE `tb_tintuc` (
 --
 
 INSERT INTO `tb_tintuc` (`id_tintuc`, `tieude`, `hinhanh`, `noidung`, `ngaydang`, `tacgia`) VALUES
-(22, 'dsfasdasd', '', '<p>dasdasdasdasds</p>\r\n', '2017-09-27 10:48:22', 'Nguyen Anh Tuan'),
-(24, '123', '', '<p>321</p>\r\n', '2017-09-27 10:55:51', 'Nguyen Anh Tuan'),
-(25, '696', '20170922114419_1.jpg', '<p>asdasdasdas</p>\r\n', '2017-09-27 11:02:46', 'Nguyen Anh Tuan'),
-(27, '999', '', '<p>98564655</p>\r\n', '2017-09-27 11:12:21', 'Nguyen Anh Tuan'),
-(29, 'alo', '', '<p>abc</p>\r\n', '2017-09-27 11:13:22', 'Nguyen Anh Tuan'),
-(30, 'jyfkjhf', '', '<p>;LKJHGVCX</p>\r\n', '2017-09-27 11:15:22', 'Nguyen Anh Tuan'),
-(31, 'sqdasdasd', '', '<p>asdasdasd</p>\r\n', '2017-09-27 11:16:45', 'Nguyen Anh Tuan'),
-(32, 'sqdasdasd', '', '<p>asdasdasd</p>\r\n', '2017-09-27 11:19:24', 'Nguyen Anh Tuan'),
-(33, 'sqdasdasd', '', '<p>asdasdasd</p>\r\n', '2017-09-27 12:09:25', 'Nguyen Anh Tuan'),
-(34, 'sqdasdasd', '', '<p>asdasdasd</p>\r\n', '2017-09-27 12:10:06', 'Nguyen Anh Tuan'),
-(35, 'sqdasdasd', '20170922114419_1.jpg|', '<p>asdasdasd</p>\r\n', '2017-09-27 12:10:50', 'Nguyen Anh Tuan'),
-(36, 'thanh dep trai', '20170922114419_1.jpg|', '<p>fuck</p>\r\n', '2017-09-27 12:13:40', 'Nguyen Anh Tuan'),
-(37, 'fsdfsdfsdf', '20170922114419_1.jpg|', '<p>kjhsdafkjsdhfkashj</p>\r\n', '2017-09-27 12:16:00', 'Nguyen Anh Tuan'),
-(38, 'ádasd', '', '<p>&aacute;dasd</p>\r\n', '2017-09-27 12:16:40', 'Nguyen Anh Tuan'),
-(39, 'ádasd', '', '<p>&aacute;dasd</p>\r\n', '2017-09-27 12:17:19', 'Nguyen Anh Tuan'),
-(40, 'ádasd', '', '<p>&aacute;dasd</p>\r\n', '2017-09-27 12:17:45', 'Nguyen Anh Tuan'),
-(41, 'ádasd', '19554702_471522359906870_1584439020984714227_n.jpg|21743109_510178572707915_6132071483136042634_n.jpg|20170922114419_1.jpg|', '<p>&aacute;dasd</p>\r\n', '2017-09-27 12:18:33', 'Nguyen Anh Tuan'),
-(42, 'ádasd', '19554702_471522359906870_1584439020984714227_n.jpg|21743109_510178572707915_6132071483136042634_n.jpg|20170922114419_1.jpg|', '<p>&aacute;dasd</p>\r\n', '2017-09-27 12:20:03', 'Nguyen Anh Tuan'),
-(43, 'ádasdas', '', '<p>dfasdas</p>\r\n', '2017-09-27 12:22:48', 'Nguyen Anh Tuan'),
-(44, 'ádasdas', '', '<p>dfasdas</p>\r\n', '2017-09-27 12:23:25', 'Nguyen Anh Tuan'),
-(46, 'đây là tiêu đề ', '19554702_471522359906870_1584439020984714227_n.jpg|21743109_510178572707915_6132071483136042634_n.jpg|20170922114419_1.jpg|', '<p>đ&acirc;y l&agrave; nội dung</p>\r\n', '2017-09-28 01:03:37', 'Bùi Tấn Thành'),
-(47, 'bài viết mới', 'perfect moment.jpg', '', '2017-11-01 13:18:32', 'Nguyen Anh Tuan');
+(48, 'Kem dưỡng chất collagen trắng da', 'MoistOne1.jpg', '<p><strong>L&agrave;n da rất nhạy cảm với c&aacute;c t&aacute;c động m&ocirc;i trường v&agrave; nhanh ch&oacute;ng &ldquo; xuống cấp&rdquo; nếu kh&ocirc;ng được chăm s&oacute;c cẩn thận.&nbsp;Da th&ocirc; r&aacute;p, nhăn nheo, thiếu sức sống l&agrave; những dấu hiệu l&atilde;o h&oacute;a v&agrave; cũng ch&iacute;nh l&agrave; nỗi &aacute;m ảnh của mọi chị em phụ nữ.</strong></p>\r\n\r\n<p>Ng&agrave;y đăng: 1-11-2017</p>\r\n\r\n<p>576 lượt xem</p>\r\n\r\n<p>Với mong muốn t&igrave;m lại vẻ đẹp đ&ocirc;i mươi, kh&ocirc;ng &iacute;t c&aacute;c chị em đ&atilde; dốc hầu bao đổ v&agrave;o c&aacute;c Spa, thẩm mỹ viện, tiến h&agrave;nh phẫu thuật. Mặc d&ugrave; tốn k&eacute;m v&agrave; mất nhiều thời gian, nhưng chưa chắc đ&atilde; mang lại hiệu quả như &yacute;, thậm tr&iacute; còn làm cho da xấu, gi&agrave; đi trước tuổi.<br />\r\n&nbsp;</p>\r\n\r\n<p>Collagen l&agrave; một loại protein, chiếm 25% tổng lượng protein trong cơ thể, c&oacute; chức năng li&ecirc;n kết c&aacute;c m&ocirc;. Với tổ chức da, b&ecirc;n cạnh nhiệm vụ li&ecirc;n kết, Collagen c&ograve;n c&oacute; chức năng tạo n&ecirc;n sự đ&agrave;n hồi, gi&uacute;p da duy tr&igrave; độ ẩm, tăng khả năng giữ nước để da lu&ocirc;n căng mịn. V&igrave; thế khi collagen bị mất đi do qu&aacute; tr&igrave;nh l&atilde;o ho&aacute; của cơ thể da sẽ bị tr&ugrave;ng nh&atilde;o, nhiều nếp nhăn.Theo quy luật tự nhi&ecirc;n, trung b&igrave;nh một người sẽ mất khoảng 30% tổng lượng collagen khi chạm ngưỡng 40 tuổi.<br />\r\n&nbsp;</p>\r\n\r\n<p>Do đ&oacute;, c&aacute;ch đơn giản v&agrave; kinh tế nhất để giữ m&atilde;i tuổi thanh xu&acirc;n là &nbsp;l&agrave; sử dụng sản ph&acirc;̉m kem dưỡng ch&acirc;́t collagen trắng da Moistone Ostrich Collagen Gel Cung cấp đầy đủ c&aacute;c dưỡng chất cần thiết cho da, gi&uacute;p da giữ ẩm, săn chắc, đ&agrave;n hồi, căng mịn, trắng s&aacute;ng v&agrave; đầy sức sống cũng như l&agrave;m chậm đi qu&aacute; tr&igrave;nh l&atilde;o h&oacute;a da.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Kem dưỡng ch&acirc;́t collagen trắng da Moistone Ostrich Collagen Gel gồm collagen h&ograve;a tan từ đ&agrave; điểu kết hợp với nano collagen từ vi c&aacute; hồng v&agrave; c&aacute;c dưỡng chất qu&yacute; kh&aacute;c được đ&aacute;nh gi&aacute; l&agrave; sản phẩm kem dưỡng da cao cấp tại Nhật Bản, cung cấp đầy đủ c&aacute;c dưỡng chất cần thiết cho da, gi&uacute;p da giữ ẩm, săn chắc, đ&agrave;n hồi, căng mịn, trắng s&aacute;ng v&agrave; đầy sức sống cũng như l&agrave;m chậm đi qu&aacute; tr&igrave;nh l&atilde;o h&oacute;a.</p>\r\n', '2017-11-02 05:12:36', 'Nguyen Anh Tuan'),
+(49, 'Kem dưỡng chất collagen trắng da', 'MoistOne1.jpg', '<p><strong>L&agrave;n da rất nhạy cảm với c&aacute;c t&aacute;c động m&ocirc;i trường v&agrave; nhanh ch&oacute;ng &ldquo; xuống cấp&rdquo; nếu kh&ocirc;ng được chăm s&oacute;c cẩn thận.&nbsp;Da th&ocirc; r&aacute;p, nhăn nheo, thiếu sức sống l&agrave; những dấu hiệu l&atilde;o h&oacute;a v&agrave; cũng ch&iacute;nh l&agrave; nỗi &aacute;m ảnh của mọi chị em phụ nữ.</strong></p>\r\n\r\n<p>Ng&agrave;y đăng: 1-11-2017</p>\r\n\r\n<p>576 lượt xem</p>\r\n\r\n<p>Với mong muốn t&igrave;m lại vẻ đẹp đ&ocirc;i mươi, kh&ocirc;ng &iacute;t c&aacute;c chị em đ&atilde; dốc hầu bao đổ v&agrave;o c&aacute;c Spa, thẩm mỹ viện, tiến h&agrave;nh phẫu thuật. Mặc d&ugrave; tốn k&eacute;m v&agrave; mất nhiều thời gian, nhưng chưa chắc đ&atilde; mang lại hiệu quả như &yacute;, thậm tr&iacute; còn làm cho da xấu, gi&agrave; đi trước tuổi.<br />\r\n&nbsp;</p>\r\n\r\n<p>Collagen l&agrave; một loại protein, chiếm 25% tổng lượng protein trong cơ thể, c&oacute; chức năng li&ecirc;n kết c&aacute;c m&ocirc;. Với tổ chức da, b&ecirc;n cạnh nhiệm vụ li&ecirc;n kết, Collagen c&ograve;n c&oacute; chức năng tạo n&ecirc;n sự đ&agrave;n hồi, gi&uacute;p da duy tr&igrave; độ ẩm, tăng khả năng giữ nước để da lu&ocirc;n căng mịn. V&igrave; thế khi collagen bị mất đi do qu&aacute; tr&igrave;nh l&atilde;o ho&aacute; của cơ thể da sẽ bị tr&ugrave;ng nh&atilde;o, nhiều nếp nhăn.Theo quy luật tự nhi&ecirc;n, trung b&igrave;nh một người sẽ mất khoảng 30% tổng lượng collagen khi chạm ngưỡng 40 tuổi.<br />\r\n&nbsp;</p>\r\n\r\n<p>Do đ&oacute;, c&aacute;ch đơn giản v&agrave; kinh tế nhất để giữ m&atilde;i tuổi thanh xu&acirc;n là &nbsp;l&agrave; sử dụng sản ph&acirc;̉m kem dưỡng ch&acirc;́t collagen trắng da Moistone Ostrich Collagen Gel Cung cấp đầy đủ c&aacute;c dưỡng chất cần thiết cho da, gi&uacute;p da giữ ẩm, săn chắc, đ&agrave;n hồi, căng mịn, trắng s&aacute;ng v&agrave; đầy sức sống cũng như l&agrave;m chậm đi qu&aacute; tr&igrave;nh l&atilde;o h&oacute;a da.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Kem dưỡng ch&acirc;́t collagen trắng da Moistone Ostrich Collagen Gel gồm collagen h&ograve;a tan từ đ&agrave; điểu kết hợp với nano collagen từ vi c&aacute; hồng v&agrave; c&aacute;c dưỡng chất qu&yacute; kh&aacute;c được đ&aacute;nh gi&aacute; l&agrave; sản phẩm kem dưỡng da cao cấp tại Nhật Bản, cung cấp đầy đủ c&aacute;c dưỡng chất cần thiết cho da, gi&uacute;p da giữ ẩm, săn chắc, đ&agrave;n hồi, căng mịn, trắng s&aacute;ng v&agrave; đầy sức sống cũng như l&agrave;m chậm đi qu&aacute; tr&igrave;nh l&atilde;o h&oacute;a.</p>\r\n', '2017-11-02 05:12:36', 'Nguyen Anh Tuan'),
+(50, 'Kem dưỡng chất collagen trắng da', 'MoistOne1.jpg', '<p><strong>L&agrave;n da rất nhạy cảm với c&aacute;c t&aacute;c động m&ocirc;i trường v&agrave; nhanh ch&oacute;ng &ldquo; xuống cấp&rdquo; nếu kh&ocirc;ng được chăm s&oacute;c cẩn thận.&nbsp;Da th&ocirc; r&aacute;p, nhăn nheo, thiếu sức sống l&agrave; những dấu hiệu l&atilde;o h&oacute;a v&agrave; cũng ch&iacute;nh l&agrave; nỗi &aacute;m ảnh của mọi chị em phụ nữ.</strong></p>\r\n\r\n<p>Ng&agrave;y đăng: 1-11-2017</p>\r\n\r\n<p>576 lượt xem</p>\r\n\r\n<p>Với mong muốn t&igrave;m lại vẻ đẹp đ&ocirc;i mươi, kh&ocirc;ng &iacute;t c&aacute;c chị em đ&atilde; dốc hầu bao đổ v&agrave;o c&aacute;c Spa, thẩm mỹ viện, tiến h&agrave;nh phẫu thuật. Mặc d&ugrave; tốn k&eacute;m v&agrave; mất nhiều thời gian, nhưng chưa chắc đ&atilde; mang lại hiệu quả như &yacute;, thậm tr&iacute; còn làm cho da xấu, gi&agrave; đi trước tuổi.<br />\r\n&nbsp;</p>\r\n\r\n<p>Collagen l&agrave; một loại protein, chiếm 25% tổng lượng protein trong cơ thể, c&oacute; chức năng li&ecirc;n kết c&aacute;c m&ocirc;. Với tổ chức da, b&ecirc;n cạnh nhiệm vụ li&ecirc;n kết, Collagen c&ograve;n c&oacute; chức năng tạo n&ecirc;n sự đ&agrave;n hồi, gi&uacute;p da duy tr&igrave; độ ẩm, tăng khả năng giữ nước để da lu&ocirc;n căng mịn. V&igrave; thế khi collagen bị mất đi do qu&aacute; tr&igrave;nh l&atilde;o ho&aacute; của cơ thể da sẽ bị tr&ugrave;ng nh&atilde;o, nhiều nếp nhăn.Theo quy luật tự nhi&ecirc;n, trung b&igrave;nh một người sẽ mất khoảng 30% tổng lượng collagen khi chạm ngưỡng 40 tuổi.<br />\r\n&nbsp;</p>\r\n\r\n<p>Do đ&oacute;, c&aacute;ch đơn giản v&agrave; kinh tế nhất để giữ m&atilde;i tuổi thanh xu&acirc;n là &nbsp;l&agrave; sử dụng sản ph&acirc;̉m kem dưỡng ch&acirc;́t collagen trắng da Moistone Ostrich Collagen Gel Cung cấp đầy đủ c&aacute;c dưỡng chất cần thiết cho da, gi&uacute;p da giữ ẩm, săn chắc, đ&agrave;n hồi, căng mịn, trắng s&aacute;ng v&agrave; đầy sức sống cũng như l&agrave;m chậm đi qu&aacute; tr&igrave;nh l&atilde;o h&oacute;a da.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Kem dưỡng ch&acirc;́t collagen trắng da Moistone Ostrich Collagen Gel gồm collagen h&ograve;a tan từ đ&agrave; điểu kết hợp với nano collagen từ vi c&aacute; hồng v&agrave; c&aacute;c dưỡng chất qu&yacute; kh&aacute;c được đ&aacute;nh gi&aacute; l&agrave; sản phẩm kem dưỡng da cao cấp tại Nhật Bản, cung cấp đầy đủ c&aacute;c dưỡng chất cần thiết cho da, gi&uacute;p da giữ ẩm, săn chắc, đ&agrave;n hồi, căng mịn, trắng s&aacute;ng v&agrave; đầy sức sống cũng như l&agrave;m chậm đi qu&aacute; tr&igrave;nh l&atilde;o h&oacute;a.</p>\r\n', '2017-11-02 05:12:36', 'Nguyen Anh Tuan'),
+(51, 'Kem dưỡng chất collagen trắng da', 'MoistOne1.jpg', '<p><strong>L&agrave;n da rất nhạy cảm với c&aacute;c t&aacute;c động m&ocirc;i trường v&agrave; nhanh ch&oacute;ng &ldquo; xuống cấp&rdquo; nếu kh&ocirc;ng được chăm s&oacute;c cẩn thận.&nbsp;Da th&ocirc; r&aacute;p, nhăn nheo, thiếu sức sống l&agrave; những dấu hiệu l&atilde;o h&oacute;a v&agrave; cũng ch&iacute;nh l&agrave; nỗi &aacute;m ảnh của mọi chị em phụ nữ.</strong></p>\r\n\r\n<p>Ng&agrave;y đăng: 1-11-2017</p>\r\n\r\n<p>576 lượt xem</p>\r\n\r\n<p>Với mong muốn t&igrave;m lại vẻ đẹp đ&ocirc;i mươi, kh&ocirc;ng &iacute;t c&aacute;c chị em đ&atilde; dốc hầu bao đổ v&agrave;o c&aacute;c Spa, thẩm mỹ viện, tiến h&agrave;nh phẫu thuật. Mặc d&ugrave; tốn k&eacute;m v&agrave; mất nhiều thời gian, nhưng chưa chắc đ&atilde; mang lại hiệu quả như &yacute;, thậm tr&iacute; còn làm cho da xấu, gi&agrave; đi trước tuổi.<br />\r\n&nbsp;</p>\r\n\r\n<p>Collagen l&agrave; một loại protein, chiếm 25% tổng lượng protein trong cơ thể, c&oacute; chức năng li&ecirc;n kết c&aacute;c m&ocirc;. Với tổ chức da, b&ecirc;n cạnh nhiệm vụ li&ecirc;n kết, Collagen c&ograve;n c&oacute; chức năng tạo n&ecirc;n sự đ&agrave;n hồi, gi&uacute;p da duy tr&igrave; độ ẩm, tăng khả năng giữ nước để da lu&ocirc;n căng mịn. V&igrave; thế khi collagen bị mất đi do qu&aacute; tr&igrave;nh l&atilde;o ho&aacute; của cơ thể da sẽ bị tr&ugrave;ng nh&atilde;o, nhiều nếp nhăn.Theo quy luật tự nhi&ecirc;n, trung b&igrave;nh một người sẽ mất khoảng 30% tổng lượng collagen khi chạm ngưỡng 40 tuổi.<br />\r\n&nbsp;</p>\r\n\r\n<p>Do đ&oacute;, c&aacute;ch đơn giản v&agrave; kinh tế nhất để giữ m&atilde;i tuổi thanh xu&acirc;n là &nbsp;l&agrave; sử dụng sản ph&acirc;̉m kem dưỡng ch&acirc;́t collagen trắng da Moistone Ostrich Collagen Gel Cung cấp đầy đủ c&aacute;c dưỡng chất cần thiết cho da, gi&uacute;p da giữ ẩm, săn chắc, đ&agrave;n hồi, căng mịn, trắng s&aacute;ng v&agrave; đầy sức sống cũng như l&agrave;m chậm đi qu&aacute; tr&igrave;nh l&atilde;o h&oacute;a da.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Kem dưỡng ch&acirc;́t collagen trắng da Moistone Ostrich Collagen Gel gồm collagen h&ograve;a tan từ đ&agrave; điểu kết hợp với nano collagen từ vi c&aacute; hồng v&agrave; c&aacute;c dưỡng chất qu&yacute; kh&aacute;c được đ&aacute;nh gi&aacute; l&agrave; sản phẩm kem dưỡng da cao cấp tại Nhật Bản, cung cấp đầy đủ c&aacute;c dưỡng chất cần thiết cho da, gi&uacute;p da giữ ẩm, săn chắc, đ&agrave;n hồi, căng mịn, trắng s&aacute;ng v&agrave; đầy sức sống cũng như l&agrave;m chậm đi qu&aacute; tr&igrave;nh l&atilde;o h&oacute;a.</p>\r\n', '2017-11-02 05:12:36', 'Nguyen Anh Tuan'),
+(52, 'Kem dưỡng chất collagen trắng da', 'MoistOne1.jpg', '<p><strong>L&agrave;n da rất nhạy cảm với c&aacute;c t&aacute;c động m&ocirc;i trường v&agrave; nhanh ch&oacute;ng &ldquo; xuống cấp&rdquo; nếu kh&ocirc;ng được chăm s&oacute;c cẩn thận.&nbsp;Da th&ocirc; r&aacute;p, nhăn nheo, thiếu sức sống l&agrave; những dấu hiệu l&atilde;o h&oacute;a v&agrave; cũng ch&iacute;nh l&agrave; nỗi &aacute;m ảnh của mọi chị em phụ nữ.</strong></p>\r\n\r\n<p>Ng&agrave;y đăng: 1-11-2017</p>\r\n\r\n<p>576 lượt xem</p>\r\n\r\n<p>Với mong muốn t&igrave;m lại vẻ đẹp đ&ocirc;i mươi, kh&ocirc;ng &iacute;t c&aacute;c chị em đ&atilde; dốc hầu bao đổ v&agrave;o c&aacute;c Spa, thẩm mỹ viện, tiến h&agrave;nh phẫu thuật. Mặc d&ugrave; tốn k&eacute;m v&agrave; mất nhiều thời gian, nhưng chưa chắc đ&atilde; mang lại hiệu quả như &yacute;, thậm tr&iacute; còn làm cho da xấu, gi&agrave; đi trước tuổi.<br />\r\n&nbsp;</p>\r\n\r\n<p>Collagen l&agrave; một loại protein, chiếm 25% tổng lượng protein trong cơ thể, c&oacute; chức năng li&ecirc;n kết c&aacute;c m&ocirc;. Với tổ chức da, b&ecirc;n cạnh nhiệm vụ li&ecirc;n kết, Collagen c&ograve;n c&oacute; chức năng tạo n&ecirc;n sự đ&agrave;n hồi, gi&uacute;p da duy tr&igrave; độ ẩm, tăng khả năng giữ nước để da lu&ocirc;n căng mịn. V&igrave; thế khi collagen bị mất đi do qu&aacute; tr&igrave;nh l&atilde;o ho&aacute; của cơ thể da sẽ bị tr&ugrave;ng nh&atilde;o, nhiều nếp nhăn.Theo quy luật tự nhi&ecirc;n, trung b&igrave;nh một người sẽ mất khoảng 30% tổng lượng collagen khi chạm ngưỡng 40 tuổi.<br />\r\n&nbsp;</p>\r\n\r\n<p>Do đ&oacute;, c&aacute;ch đơn giản v&agrave; kinh tế nhất để giữ m&atilde;i tuổi thanh xu&acirc;n là &nbsp;l&agrave; sử dụng sản ph&acirc;̉m kem dưỡng ch&acirc;́t collagen trắng da Moistone Ostrich Collagen Gel Cung cấp đầy đủ c&aacute;c dưỡng chất cần thiết cho da, gi&uacute;p da giữ ẩm, săn chắc, đ&agrave;n hồi, căng mịn, trắng s&aacute;ng v&agrave; đầy sức sống cũng như l&agrave;m chậm đi qu&aacute; tr&igrave;nh l&atilde;o h&oacute;a da.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Kem dưỡng ch&acirc;́t collagen trắng da Moistone Ostrich Collagen Gel gồm collagen h&ograve;a tan từ đ&agrave; điểu kết hợp với nano collagen từ vi c&aacute; hồng v&agrave; c&aacute;c dưỡng chất qu&yacute; kh&aacute;c được đ&aacute;nh gi&aacute; l&agrave; sản phẩm kem dưỡng da cao cấp tại Nhật Bản, cung cấp đầy đủ c&aacute;c dưỡng chất cần thiết cho da, gi&uacute;p da giữ ẩm, săn chắc, đ&agrave;n hồi, căng mịn, trắng s&aacute;ng v&agrave; đầy sức sống cũng như l&agrave;m chậm đi qu&aacute; tr&igrave;nh l&atilde;o h&oacute;a.</p>\r\n', '2017-11-02 05:12:36', 'Nguyen Anh Tuan'),
+(53, 'Kem dưỡng chất collagen trắng da', 'MoistOne1.jpg', '<p><strong>L&agrave;n da rất nhạy cảm với c&aacute;c t&aacute;c động m&ocirc;i trường v&agrave; nhanh ch&oacute;ng &ldquo; xuống cấp&rdquo; nếu kh&ocirc;ng được chăm s&oacute;c cẩn thận.&nbsp;Da th&ocirc; r&aacute;p, nhăn nheo, thiếu sức sống l&agrave; những dấu hiệu l&atilde;o h&oacute;a v&agrave; cũng ch&iacute;nh l&agrave; nỗi &aacute;m ảnh của mọi chị em phụ nữ.</strong></p>\r\n\r\n<p>Ng&agrave;y đăng: 1-11-2017</p>\r\n\r\n<p>576 lượt xem</p>\r\n\r\n<p>Với mong muốn t&igrave;m lại vẻ đẹp đ&ocirc;i mươi, kh&ocirc;ng &iacute;t c&aacute;c chị em đ&atilde; dốc hầu bao đổ v&agrave;o c&aacute;c Spa, thẩm mỹ viện, tiến h&agrave;nh phẫu thuật. Mặc d&ugrave; tốn k&eacute;m v&agrave; mất nhiều thời gian, nhưng chưa chắc đ&atilde; mang lại hiệu quả như &yacute;, thậm tr&iacute; còn làm cho da xấu, gi&agrave; đi trước tuổi.<br />\r\n&nbsp;</p>\r\n\r\n<p>Collagen l&agrave; một loại protein, chiếm 25% tổng lượng protein trong cơ thể, c&oacute; chức năng li&ecirc;n kết c&aacute;c m&ocirc;. Với tổ chức da, b&ecirc;n cạnh nhiệm vụ li&ecirc;n kết, Collagen c&ograve;n c&oacute; chức năng tạo n&ecirc;n sự đ&agrave;n hồi, gi&uacute;p da duy tr&igrave; độ ẩm, tăng khả năng giữ nước để da lu&ocirc;n căng mịn. V&igrave; thế khi collagen bị mất đi do qu&aacute; tr&igrave;nh l&atilde;o ho&aacute; của cơ thể da sẽ bị tr&ugrave;ng nh&atilde;o, nhiều nếp nhăn.Theo quy luật tự nhi&ecirc;n, trung b&igrave;nh một người sẽ mất khoảng 30% tổng lượng collagen khi chạm ngưỡng 40 tuổi.<br />\r\n&nbsp;</p>\r\n\r\n<p>Do đ&oacute;, c&aacute;ch đơn giản v&agrave; kinh tế nhất để giữ m&atilde;i tuổi thanh xu&acirc;n là &nbsp;l&agrave; sử dụng sản ph&acirc;̉m kem dưỡng ch&acirc;́t collagen trắng da Moistone Ostrich Collagen Gel Cung cấp đầy đủ c&aacute;c dưỡng chất cần thiết cho da, gi&uacute;p da giữ ẩm, săn chắc, đ&agrave;n hồi, căng mịn, trắng s&aacute;ng v&agrave; đầy sức sống cũng như l&agrave;m chậm đi qu&aacute; tr&igrave;nh l&atilde;o h&oacute;a da.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Kem dưỡng ch&acirc;́t collagen trắng da Moistone Ostrich Collagen Gel gồm collagen h&ograve;a tan từ đ&agrave; điểu kết hợp với nano collagen từ vi c&aacute; hồng v&agrave; c&aacute;c dưỡng chất qu&yacute; kh&aacute;c được đ&aacute;nh gi&aacute; l&agrave; sản phẩm kem dưỡng da cao cấp tại Nhật Bản, cung cấp đầy đủ c&aacute;c dưỡng chất cần thiết cho da, gi&uacute;p da giữ ẩm, săn chắc, đ&agrave;n hồi, căng mịn, trắng s&aacute;ng v&agrave; đầy sức sống cũng như l&agrave;m chậm đi qu&aacute; tr&igrave;nh l&atilde;o h&oacute;a.</p>\r\n', '2017-11-02 05:12:36', 'Nguyen Anh Tuan'),
+(54, 'Kem dưỡng chất collagen trắng da', 'MoistOne1.jpg', '<p><strong>L&agrave;n da rất nhạy cảm với c&aacute;c t&aacute;c động m&ocirc;i trường v&agrave; nhanh ch&oacute;ng &ldquo; xuống cấp&rdquo; nếu kh&ocirc;ng được chăm s&oacute;c cẩn thận.&nbsp;Da th&ocirc; r&aacute;p, nhăn nheo, thiếu sức sống l&agrave; những dấu hiệu l&atilde;o h&oacute;a v&agrave; cũng ch&iacute;nh l&agrave; nỗi &aacute;m ảnh của mọi chị em phụ nữ.</strong></p>\r\n\r\n<p>Ng&agrave;y đăng: 1-11-2017</p>\r\n\r\n<p>576 lượt xem</p>\r\n\r\n<p>Với mong muốn t&igrave;m lại vẻ đẹp đ&ocirc;i mươi, kh&ocirc;ng &iacute;t c&aacute;c chị em đ&atilde; dốc hầu bao đổ v&agrave;o c&aacute;c Spa, thẩm mỹ viện, tiến h&agrave;nh phẫu thuật. Mặc d&ugrave; tốn k&eacute;m v&agrave; mất nhiều thời gian, nhưng chưa chắc đ&atilde; mang lại hiệu quả như &yacute;, thậm tr&iacute; còn làm cho da xấu, gi&agrave; đi trước tuổi.<br />\r\n&nbsp;</p>\r\n\r\n<p>Collagen l&agrave; một loại protein, chiếm 25% tổng lượng protein trong cơ thể, c&oacute; chức năng li&ecirc;n kết c&aacute;c m&ocirc;. Với tổ chức da, b&ecirc;n cạnh nhiệm vụ li&ecirc;n kết, Collagen c&ograve;n c&oacute; chức năng tạo n&ecirc;n sự đ&agrave;n hồi, gi&uacute;p da duy tr&igrave; độ ẩm, tăng khả năng giữ nước để da lu&ocirc;n căng mịn. V&igrave; thế khi collagen bị mất đi do qu&aacute; tr&igrave;nh l&atilde;o ho&aacute; của cơ thể da sẽ bị tr&ugrave;ng nh&atilde;o, nhiều nếp nhăn.Theo quy luật tự nhi&ecirc;n, trung b&igrave;nh một người sẽ mất khoảng 30% tổng lượng collagen khi chạm ngưỡng 40 tuổi.<br />\r\n&nbsp;</p>\r\n\r\n<p>Do đ&oacute;, c&aacute;ch đơn giản v&agrave; kinh tế nhất để giữ m&atilde;i tuổi thanh xu&acirc;n là &nbsp;l&agrave; sử dụng sản ph&acirc;̉m kem dưỡng ch&acirc;́t collagen trắng da Moistone Ostrich Collagen Gel Cung cấp đầy đủ c&aacute;c dưỡng chất cần thiết cho da, gi&uacute;p da giữ ẩm, săn chắc, đ&agrave;n hồi, căng mịn, trắng s&aacute;ng v&agrave; đầy sức sống cũng như l&agrave;m chậm đi qu&aacute; tr&igrave;nh l&atilde;o h&oacute;a da.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Kem dưỡng ch&acirc;́t collagen trắng da Moistone Ostrich Collagen Gel gồm collagen h&ograve;a tan từ đ&agrave; điểu kết hợp với nano collagen từ vi c&aacute; hồng v&agrave; c&aacute;c dưỡng chất qu&yacute; kh&aacute;c được đ&aacute;nh gi&aacute; l&agrave; sản phẩm kem dưỡng da cao cấp tại Nhật Bản, cung cấp đầy đủ c&aacute;c dưỡng chất cần thiết cho da, gi&uacute;p da giữ ẩm, săn chắc, đ&agrave;n hồi, căng mịn, trắng s&aacute;ng v&agrave; đầy sức sống cũng như l&agrave;m chậm đi qu&aacute; tr&igrave;nh l&atilde;o h&oacute;a.</p>\r\n', '2017-11-02 05:12:36', 'Nguyen Anh Tuan');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -419,9 +440,9 @@ ALTER TABLE `tb_khachhang`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `tb_lichsunganhan`
+-- Chỉ mục cho bảng `tb_lienhe`
 --
-ALTER TABLE `tb_lichsunganhan`
+ALTER TABLE `tb_lienhe`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -477,12 +498,12 @@ ALTER TABLE `tb_admin`
 -- AUTO_INCREMENT cho bảng `tb_chitietdonhang`
 --
 ALTER TABLE `tb_chitietdonhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT cho bảng `tb_chucnang`
 --
 ALTER TABLE `tb_chucnang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT cho bảng `tb_danhmuc`
 --
@@ -492,17 +513,17 @@ ALTER TABLE `tb_danhmuc`
 -- AUTO_INCREMENT cho bảng `tb_donhang`
 --
 ALTER TABLE `tb_donhang`
-  MODIFY `id_donhang` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_donhang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT cho bảng `tb_khachhang`
 --
 ALTER TABLE `tb_khachhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT cho bảng `tb_lichsunganhan`
+-- AUTO_INCREMENT cho bảng `tb_lienhe`
 --
-ALTER TABLE `tb_lichsunganhan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tb_lienhe`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT cho bảng `tb_menu`
 --
@@ -512,7 +533,7 @@ ALTER TABLE `tb_menu`
 -- AUTO_INCREMENT cho bảng `tb_nhasanxuat`
 --
 ALTER TABLE `tb_nhasanxuat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT cho bảng `tb_nhomnguoidung`
 --
@@ -522,7 +543,7 @@ ALTER TABLE `tb_nhomnguoidung`
 -- AUTO_INCREMENT cho bảng `tb_phanquyen`
 --
 ALTER TABLE `tb_phanquyen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT cho bảng `tb_sanpham`
 --
@@ -532,7 +553,7 @@ ALTER TABLE `tb_sanpham`
 -- AUTO_INCREMENT cho bảng `tb_tintuc`
 --
 ALTER TABLE `tb_tintuc`
-  MODIFY `id_tintuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id_tintuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 --
 -- Các ràng buộc cho các bảng đã đổ
 --
