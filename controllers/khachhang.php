@@ -25,6 +25,9 @@ class khachhang extends JATOVI_Controller
 			case 'dangnhap':
 				$this->dangnhap();
 				break;
+			case 'chitietdh':
+				$this->chitietdh();
+				break;
 			case 'dangxuat':
 				$this->dangxuat();
 				break;
@@ -36,26 +39,27 @@ class khachhang extends JATOVI_Controller
 
 
 	public function index()
-	{	
-		
-		$batdau = "2016-01-01";
+	{	$batdau = "2016-01-01";
 		$ketthuc = date("Y-m-d");
 		$list="";
 		$data['content'] = 'khachhang';
 		$data['contentdata'] = array();
 		include_once 'models/khachhang_model.php';
+		if(isset($_POST['ngaybatdau']))
+		{
+			$batdau =$_POST['ngaybatdau'];	
+		}
 		if(isset($_POST['ngaybatdau'])){
-		$batdau = $_POST['ngaybatdau'];	
+			$batdau =$_POST['ngayketthuc'];		
 		}
-		if(isset($_POST['ngayketthuc'])){
-		$ketthuc = $_POST['ngayketthuc'];	
-		}
+		
 		
 		$id_kh = $_SESSION['khachhang_ID'];
 		$lichsu = $khachhang_model->lichsu($id_kh,$batdau,$ketthuc);
+		if($lichsu !=NULL){
 		foreach($lichsu as $key => $value) {
 		$data['contentdata']['lichsu'][$key] = $value;
-		}
+		}}else{$data['contentdata']['lichsu'] = "";}
 		$data['JATOVI']=$this->JATOVI;
 		$this->JATOVI->load->view('master',$data);
 	}
@@ -123,6 +127,22 @@ class khachhang extends JATOVI_Controller
 
 		
 	}
+		public function chitietdh(){
+		$id = '';
+		if(isset($_GET['id'])){
+			$id = $_GET['id'];
+		}
+		$data['content'] = 'chitietdh';
+		$data['contentdata'] = array();	
+		include BASEPATH."models/khachhang_model.php";
+		$list = $khachhang_model->chitietdh($id);
+		$iddh = $list[0]['id_donhang'];
+		$data['contentdata']['iddh'] = $iddh;
+		foreach ($list as $key => $value) {
+			$data['contentdata']['list'][$key] = $value;}
+		$data['JATOVI']=$this->JATOVI;
+		$this->JATOVI->load->view('master',$data);
+		}
 
 }
 $khachhang = new khachhang($JATOVI);

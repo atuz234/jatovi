@@ -36,6 +36,15 @@ class khachhang_model extends JATOVI_Model
 		return $result;
 
 	}
+	public function chitietdh($id)
+	{
+		$sql = "SELECT tb_chitietdonhang.* , tb_sanpham.ten FROM `tb_chitietdonhang` INNER JOIN tb_sanpham on tb_chitietdonhang.id_sanpham = tb_sanpham.id where id_donhang = {$id} ";
+		$query = $this->connection->prepare($sql);
+ 		$query->execute();
+		$result = $query->fetchAll();
+		return $result;
+		
+	}
 }
 $khachhang_model = new khachhang_model();
 ?>
