@@ -1,16 +1,14 @@
-
 .nhomsp_title {
-  color: red; }
+  font-size: 20px; }
 
 .nhomsp_items {
   text-align: center; }
-  .nhomsp_items .spnb_price {
+  .nhomsp_items .sp_price {
     text-align: center; }
 
 .old_price {
   color: #737373;
   text-decoration: line-through; }
-
 
 .new_price {
   font-size: 18px;

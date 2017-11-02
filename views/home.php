@@ -28,23 +28,24 @@
 </div>
 <div class="container">
     <?php foreach ($nhomsp as $key => $value): ?>
-        <div class="nhomsp" style="margin-top: 15px; margin-bottom: 15px; ">
+        <div class="nhomsp" style="margin-top: 15px; margin-bottom: 15px;border:solid 4px red; border-radius: 20px; ">
             <div class="nhomsp_title" style="font-size: 20px;">
-               <span style="padding:10px;border-top-left-radius: 20px; border-bottom-right-radius: 20px; background-color: #FF4B82;"><?=$key ?></span>
+               <span style="padding:10px;border-top-left-radius: 20px; border-bottom-right-radius: 20px; background-color: #FF4B82;color:white; "><?=$key ?></span>
             </div>
             <div class="nhomsp_items">
                 <div class="row">
                     <?php foreach($value as $v) : ?>
-                            <div class="col-md-3">
+                            <div class="col-md-3" style="margin-top: 15px; margin-bottom: 15px;">
                                 <a href="<?=base_url?>index.php?module=sanpham&id=<?=$v['id']?>">
-                                    <div class="spbc_image">
-                                        <img src="<?=$v['hinhanh']?>">
+                                    <div class="sp_image">
+                                        <!-- <img src="<?=$v['hinhanh']?>"> -->
+                                        <img src="public/images/sanpham/noimage.png" width="130px" height="170px">
                                     </div>
-                                    <div class="spbc_name">
+                                    <div class="sp_name">
                                         <?=$v['ten'];?>
                                     </div>
                                 </a>
-                                <div class="spbc_price">
+                                <div class="sp_price">
                                     <span class="old_price"><?=$v['giacu']?></span>
                                     <span class="new_price"><?=$v['giamoi'] ?></span>  
                                 </div>
