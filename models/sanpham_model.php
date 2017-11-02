@@ -31,6 +31,15 @@ class sanpham_model extends JATOVI_Model
 		$result = $query->fetchAll();
 		return $result;
 	}
+	public function themluotxem($id, $luotxem)
+	{
+		$sql = " UPDATE `tb_sanpham` SET luotxem = '{$luotxem}' WHERE  id = {$id}";
+		$query = $this->connection->prepare($sql);
+		$query->execute();
+	}
+
+
+
 
 
 }

@@ -55,10 +55,10 @@ class quanlysanpham_model extends JATOVI_Model
 		return False;
 	}
 
-	public function update ($id='', $mang = array('ten' => '', 'mota' => '', 'id_danhmuc' => '', 'id_nsx' => '', 'xuatsu' => '', 'giacu' => '', 'giamoi' => '', 'ngaysanxuat' => '', 'hansudung' => '', 'donvi' => '', 'hinhanh' => ''))
+	public function update ( $mang = array('id'=>'','ten' => '', 'mota' => '', 'id_danhmuc' => '', 'id_nsx' => '', 'xuatsu' => '', 'giacu' => '', 'giamoi' => '', 'ngaysanxuat' => '', 'hansudung' => '', 'donvi' => '', 'hinhanh' => ''))
 	{
 		extract($mang);
-		$sql = "UPDATE {$this->_table} SET ten = '{$ten}', mota = '{$mota}', id_danhmuc = '{$id_danhmuc}', id_nsx = '{$id_nsx}', xuatsu = '{$xuatsu}', giacu = '{$giacu}', giamoi = '{$giamoi}', ngaysanxuat = '{$ngaysanxuat}', hansudung = '{$hansudung}', donvi = '{$donvi}', hinhanh = '{$hinhanh}' WHERE id = '{$id}'";
+		echo $sql = "UPDATE {$this->_table} SET ten ='{$ten}', mota = '{$mota}', giacu = '{$giacu}', giamoi = '{$giamoi}', ngaysanxuat = '{$ngaysanxuat}', hansudung = '{$hansudung}', donvi = '{$donvi}', hinhanh = '{$hinhanh}' WHERE id = '{$id}'";
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 	}

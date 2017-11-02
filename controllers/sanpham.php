@@ -31,10 +31,15 @@ class sanpham extends JATOVI_Controller
 		$data['content'] = 'sanpham';
 		$data['contentdata'] = array();
 		$id = '';
+		include_once 'models/sanpham_model.php';
 		if (isset($_GET['id'])) {
 			$id = $_GET['id'];
+			$sanphams = $sanpham_model->select_sanpham($id);
+			$luotxem = $sanphams[0]['luotxem'];
+			$themlx= $luotxem+1;
+			$sanpham_model->themluotxem($id,$themlx );
 		}
-		include_once 'models/sanpham_model.php';
+		
 
 		$sanphams = $sanpham_model->select_sanpham($id);
 

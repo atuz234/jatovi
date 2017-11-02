@@ -33,7 +33,7 @@ class quanlydonhang extends JATOVI_Controller
 		}
 	}
 		public function index(){
-		$limit = 2;
+		$limit = 10;
 		$batdau =0;	
 		$search="";
 		$list ="";
