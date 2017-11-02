@@ -63,9 +63,6 @@
                                         <a class="" href="<?=base_url."index.php?module=giohang&action=index"?>"><div><i class="fa fa-shopping-cart"></i>&nbsp; &nbsp;<span class="slsp"><?= $sosp?> sản phẩm</span></div></a>
                                     </li>
                                     <li>
-                                        <a class="" href="#"<?php //session_unset($_SESSION['cart']);?> ><i class="fa fa-check">Thanh toán</i></a>
-                                    </li>
-                                    <li>
                                     <?php if (isset($_SESSION['khachhang_ID'])){ ?>
                                         <a href="<?=base_url?>index.php?module=khachhang"><i class="fa fa-cog"></i>Tài khoản</a>
                                         <a href="<?=base_url?>index.php?module=khachhang&action=dangxuat"><i class="fa fa-sign-out "></i>Đăng xuất</a>
@@ -172,7 +169,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
-                            <a href="#">
+                            <a href="index.html">
                                 <img src="public/images/site/jatovi_logo.png" >
                             </a>
                         </div>
