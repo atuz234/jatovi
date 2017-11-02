@@ -26,4 +26,11 @@
 .new_price {
   font-weight: bold; }
 
+.sp_price {
+  text-align: center; }
+
+.sp_image img {
+  width: 130px;
+  height: 170px; }
+
 /*# sourceMappingURL=content_style.css.map */
