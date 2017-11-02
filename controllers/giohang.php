@@ -171,7 +171,12 @@ public function dathang(){
 		$chitiet= $giohang_model->chitiet($idsp,$iddh,$sl,$gia,$thanhtien);
 		}
 		unset($_SESSION['cart']);
-		header ("Location: http://localhost/jatovi/index.php");
+		// header ("Location: http://localhost/jatovi/index.php");
+		$data['content'] = 'camon_muahang';
+		$data['contentdata'] = array();
+		
+		$data['JATOVI']=$this->JATOVI;
+		$this->JATOVI->load->view('master',$data);	
 		}else {
 			header ("Location: http://localhost/jatovi/index.php?module=giohang");
 		}

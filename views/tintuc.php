@@ -1,5 +1,5 @@
 <?php include_once BASEPATH.'controllers/tintuc.php'; ?>
-<table border="1">
+<table class="table table-striped">
 			<thead>
 					<tr>
 						
@@ -35,10 +35,16 @@
                     <?php $a = explode('|', $value['hinhanh']);?>
 						<tr>
                         
-							<td><?=$value['tieude']?></td>
+							<td style="font-weight: bold; font-size: 20px;"><a href="<?=base_url."index.php?module=tintuc&action=chitiet&id=".$value['id_tintuc']?>" ><?=$value['tieude']?></a></td>
 							<td><img width="150px" height="150px" src="admin/public/images/tintuc/<?=$a[0]?>"/>
                             </td>
-							<td><?=$mota[0]. ".".$mota[1].".<br>"?><a href="<?=base_url."index.php?module=tintuc&action=chitiet&id=".$value['id_tintuc']?>">Xem Chi Tiet</a></td>
+							<td>
+								<?=$mota[0]. ".".$mota[1].".<br>"?>
+								<div style="margin-top: 40px; vertical-align: bottom; text-align: right;">
+									<a href="<?=base_url."index.php?module=tintuc&action=chitiet&id=".$value['id_tintuc']?>" >Xem Chi Tiet</a>
+								</div>
+									
+							</td>
 								</tr>
 					<?php endforeach;?>
                     <?php }?>
