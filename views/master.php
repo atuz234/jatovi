@@ -64,10 +64,6 @@
                                     </li>
                                     <li>
 
-                                        <a class="" href="#"><i class="fa fa-check">Thanh toán</i></a>
-                                    </li>
-                                    <li>
-
                                     <?php if (isset($_SESSION['khachhang_ID'])){ ?>
                                         <a href="<?=base_url?>index.php?module=khachhang"><i class="fa fa-cog"></i>Tài khoản</a>
                                         <a href="<?=base_url?>index.php?module=khachhang&action=dangxuat"><i class="fa fa-sign-out "></i>Đăng xuất</a>
