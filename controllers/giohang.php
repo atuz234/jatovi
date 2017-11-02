@@ -62,6 +62,9 @@ public function capnhatsoluong()
 			include_once 'models/giohang_model.php';
 			$soluong = $_POST['soluong'];
 			$data['contentdata']['soluong'] = $soluong;
+			$donhang = $giohang_model->maxdh();
+			$maxdh = $donhang[0]['maxdh'];
+			$data['contentdata']['maxdh'] = $maxdh;
 			foreach($_POST['soluong'] as $k => $v){
 				$idsp[] = $k;
 				}				
@@ -77,7 +80,7 @@ public function capnhatsoluong()
 		$data['JATOVI']=$this->JATOVI;
 		$this->JATOVI->load->view('master',$data);		
 
-	}
+}
 public function index()
 	{
 		$list = "";
@@ -147,17 +150,31 @@ public function xoasp(){
 	header ("Location: http://localhost/jatovi/index.php?module=giohang");	
 	}
 public function dathang(){
-	if(isset($_POST['diachi']) and $_POST['diachi']!="" ){
-		$id_kh = $_POST['idkh'];
+	$i = 0;
+	include_once 'models/giohang_model.php';
+	if(isset($_POST['diachi']) and $_POST['diachi']!="" ){		
+		$id_kh = $_SESSION['khachhang_ID'];
 		$diachi = $_POST['diachi'];
 		$sotien = $_POST['tongtien'];
 		$ngaydathang = date("Y-m-d");
 		$tinhtrang = 1;
-		include_once 'models/giohang_model.php';
+		
 		$dathang= $giohang_model->dathang($id_kh,$diachi,$sotien,$ngaydathang,$tinhtrang);
+		
+		
+		for($i; $i<count($_POST['idsp']); $i++){
+		$idsp = $_POST['idsp'][$i];
+		$iddh = $_POST['iddh'];
+		$sl = $_POST['soluong'][$i];
+		$gia = $_POST['gia'][$i];
+		$thanhtien = $sl *$gia;
+		$chitiet= $giohang_model->chitiet($idsp,$iddh,$sl,$gia,$thanhtien);
+		}
 		unset($_SESSION['cart']);
 		header ("Location: http://localhost/jatovi/index.php");
-		}else {header ("Location: http://localhost/jatovi/index.php?module=giohang");}
+		}else {
+			header ("Location: http://localhost/jatovi/index.php?module=giohang");
+		}
 	}
 }           
 $giohang = new giohang($JATOVI);

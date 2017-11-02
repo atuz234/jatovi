@@ -27,14 +27,23 @@ class khachhang_model extends JATOVI_Model
 		$query = $this->connection->prepare($sql);
  		$query->execute();
 	}
-	public function lichsu($id_kh)
+	public function lichsu($id_kh,$batdau,$ketthuc)
 	{
-		echo $sql = "SELECT *,DATE_FORMAT(tb_donhang.ngaydathang, '%d-%m-%Y') as datedathang FROM tb_donhang WHERE id_khachhang ='{$id_kh}' ";
+		$sql = "SELECT *,DATE_FORMAT(tb_donhang.ngaydathang, '%d-%m-%Y') as datedathang FROM tb_donhang WHERE id_khachhang ='{$id_kh}' and '{$batdau}' <= ngaydathang and ngaydathang  <='{$ketthuc}' ";
 		$query = $this->connection->prepare($sql);
  		$query->execute();
 		$result = $query->fetchAll();
 		return $result;
 
+	}
+	public function chitietdh($id)
+	{
+		$sql = "SELECT tb_chitietdonhang.* , tb_sanpham.ten FROM `tb_chitietdonhang` INNER JOIN tb_sanpham on tb_chitietdonhang.id_sanpham = tb_sanpham.id where id_donhang = {$id} ";
+		$query = $this->connection->prepare($sql);
+ 		$query->execute();
+		$result = $query->fetchAll();
+		return $result;
+		
 	}
 }
 $khachhang_model = new khachhang_model();
