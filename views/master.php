@@ -216,7 +216,7 @@
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
-                            <form class="navbar-form navbar-right" action="<?=base_url."index.php?module=home&action=index"?>" method="post">
+                            <form class="navbar-form navbar-right" action="<?=base_url."index.php?module=home&action=index"?>" method="post" style="margin-top: -2px; margin-bottom: 0px;">
                                 <div class="input-group">
                                     <input type="text" name="timkiem" class="form-control" placeholder="Search">
                                     <div class="input-group-btn">

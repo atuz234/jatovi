@@ -30,6 +30,15 @@ class danhmuc_model extends JATOVI_Model
 		$result = $query->fetchAll();
 		return $result;
 	}
+
+	public function select_danhmuc()
+	{
+		$sql = "SELECT * FROM {$this->_table2} ";
+		$query = $this->connection->prepare($sql);
+		$query->execute();
+		$result = $query->fetchAll();
+		return $result;
+	}
 }
 $danhmuc_model = new danhmuc_model();
 ?>

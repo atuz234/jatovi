@@ -1,17 +1,29 @@
-.nhomsp_title {
-  font-size: 20px; }
-
-.nhomsp_items {
-  text-align: center; }
-  .nhomsp_items .sp_price {
+.container .nhomsp {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: solid 4px red;
+  border-radius: 20px; }
+  .container .nhomsp .nhomsp_title {
+    font-size: 20px; }
+    .container .nhomsp .nhomsp_title span {
+      padding: 10px;
+      border-top-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      background-color: #FF4B82;
+      color: white; }
+  .container .nhomsp .nhomsp_items {
     text-align: center; }
+    .container .nhomsp .nhomsp_items .sp_price {
+      text-align: center; }
+    .container .nhomsp .nhomsp_items .sp_image img {
+      width: 130px;
+      height: 170px; }
 
 .old_price {
   color: #737373;
   text-decoration: line-through; }
 
 .new_price {
-  font-size: 18px;
   font-weight: bold; }
 
 /*# sourceMappingURL=content_style.css.map */

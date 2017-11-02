@@ -1,26 +1,43 @@
-.wapper
+.container
 {
-	.content
+	.nhomsp
 	{
-
-
+		margin-top: 15px;
+		margin-bottom: 15px;
+		border: solid 4px red;
+		border-radius: 20px;
+		.nhomsp_title
+		{
+			font-size: 20px;
+			span 
+			{
+				padding: 10px;
+				border-top-left-radius: 20px; 
+				border-bottom-right-radius: 20px; 
+				background-color: #FF4B82;
+				color:white; 
+			}
+		}
+		.nhomsp_items
+		{
+			text-align: center;
+			.sp_price
+			{
+				text-align: center;
+				
+			}
+			.sp_image
+			{
+				img
+				{
+					width:130px; 
+					height:170px;
+				}
+					
+			}
+		}
 	}
 }
-
-.nhomsp_title
-{
-	font-size: 20px;
-}
-.nhomsp_items
-{
-	text-align: center;
-	.sp_price
-	{
-		text-align: center;
-
-	}
-}
-	
 .old_price
 {
 	color: #737373;
@@ -28,6 +45,9 @@
 }
 .new_price
 {
-	font-size: 18px;
+	
 	font-weight: bold;
 }
+
+	
+
