@@ -41,7 +41,7 @@ class giohang_model extends JATOVI_Model
 		return $result;
 	}
 	public function chitiet($idsp,$iddh,$sl,$gia,$thanhtien){
-		echo $sql = "INSERT INTO tb_chitietdonhang(id_sanpham, id_donhang, soluong, dongia, thanhtien) VALUES ({$idsp}, {$iddh}, {$sl}, {$gia}, {$thanhtien})";	
+		$sql = "INSERT INTO tb_chitietdonhang(id_sanpham, id_donhang, soluong, dongia, thanhtien) VALUES ({$idsp}, {$iddh}, {$sl}, {$gia}, {$thanhtien})";	
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 	}
