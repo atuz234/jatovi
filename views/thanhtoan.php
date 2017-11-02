@@ -20,7 +20,7 @@ $tongtien = 0;
 ?>
 <form action="<?=base_url."index.php?module=giohang&action=dathang"?>" method="post">
 Đơn Hàng Của Bạn :<br>
-<table border="1">
+<table border="1" class="table table-striped">
 <tr>
 	<th>Sản Phẩm</th>
     <th>Số Lượng</th>

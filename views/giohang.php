@@ -23,16 +23,17 @@ $tongtien=0;
 				</thead>
 				<tbody>
                 
-<?php if($list==NULL){?>
-							<td colspan="15">Không Có Sản Phẩm trong giỏ hàng </td>
+				<?php if($list==NULL){?>
+						<tr>
+							<td colspan="4">Không Có Sản Phẩm trong giỏ hàng </td>
 						</tr>
-<?php } else{ foreach ($list as $value): ?>
+				<?php }else{ foreach ($list as $value): ?>
 						<tr>
                         
 							<td><?=$value['ten'].'<br>'?></td>
                             <td>
-                            <input type="hidden" name="idsp[]" value="<?=$value['id']?>"  />
-                            <input type="number"  style="width:50px" min="1" max="99" onchange="capnhat()" name="soluong[<?= $value['id']?>]" value="<?= $_SESSION['cart'][$value['id']]?>" >
+	                            <input type="hidden" name="idsp[]" value="<?=$value['id']?>"  />
+	                            <input type="number"  style="width:50px" min="1" max="99" onchange="capnhat()" name="soluong[<?= $value['id']?>]" value="<?= $_SESSION['cart'][$value['id']]?>" >
                  				
                             </td>
 							<td><?=number_format($value['giamoi'])?>&nbsp;VNĐ</td>
@@ -44,17 +45,18 @@ $tongtien=0;
 									<i class="glyphicon glyphicon-trash " aria-hidden="true"></i>
 								</a>
 							</td>
-                            </tr>
+                        </tr>
                             
 							<?php  $tongtien = $tongtien + $_SESSION['cart'][$value['id']]* $value['giamoi'];
-							 endforeach;}?>
+							 endforeach;?>
                             <th colspan="3" align="center">Tổng Tiền</th><th colspan="2" align="right"><input type="text" style="width:150px" disabled="disabled" name="tongtien" value="<?php echo number_format($tongtien)  ?> "/>&nbsp;VNĐ</th>
                             <tr>
                             <td colspan="2" align="center"><button name="submitsl" id="capnhatsoluong"  type = "submit" style="color:#000" class="btn btn-default" >Cập Nhật Số Lượng </button></td>
-                            <td colspan="2" align="center"><button name="submit" type = "submit"  class="btn btn-default" >Thanh Toán</button></td></tr>
-                           
-							</tbody> 
-                            </table>
-                             </form>
+                            <td colspan="2" align="center"><button name="submit" type = "submit"  class="btn btn-default" >Thanh Toán</button></td>
+                        </tr>
+                <?php }; ?>
+						</tbody> 
+                        </table>
+                        </form>
                              
                             
