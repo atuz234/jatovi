@@ -60,7 +60,7 @@
                             <td><?= $value['ngaydathang'];?></td>
 							<td><?=number_format($value['sotien'])."&nbsp; VNĐ";?></td>
                             <td><?php if($value['tinhtrang']==0){echo "Đã Huỷ";}
-										else if($value['tinhtrang']==1){echo "Đăng Xử Lý";}
+										else if($value['tinhtrang']==1){echo "Đang Xử Lý";}
 										else if($value['tinhtrang']==2){echo "Hoàn Thành";}?></td>
                             
                            <!-- cap nhat -->

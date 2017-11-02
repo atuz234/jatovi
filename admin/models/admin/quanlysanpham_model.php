@@ -22,7 +22,7 @@ class quanlysanpham_model extends JATOVI_Model
 	} 
 	public function select_all_product($search, $limit, $batdau)
 	{
-		echo $sql = "SELECT sp.*, sp.id as idsanpham, sp.ten, nsx.id as idnsx, nsx.nsx_ten, DATE_FORMAT(sp.ngaysanxuat, '%d-%m-%Y') as datesanxuat, DATE_FORMAT(sp.hansudung, '%d-%m-%Y') as datesudung FROM {$this->_table} sp INNER JOIN {$this->_table2} dm ON sp.id_danhmuc = dm.id INNER JOIN {$this->_table3} nsx ON sp.id_nsx = nsx.id  where sp.ten like '%$search%' ORDER BY sp.id limit $batdau, $limit";		
+		$sql = "SELECT sp.*, sp.id as idsanpham, sp.ten, nsx.id as idnsx, nsx.nsx_ten, DATE_FORMAT(sp.ngaysanxuat, '%d-%m-%Y') as datesanxuat, DATE_FORMAT(sp.hansudung, '%d-%m-%Y') as datesudung FROM {$this->_table} sp INNER JOIN {$this->_table2} dm ON sp.id_danhmuc = dm.id INNER JOIN {$this->_table3} nsx ON sp.id_nsx = nsx.id  where sp.ten like '%$search%' ORDER BY sp.id limit $batdau, $limit";		
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 		$result = $query->fetchALL();

@@ -33,10 +33,9 @@ class nhasanxuat_model extends JATOVI_Model
 		}
 		return False;
 }
-	public function update($id = '', $mang = array('nsx_ten' =>'', 'nsx_diachi'=>'',  'nsx_sodienthoai' =>'', 'nsx_email'=>'', 'nsx_website'=>'', 'nsx_logo'=>'', 'nsx_mota'=>'') )
+	public function update($id = '', $nsx_ten ='', $nsx_diachi='', $nsx_sodienthoai='', $nsx_email='', $nsx_website='', $nsx_mota='' )
 	{
-		extract($mang);
-		$sql = "UPDATE {$this->_table} SET nsx_ten = '{$nsx_ten}', nsx_diachi = '{$nsx_diachi}', nsx_sodienthoai = {$nsx_sodienthoai}, nsx_email = '{$nsx_email}', nsx_website = '{$nsx_website}', nsx_logo = '{$nsx_logo}', nsx_mota = '{$nsx_mota}' WHERE id = {$id}";
+		echo $sql = "UPDATE {$this->_table} SET nsx_ten = '{$nsx_ten}', nsx_diachi = '{$nsx_diachi}', nsx_sodienthoai = '{$nsx_sodienthoai}', nsx_email = '{$nsx_email}', nsx_website = '{$nsx_website}',nsx_mota = '{$nsx_mota}' WHERE id = {$id}";
 
 		$query = $this->connection->prepare($sql);
 		$query->execute();

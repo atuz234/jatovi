@@ -4,8 +4,16 @@
 			Danh mục sản phẩm
 		</div>
 		<div>
-			
-		</div>
+            <?php 
+                include_once BASEPATH.'models/danhmucside_model.php';
+                $danhmuc=$danhmucside_model->select_danhmuc();
+                foreach ($danhmuc as $key => $value) {
+            ?>
+                <div style="font-size: 15px;padding-top: 10px; border-bottom: dotted 1px black;"><a href="<?=$value['dm_url']?>"><?=$value['name']?></a></div>
+            <?php
+                }
+            ?>
+        </div>
 	</div>
 	<div class="col-md-9">
 		<div class="row">
@@ -16,19 +24,22 @@
 			</div>
 			<div class="col-md-7">
 				<div class="tensp" style="font-weight: bold; font-size: 25px;color: red;"><?=$sanphams['ten']?></div>
-				<div class="gia" style=" font-size: 30px;">
+				<div class="gia" style=" font-size: 30px; border-bottom: dotted 1px black;">
 					<span class="nhan_gia" style="font-weight: bold; color: pink;">Giá: </span>
 					<span class="old_price"><?=$sanphams['giacu'] ?></span> 
 					<span class="new_price"><?=$sanphams['giamoi']?></span> 
 				</div>
-				<div class="nsx">
+				<div class="nsx" style="border-bottom: dotted 1px black; margin-bottom:5px; margin-top: 5px; ">
 					<span class="nhasanxuat" >Nhà sản xuất: </span>
 					<span class="tennsx" style="font-weight: bold;"><?=$sanphams['nsx_ten']?>, </span>
 					<span class="xuatsu" style="font-weight: bold;"><?=$sanphams['xuatsu']?></span>
 				</div>
 				<div class="muahang">
-					<input type="number" value="1" min="1" name="slmua" style="width: 50px">
-					<div class="btn btn-default">Mua hàng</div>
+					<a href="<?=base_url."index.php?module=giohang&action=themsp&id=".$sanphams['id']?>">
+                        <div class="btn btn-default">
+                            Thêm vào giỏ
+                        </div>
+                    </a>
 				</div>
 			</div>
 		</div>

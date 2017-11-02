@@ -17,22 +17,22 @@
 											<input type="text" name="ten" value="" class="form-control" required="required">
 
 											<label for="diachi">Địa chỉ</label>
-											<input type="text" name="diachi" value="" class="form-control" required="required">
+											<input type="text" name="diachi" value="" class="form-control" >
 
 											<label for="sodienthoai">Số điện thoại</label>
-											<input type="phone" name="sodienthoai" value="" class="form-control" required="required">
+											<input type="phone" name="sodienthoai" value="" class="form-control" >
 
 											<label for="email">Email</label>
-											<input type="email" name="email" value="" class="form-control" required="required">
+											<input type="email" name="email" value="" class="form-control" >
 
 											<label for="Website">Website</label>
-											<input type="website" name="website" value="" class="form-control" required="required">
+											<input type="website" name="website" value="" class="form-control" >
 											<br/>
 											
 
 
 											<label for="mota">Mô tả</label>
-											<input type="text" name="mota" value="" class="form-control" required="required">
+											<input type="text" name="mota" value="" class="form-control" >
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
@@ -56,22 +56,21 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>ID</th>
+						<th>STT</th>
 						<th>Tên</th>
 						<th>Địa chỉ</th>
 						<th>Số điện thoại</th>
 						<th>Email</th>
 						<th>Website</th>
-						<th>Logo</th>
 						<th>Mô tả</th>
 						<th>Sửa</th>
 						<th>Xóa</th>
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach ($nsx as $value): ?>
+					<?php $i=1; foreach ($nsx as $value): ?>
 					<tr>
-						<td><?=$value['id']?></td>
+						<td><?=$i++?></td>
 						<td><?=$value['nsx_ten']?></td>
 						<td><?=$value['nsx_diachi']?></td>
 						<td><?=$value['nsx_sodienthoai']?></td>
@@ -101,18 +100,18 @@
 													<input type="text" name="txtnhasanxuat" value="<?=$value['nsx_ten']?>" class="form-control" required ="required">
 												
 													<label for="txtdiachi">Địa chỉ</label>
-													<input type="text" name="txtdiachi" value="<?=$value['nsx_diachi']?>" class="form-control" required="required">
+													<input type="text" name="txtdiachi" value="<?=$value['nsx_diachi']?>" class="form-control" >
 
 													<label for="txtsodienthoai">Số điện thoại</label>
-													<input type="text" name="txtsodienthoai" value="<?=$value['nsx_sodienthoai']?>" class="form-control" required="required">
+													<input type="text" name="txtsodienthoai" value="<?=$value['nsx_sodienthoai']?>" class="form-control" >
 
 													<label for="txtemail">Email</label>
-													<input type="email" name="txtemail" value="<?=$value['nsx_email']?>" class="form-control" required="required">
+													<input type="email" name="txtemail" value="<?=$value['nsx_email']?>" class="form-control" >
 
 													<label for="txtwebsite">Website</label>
-													<input type="Website" name="txtwebsite" value="<?=$value['nsx_website']?>" class="form-control" required="required">
+													<input type="Website" name="txtwebsite" value="<?=$value['nsx_website']?>" class="form-control" >
 													<label for="txtmota">Mô tả</label>
-													<input type="text" name="txtmota" value="<?=$value['nsx_mota']?>" class="form-control" required="required">
+													<input type="text" name="txtmota" value="<?=$value['nsx_mota']?>" class="form-control" >
 													</input>
 												</div>
 											</div>

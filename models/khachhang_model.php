@@ -29,7 +29,9 @@ class khachhang_model extends JATOVI_Model
 	}
 	public function lichsu($id_kh,$batdau,$ketthuc)
 	{
+
 		$sql = "SELECT *,DATE_FORMAT(tb_donhang.ngaydathang, '%d-%m-%Y') as datedathang FROM tb_donhang WHERE id_khachhang ='{$id_kh}' and '{$batdau}' <= ngaydathang and ngaydathang  <='{$ketthuc}' ";
+
 		$query = $this->connection->prepare($sql);
  		$query->execute();
 		$result = $query->fetchAll();

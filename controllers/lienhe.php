@@ -46,7 +46,12 @@ class lienhe extends JATOVI_Controller
 		}
 		include BASEPATH."models/lienhe_model.php";
 		$list = $lienhe_model->them($hoten, $email, $tieude, $noidung);		
-		header("Location:".base_url."index.php");
+		// header("Location:".base_url."index.php");
+		$data['content'] = 'camon';
+		$data['contentdata'] = array();
+		
+		$data['JATOVI']=$this->JATOVI;
+		$this->JATOVI->load->view('master',$data);	
 	}
 }        
 $lienhe = new lienhe($JATOVI);

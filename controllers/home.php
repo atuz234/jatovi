@@ -52,7 +52,6 @@ class home extends JATOVI_Controller
 			$data['contentdata']['nhomsp']['Sản phẩm mới'][$key] = $value;
 		}
 
-
 		$data['JATOVI']=$this->JATOVI;
 		$this->JATOVI->load->view('master',$data);
 	}

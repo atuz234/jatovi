@@ -14,34 +14,34 @@
 						$current_page =1;
 					}
 									?>
-                        <?php if ($list==NULL){ ?>
+                    <?php if ($list==NULL){ ?>
 							<h2 style="color:red;">Không Có Sản Phẩm Bạn Cần Tìm.</h2>
-					<?php }else { ?>
+					<?php }else{ ?>
 					<div class="nhomsp_items">
-                <div class="row">
-                    <?php foreach($list as $v) : ?>
-                            <div class="col-md-3">
-                                <a href="<?=base_url?>index.php?module=sanpham&id=<?=$v['id']?>">
-                                    <div class="spbc_image">
-                                        <img src="<?=$v['hinhanh']?>">
+                        <div class="row">
+                            <?php foreach($list as $v) : ?>
+                                    <div class="col-md-3">
+                                        <a href="<?=base_url?>index.php?module=sanpham&id=<?=$v['id']?>">
+                                            <div class="sp_image">
+                                                <img src="<?=$v['hinhanh']?>" width="130px" height="170px" >
+                                            </div>
+                                            <div class="sp_name">
+                                                <?=$v['ten'];?>
+                                            </div>
+                                        </a>
+                                        <div class="sp_price">
+                                            <span class="old_price"><?=$v['giacu']?></span>
+                                            <span class="new_price"><?=$v['giamoi'] ?></span>  
+                                        </div>
+                                        <a href="<?=base_url."index.php?module=giohang&action=themsp&id=".$v['id']?>">
+                                            <div class="btn btn-default">
+                                                Thêm vào giỏ
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div class="spbc_name">
-                                        <?=$v['ten'];?>
-                                    </div>
-                                </a>
-                                <div class="spbc_price">
-                                    <span class="old_price"><?=$v['giacu']?></span>
-                                    <span class="new_price"><?=$v['giamoi'] ?></span>  
-                                </div>
-                                <a href="<?=base_url."index.php?module=giohang&action=themsp&id=".$v['id']?>">
-                                    <div class="btn btn-default">
-                                        Thêm vào giỏ
-                                    </div>
-                                </a>
-                            </div>
-                    <?php endforeach; ?>
-                </div> 
-            </div>
+                            <?php endforeach; ?>
+                        </div> 
+                    </div>
                     <?php }?>
             <?php
             if($total_records>9){ ?>
