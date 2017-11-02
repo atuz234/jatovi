@@ -19,7 +19,7 @@
 		<div class="row">
 			<div class="col-md-5">
 				<div class="sanpham_hinhanh">
-					<img src="<?=$sanphams['hinhanh']?>" width="260px" height="340px">
+					<img src="public/images/sanpham/<?=$sanphams['hinhanh']?>" width="260px" height="340px">
 				</div>
 			</div>
 			<div class="col-md-7">
@@ -34,6 +34,10 @@
 					<span class="tennsx" style="font-weight: bold;"><?=$sanphams['nsx_ten']?>, </span>
 					<span class="xuatsu" style="font-weight: bold;"><?=$sanphams['xuatsu']?></span>
 				</div>
+                <div>
+                	<span class="luotxem">Lượt xem: <?=$sanphams['luotxem']?> |</span>
+                    <span class="luotmua">Đã Bán: <?=$sanphams['damua']?></span>
+                </div>
 				<div class="muahang">
 					<a href="<?=base_url."index.php?module=giohang&action=themsp&id=".$sanphams['id']?>">
                         <div class="btn btn-default">

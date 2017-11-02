@@ -163,17 +163,21 @@ public function dathang(){
 		
 		
 		for($i; $i<count($_POST['idsp']); $i++){
+		
 		$idsp = $_POST['idsp'][$i];
 		$iddh = $_POST['iddh'];
 		$sl = $_POST['soluong'][$i];
 		$gia = $_POST['gia'][$i];
 		$thanhtien = $sl *$gia;
+		$damua = $giohang_model->damua($idsp);
+		$lm = $damua[0]['damua']+$sl;
+		$giohang_model->themdamua($idsp, $lm);
 		$chitiet= $giohang_model->chitiet($idsp,$iddh,$sl,$gia,$thanhtien);
 		}
 		unset($_SESSION['cart']);
 		header ("Location: http://localhost/jatovi/index.php");
 		}else {
-			header ("Location: http://localhost/jatovi/index.php?module=giohang");
+		header ("Location: http://localhost/jatovi/index.php?module=giohang");
 		}
 	}
 }           

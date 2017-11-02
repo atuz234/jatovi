@@ -56,7 +56,7 @@ class home extends JATOVI_Controller
 		$this->JATOVI->load->view('master',$data);
 	}
 	public function timkiem(){
-		$limit = 9;
+		$limit = 8	;
 		$batdau =0;	
 		$spnb = "";
 		$p = 1;

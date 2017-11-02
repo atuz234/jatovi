@@ -45,6 +45,20 @@ class giohang_model extends JATOVI_Model
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 	}
+	public function damua($id)
+	{
+		$sql = "SELECT damua from  {$this->_table} where id = {$id} ";	
+		$query = $this->connection->prepare($sql);
+		$query->execute();
+		$result = $query->fetchALL();
+		return $result;
+	}
+	public function themdamua($idsp, $lm)
+	{
+		$sql = " UPDATE `tb_sanpham` SET damua = '{$lm}' WHERE  id = {$idsp}";
+		$query = $this->connection->prepare($sql);
+		$query->execute();
+	}
 }
 $giohang_model = new giohang_model();
 ?>

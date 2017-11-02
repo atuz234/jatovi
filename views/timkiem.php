@@ -5,7 +5,7 @@
 				
 				 	$current_page =$p;
 					
-       				 $limit = 9;
+       				 $limit = 8;
 					 $total_page = ceil($total_records / $limit);
 					if ($current_page > $total_page){
 						$current_page = $total_page;
@@ -23,7 +23,7 @@
                                     <div class="col-md-3">
                                         <a href="<?=base_url?>index.php?module=sanpham&id=<?=$v['id']?>">
                                             <div class="sp_image">
-                                                <img src="<?=$v['hinhanh']?>" width="130px" height="170px" >
+                                                <img src="public/images/sanpham/<?=$v['hinhanh']?>" width="130px" height="170px" >
                                             </div>
                                             <div class="sp_name">
                                                 <?=$v['ten'];?>
@@ -44,7 +44,7 @@
                     </div>
                     <?php }?>
             <?php
-            if($total_records>9){ ?>
+            if($total_records>8){ ?>
             <div  align="center">
            <?php 
             // PHẦN HIỂN THỊ PHÂN TRANG

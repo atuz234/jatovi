@@ -37,7 +37,7 @@
 				
 				 	$current_page =$p;
 					
-       				 $limit = 2;
+       				 $limit = 10;
 					 $total_page = ceil($total_records / $limit);
 					if ($current_page > $total_page){
 						$current_page = $total_page;
@@ -110,7 +110,7 @@
 				</tbody>
 			</table>
              <?php
-            if($total_records>2){ ?>
+            if($total_records>10){ ?>
               <div  align="center">
            <?php 
             // PHẦN HIỂN THỊ PHÂN TRANG
