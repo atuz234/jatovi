@@ -33,7 +33,7 @@ class quanlydonhang extends JATOVI_Controller
 		}
 	}
 		public function index(){
-		$limit = 10;
+		$limit = 2;
 		$batdau =0;	
 		$search="";
 		$list ="";
@@ -61,10 +61,10 @@ class quanlydonhang extends JATOVI_Controller
 			$list= $quanlydonhang_model->getlist($search, $limit, $batdau);
 		if ($list!=NULL	) {
 			foreach ($list as $key => $value) {
-			$data['contentdata']['list'][$key] = $value;
-			$tongdong =$quanlydonhang_model->sodong();
+			$data['contentdata']['list'][$key] = $value;}
+			$tongdong =$quanlydonhang_model->sodong($search);
 			$data['contentdata']['tongdong']= $tongdong;
-		}
+		
 		}else{
 			$tongdong =0;
 			$data['contentdata']['tongdong']= $tongdong;
@@ -101,22 +101,6 @@ class quanlydonhang extends JATOVI_Controller
 				$capnhat = $quanlydonhang_model->capnhat($tinhtrang, $id_donhang);
 				}
 			}
-		public function timkiem(){
-			$search="";
-		if(isset($_POST['timkiem'])){
-			$search = $_POST['timkiem'];
-			include "models/admin/quanlydonhang_model.php";
-			$list = $quanlydonhang_model->search($search);
-			
-				$data['content'] = 'donhang/quanlydonhang';
-			$data['contentdata'] = array();
-			foreach ($list as $key => $value) {
-			$data['contentdata']['list'][$key] = $value;
-			}
-			$data['JATOVI']=$this->JATOVI;
-			$this->JATOVI->load->view('admin/master',$data);
-			}
-		}
 }
 $quanlydonhang = new quanlydonhang($JATOVI);
 ?>

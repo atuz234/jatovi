@@ -8,8 +8,13 @@
 	<div class="col-md-12">
 		<div class="popover-title">
 			<h2>Quản lý sản phẩm</h2>
-
 			<div class="clearfix"></div>
+              <div id="timkiem">
+            	<form method="post" action="<?=base_url."index.php?module=quanlysanpham&action=index"?>"?>
+                	<input type="text" name="timkiem"  placeholder="Search Product..."     value="<?= $search?>" />
+                 	<input type="submit" value="Tìm Kiếm"    class="btn btn-primary btn-sm" >
+            	</form>
+            </div>
 			<a class="btn btn-primary" data-toggle="modal" href="#insert">
 				<i class="fa fa-plus-square"></i>Thêm mới</a>
 
@@ -116,7 +121,7 @@
 				
 				 	$current_page =$p;
 					
-       				 $limit = 10;
+       				 $limit = 5;
 					 $total_page = ceil($total_records / $limit);
 					if ($current_page > $total_page){
 						$current_page = $total_page;
@@ -130,7 +135,8 @@
 							<td colspan="15">Không Có Tin Tức </td>
 						</tr>
 					<?php }else { ?>
-					<?php foreach ($list as $value): ?> 
+					<?php foreach ($list as $value):
+					 ?> 
 						<tr>
 							<td><?=$value['id']?></td>
 							<td><?=$value['ten'] ?></td>
@@ -141,7 +147,7 @@
 							<td><?=$value['giacu']?></td>
 							<td><?=$value['giamoi']?></td>
 							<td><?=$value['donvi']?></td>
-							<td><?=$value['hinhanh']?></td>
+							<td><img width="150px" height="150px" src="../public/images/sanpham/<?=$value['hinhanh']?>" /></td>
 							<td><?=$value['luotxem']?></td>
 							<td><?=$value['damua']?></td>
 							<!-- Nút sửa -->
@@ -234,7 +240,7 @@
 	</tbody>
 </table>
  <?php
-            if($total_records>10){ ?>
+            if($total_records>5){ ?>
             <div  align="center">
            <?php 
             // PHẦN HIỂN THỊ PHÂN TRANG
@@ -253,7 +259,7 @@
                 }
                 else{
 				   
-                    echo '<a href="index.php?module=quanlytintuc&action=index&search='.$search.'&p='.$i.'">'.$i.'</a>  ';
+                    echo '<a href="index.php?module=quanlysanpham&action=index&search='.$search.'&p='.$i.'">'.$i.'</a>  ';
                 }
             }
             

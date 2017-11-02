@@ -23,6 +23,9 @@ class home extends JATOVI_Controller
 			case 'viewproduct':
 				$this->viewproduct;
 				break;
+			case 'timkiem':
+				$this->timkiem();
+				break;
 			default:
 				$this->index();
 				break;
@@ -32,11 +35,34 @@ class home extends JATOVI_Controller
 	{	$data['content'] = 'home';
 		$data['contentdata'] = array();
 		include_once 'models/home_model.php';
-		/*
-		$limit = 2;
+		
+
+		$spnb = $home_controller->select_spnb();
+		foreach ($spnb as $key => $value) {
+			$data['contentdata']['nhomsp']['Sản phẩm nổi bật'][$key] = $value;
+		}
+
+		$spbc = $home_controller->select_spbc();
+		foreach ($spbc as $key => $value) {
+			$data['contentdata']['nhomsp']['Sản phẩm bán chạy'][$key] = $value;
+		}
+
+		$spm = $home_controller->select_spm();
+		foreach ($spm as $key => $value) {
+			$data['contentdata']['nhomsp']['Sản phẩm mới'][$key] = $value;
+		}
+
+		$data['JATOVI']=$this->JATOVI;
+		$this->JATOVI->load->view('master',$data);
+	}
+	public function timkiem(){
+		$limit = 9;
 		$batdau =0;	
 		$spnb = "";
-		$p = "";
+		$p = 1;
+		$data['content'] = 'timkiem';
+		$data['contentdata'] = array();
+		include_once 'models/home_model.php';
 		if (isset($_GET['search']))
 		{
 			$search = $_GET['search'];
@@ -60,40 +86,20 @@ class home extends JATOVI_Controller
 		else{$p=1;}
 			$data['contentdata']['p']= $p;
 			$batdau = ($p -1)*$limit;
-			$spnb = $home_controller->search($search, $limit, $batdau);
-			if($spnb != NULL){
-			foreach ($spnb as $key => $value) {
-			$data['contentdata']['spnb'][$key] = $value;}
+			$list = $home_controller->search($search, $limit, $batdau);
+			if($list != NULL){
+			foreach ($list as $key => $value) {
+			$data['contentdata']['list'][$key] = $value;}
 			$tongdong =$home_controller->sodong($search);
 			$data['contentdata']['tongdong']= $tongdong;
 			}else{
 				$tongdong = 0;
 				$data['contentdata']['tongdong']= $tongdong;
-				$data['contentdata']['spnb']="";
-				}
-			$menus = $home_controller->select_menu();
-			foreach ($menus as $key => $value) {
-			$data['menus'][$key] = $value;
-			}
-   */
-
-		$spnb = $home_controller->select_spnb();
-		foreach ($spnb as $key => $value) {
-			$data['contentdata']['nhomsp']['Sản phẩm nổi bật'][$key] = $value;
-		}
-
-		$spbc = $home_controller->select_spbc();
-		foreach ($spbc as $key => $value) {
-			$data['contentdata']['nhomsp']['Sản phẩm bán chạy'][$key] = $value;
-		}
-
-		$spm = $home_controller->select_spm();
-		foreach ($spm as $key => $value) {
-			$data['contentdata']['nhomsp']['Sản phẩm mới'][$key] = $value;
-		}
-
+				$data['contentdata']['list']="";
+				}	
 		$data['JATOVI']=$this->JATOVI;
 		$this->JATOVI->load->view('master',$data);
+
 	}
 	
 }           

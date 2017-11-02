@@ -25,6 +25,11 @@ class giohang_model extends JATOVI_Model
 		$result = $query->fetchALL();
 		return $result;
 	}
+	public function dathang($id_kh,$diachi,$sotien,$ngaydathang,$tinhtrang){
+		$sql = "INSERT INTO tb_donhang (id_khachhang, diachi, sotien, ngaydathang, tinhtrang) VALUES ({$id_kh},'{$diachi}', {$sotien}, '{$ngaydathang}', {$tinhtrang})";	
+		$query = $this->connection->prepare($sql);
+		$query->execute();
+	}
 }
 $giohang_model = new giohang_model();
 ?>

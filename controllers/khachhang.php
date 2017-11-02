@@ -37,10 +37,16 @@ class khachhang extends JATOVI_Controller
 
 	public function index()
 	{
+		$list="";
 		$data['content'] = 'khachhang';
 		$data['contentdata'] = array();
 		include_once 'models/khachhang_model.php';
 		
+		$id_kh = $_SESSION['khachhang_ID'];
+		$lichsu = $khachhang_model->lichsu($id_kh);
+		foreach($lichsu as $key => $value) {
+		$data['contentdata']['lichsu'][$key] = $value;
+		}
 		$data['JATOVI']=$this->JATOVI;
 		$this->JATOVI->load->view('master',$data);
 	}
@@ -69,6 +75,7 @@ class khachhang extends JATOVI_Controller
 		}else{
 			echo "NNOOOOOOO";
 		};  
+		
 		header("Location:".base_url."index.php");
 	}
 
@@ -80,6 +87,7 @@ class khachhang extends JATOVI_Controller
 		unset($_SESSION['khachhang_Birthday']);
 		unset($_SESSION['khachhang_Gender']);
 		unset($_SESSION['khachhang_Address']);
+		unset($_SESSION['cart']);
 		header("Location:".base_url."index.php");
 	} 
 

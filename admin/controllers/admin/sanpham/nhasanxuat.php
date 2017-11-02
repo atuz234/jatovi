@@ -86,74 +86,18 @@ public function index()
 }
 	public function insert()
 	{
-		$uploadOk=0;
-		$mangtype= array('png','PNG','jpg','JPG', 'jpeg', 'gif','GIF' );
 		$nsx_ten = $diachi = $nsx_sodienthoai = $email = $nsx_website = $nsx_mota ="";
-		$nsx_ten = $_SESSION['userName'];
-		if(isset($_POST['nsx_email'])&& isset($_POST['mota'])){
-			
-			
-			$mangfile = $_FILES["logo"];
-			print_r($mangfile);
-			echo "<br>";
-			echo count($mangfile["name"]);
-			echo "lay ten <br>";
-			foreach($mangfile['name'] as $value){
-					echo "ten:{$value}<br>";
-				}
-			for($i=0; $i <count($mangfile["name"]); $i++){
-			// upload file
-			$target_file = "public/images/logo_nsx" . basename($mangfile["logo"][$i]);
-			$uploadOk = 0;
-			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-			
-			// check fake
-			$check = getimagesize($mangfile["tmp_name"][$i]);
-			if($check != false) {
-				$uploadOk = 1;
-			} else {
-				$uploadOk = 0;
-			}
-			
-			// Check if file already exists
-			if (file_exists($target_file)) {
-				$uploadOk = 0;
-			}
-			
-			// Check file size (100mb)
-			if ($mangfile["size"][$i] > 100*1024*1024) {
-				$uploadOk = 0;
-			} 
-			
-			// Allow certain file formats
-			if( !in_array($imageFileType, $mangtype) ) {
-				$uploadOk = 0;
-			}
-			
-			// Check if $uploadOk is set to 0 by an error
-			if ($uploadOk == 0) {
-			} else {
-				if (move_uploaded_file($mangfile["tmp_name"][$i], $target_file)) {
-					$hinhanh = $mangfile['name'][$i];
-				} else {
-					echo "Sorry, there was an error uploading your file.";
-				}
-			}
-			// end upload file
-			}
+		if(isset($_POST['email'])&& isset($_POST['mota'])){
 			$nsx_ten =$_POST['ten'];
 			$nsx_diachi = $_POST['diachi'];
 			$nsx_sodienthoai = $_POST['sodienthoai'];
 			$nsx_email = $_POST['email'];
 			$nsx_website = $_POST['website'];
 			$nsx_mota = $_POST['mota'];
-
-			include_once 'models/admin/nhasanxuat_model.php.php';
-			$hinhanh = 
-			$insert = $quanlytintuc_model->insert($nsx_ten, $nsx_diachi, $nsx_sodienthoai, $nsx_email, $nsx_website, $nsx_mota);
-			header("Location:".base_url."index.php?module=nhasanxuat");
-
+			include_once 'models/admin/nhasanxuat_model.php';
+			$insert = $nhasanxuat_model->insert($nsx_ten, $nsx_diachi, $nsx_sodienthoai, $nsx_email, $nsx_website, $nsx_mota);
 			}
+			header("Location:".base_url."index.php?module=nhasanxuat");
 
 }
 }

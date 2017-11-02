@@ -41,10 +41,9 @@ class nhasanxuat_model extends JATOVI_Model
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 	}
-	public function insert($mang = array('nsx_ten' =>'', 'nsx_diachi'=>'',  'nsx_sodienthoai' =>'', 'nsx_email'=>'', 'nsx_website'=>'', 'nsx_mota'=>'') )
+	public function insert($nsx_ten, $nsx_diachi, $nsx_sodienthoai, $nsx_email, $nsx_website, $nsx_mota)
 	{
-		extract($mang);
-		$sql = "INSERT INTO {$this->_table}(nsx_ten, nsx_diachi, nsx_sodienthoai, nsx_email, nsx_website,  nsx_mota) VALUES('{$nsx_ten}','{$nsx_diachi}', '{$nsx_sodienthoai}', '{$nsx_email}', '{$nsx_website}','{$nsx_mota}')";
+		$sql = "INSERT INTO {$this->_table}(nsx_ten, nsx_diachi, nsx_sodienthoai, nsx_email, nsx_website, nsx_mota) VALUES('{$nsx_ten}','{$nsx_diachi}', '{$nsx_sodienthoai}', '{$nsx_email}', '{$nsx_website}','{$nsx_mota}')";
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 	}

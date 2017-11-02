@@ -38,12 +38,6 @@
                                         <button type="button" onclick="camon()" class="btn-submit">Gửi</button>
                                     </div>
                                 </form>
-                            </div>
-                            
-                            
-											</div>
-										</div>
-									</div>
 								</div>
                             <div class="col-md-6">
                                 <div class="contact-info">

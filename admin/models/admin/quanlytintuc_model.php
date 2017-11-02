@@ -40,7 +40,7 @@ class quanlytintuc_model extends JATOVI_Model
 	{
 		date_default_timezone_set('Asia/Ho_Chi_Minh');
 		$ngaydang =date("Y-m-d h:i:s");
-		$sql = "UPDATE {$this->_table} SET tieude = '{$tieude}', noidung = '{$noidung}',  tacgia = '{$tacgia}', ngaydang ='{$ngaydang}'  WHERE id_tintuc={$id}";
+		$sql = "UPDATE {$this->_table} SET tieude = '{$tieude}', noidung = '{$noidung}', ngaydang ='{$ngaydang}'  WHERE id_tintuc={$id}";
 		$query = $this->connection->prepare($sql);
  		$query->execute();
 	}

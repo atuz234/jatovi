@@ -35,7 +35,7 @@
 			$this->login();
 		}
 		
-		$limit = 10;
+		$limit = 5;
 		$batdau =0;	
 		$search="";
 		$list ="";
@@ -110,12 +110,58 @@
 		
 		$mang = array('ten' => $ten, 'mota' => $mota, 'id_danhmuc' => $id_danhmuc, 'id_nsx' => $id_nsx ,'xuatsu' =>$xuatsu, 'giacu' => $giacu, 'giamoi' =>$giamoi, 'ngaysanxuat' => $ngaysanxuat, 'hansudung'=> $hansudung, 'donvi' => $donvi, 'hinhanh' => $hinhanh);
 		$quanlysanpham_model->update($mang);
-		//header("Location:".base_url."index.php?module=quanlysanpham");
+		header("Location:".base_url."index.php?module=quanlysanpham");
 	}
 
 
 	public function insert()
 	{
+		$uploadOk=0;
+		$mangtype= array('png','PNG','jpg','JPG', 'jpeg', 'gif','GIF' );
+		$mangfile = $_FILES["hinhanh"];
+			foreach($mangfile['name'] as $value){
+				}
+			for($i=0; $i <count($mangfile["name"]); $i++){
+			// upload file
+			$target_file = "../public/images/sanpham/" . basename($mangfile["name"][$i]);
+			$uploadOk = 0;
+			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+			
+			// check fake
+			$check = getimagesize($mangfile["tmp_name"][$i]);
+			if($check != false) {
+				$uploadOk = 1;
+			} else {
+				$uploadOk = 0;
+			}
+			
+			// Check if file already exists
+			if (file_exists($target_file)) {
+				$uploadOk = 0;
+			}
+			
+			// Check file size (100mb)
+			if ($mangfile["size"][$i] > 100*1024*1024) {
+				$uploadOk = 0;
+			} 
+			
+			// Allow certain file formats
+			if( !in_array($imageFileType, $mangtype) ) {
+				$uploadOk = 0;
+			}
+			
+			// Check if $uploadOk is set to 0 by an error
+			if ($uploadOk == 0) {
+			} else {
+				if (move_uploaded_file($mangfile["tmp_name"][$i], $target_file)) {
+					$hinhanh = $mangfile['name'][$i];
+				} else {
+					echo "Sorry, there was an error uploading your file.";
+				}
+			}
+			}
+			// end upload file
+		
 		$ten = $_POST['ten'];
 		$mota = $_POST['mota'];
 		$id_danhmuc = $_POST['id_danhmuc'];
@@ -126,12 +172,11 @@
 		$ngaysanxuat = $_POST['ngaysanxuat'];
 		$hansudung = $_POST['hansudung'];
 		$donvi = $_POST['donvi'];
+		$hinhanh = implode("|", $mangfile["name"]);
 		
 		include BASEPATH.'models/admin/quanlysanpham_model.php';
-		$mang = array('ten' => $ten, 'mota' => $mota, 'id_danhmuc' => $id_danhmuc, 'id_nsx' => $id_nsx ,'xuatsu' =>$xuatsu, 'giacu' => $giacu, 'giamoi' =>$giamoi, 'ngaysanxuat' => $ngaysanxuat, 'hansudung'=> $hansudung, 'donvi' => $donvi);
-
-		$quanlysanpham_model->insert($mang);
-		header("Location:".base_url."index.php?module=quanlysanpham");
+		$quanlysanpham_model->insert($ten, $mota, $id_danhmuc, $id_nsx, $xuatsu, $giacu, $giamoi, $ngaysanxuat, $hansudung, $donvi, $hinhanh );
+		//header("Location:".base_url."index.php?module=quanlysanpham");
 	}
 
  }

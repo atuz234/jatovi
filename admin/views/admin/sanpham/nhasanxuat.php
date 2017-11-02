@@ -1,9 +1,3 @@
-<script>
-	function myFunction() {
-		$("#chonfile").append("<input type='file' name='logo[]'>");
-}
-</script>
-
 <div class="row">
 	<div class="col-md-12">
 		<div class="popover-title">
@@ -16,7 +10,7 @@
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							<h4 class="modal-title">Thêm sản phẩm</h4>
 							<div>
-								<form action="<?=base_url."index.php?module=nhasanxuat&action=insert"?>" method="post" enctype="multipart/form-data">
+								<form action="<?=base_url."index.php?module=nhasanxuat&action=insert"?>" method="post" >
 									<div class="modal-body">
 										<div class="form-group">
 											<label for="ten">Tên nhà sản xuất</label>
@@ -33,14 +27,6 @@
 
 											<label for="Website">Website</label>
 											<input type="website" name="website" value="" class="form-control" required="required">
-
-											<label for="">Logo</label>
-											<div id="chonfile">
-											<input type="file" name="logo[]"required="required">
-											</div>
-											<div onclick="myFunction()"  class="btn btn-primary btn-sm" id="themanh">
-												<i class="fa fa-plus" aria-hidden="true"></i>
-											</div>
 											<br/>
 											
 
@@ -91,7 +77,6 @@
 						<td><?=$value['nsx_sodienthoai']?></td>
 						<td><?=$value['nsx_email']?></td>
 						<td><?=$value['nsx_website']?></td>
-						<td><?=$value['nsx_logo']?></td>
 						<td><?=$value['nsx_mota']?></td>				
 					<!-- Nút sửa -->
 							<td>
@@ -126,10 +111,6 @@
 
 													<label for="txtwebsite">Website</label>
 													<input type="Website" name="txtwebsite" value="<?=$value['nsx_website']?>" class="form-control" required="required">
-
-													<label for="logo">Logo</label>
-													<input type="file" name="logo" value="<?=$value['nsx_logo']?>" class="form-control" required="required">
-
 													<label for="txtmota">Mô tả</label>
 													<input type="text" name="txtmota" value="<?=$value['nsx_mota']?>" class="form-control" required="required">
 													</input>

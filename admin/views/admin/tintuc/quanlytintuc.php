@@ -10,7 +10,7 @@ function myFunction() {
 			<h2>Quản Lý Tin Tức</h2>
              <div align="center" id="timkiem">
             	<form method="post" action="<?=base_url."index.php?module=quanlytintuc&action=timkiem"?>"?>
-                	<input type="text" name="timkiem"  placeholder="Search..."     value="" />
+                	<input type="text" name="timkiem"  placeholder="Search..."     value="<?= $search?>" />
                  	<input type="submit" value="Tìm Kiếm"    class="btn btn-primary btn-sm" >
             	</form>
             </div>
@@ -98,7 +98,9 @@ function myFunction() {
 							<td colspan="15">Không Có Tin Tức </td>
 						</tr>
 					<?php }else { ?>
-					<?php foreach ($list as $value): ?>
+					<?php foreach ($list as $value): 
+					
+					?>
 						<tr>
                         
 							<td><?=$value['id_tintuc']?></td>
