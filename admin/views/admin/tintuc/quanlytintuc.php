@@ -97,13 +97,13 @@ function myFunction() {
 						<tr>
 							<td colspan="15">Không Có Tin Tức </td>
 						</tr>
-					<?php }else { ?>
+					<?php }else { $i=1;?>
 					<?php foreach ($list as $value): 
 					
 					?>
 						<tr>
                         
-							<td><?=$value['id_tintuc']?></td>
+							<td><td><?=$i++;?></td></td>
 							<td><?=$value['tieude']?></td>
 							<td><?=$value['ngaydang']?></td>
 							<td><?=$value['tacgia']?></td>

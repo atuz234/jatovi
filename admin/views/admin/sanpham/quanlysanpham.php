@@ -1,7 +1,8 @@
 <script>
+
 $(document).ready(function() {
-		$(".changepass").change(function() {
-			if ($(".changepass").is(":checked")) {
+		$(".changeimage").change(function() {
+			if ($(".changeimage").is(":checked")) {
 				$(".hinhanh").addClass('show');
 			}else {
 				$(".hinhanh").removeClass('show');
@@ -201,21 +202,21 @@ $(document).ready(function() {
 													<input type="text" name="donvitxt" value="<?=$value['donvi']?>" class="form-control" required="required">
 													<label for="">Hình ảnh</label>
                                                           
-															<input type="text" id="imgdf" disabled="disabled" class="form-control" name="hinhanhcu" value="<?=$value['hinhanh']?>" />
+															<input type="text" id="imgdf"  class="form-control" name="hinhanhcu" value="<?=$value['hinhanh']?>" />
                                                             
       <!-- Nút chọn hiển thị  -->
 														<div class="form-inline">
 															<label for="tennhom">Đổi hình ảnh<span class="required"></span>
 															</label>
 															<div class="checkbox">
-																<input class="changepass" name="changepass" type="checkbox" class="js-switch">
+																<input class="changeimage" name="changeimage" value="changed" id="idchk" type="checkbox" class="js-switch">
 															</div>
 														</div>
 
 														<!-- thay hinh anh -->
 														<div class="hinhanh" style="display: none">
 															<div><label>Hình ảnh mới: </label>
-                                                            <input type="file" id="img" name="hinhanh"  multiple >
+                                                            <input type="file" id="img" name="hinhanh"  value="" multiple >
 															<div>
 														</div>
 												</div>

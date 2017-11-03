@@ -1,13 +1,16 @@
 <script>
-$(document).ready(function() {
-		$(".changepass").change(function() {
-			if ($(".changepass").is(":checked")) {
-				$(".newpass").addClass('show');
-			}else {
-				$(".newpass").removeClass('show');
-			}
-		});
-	});
+function themdiachi(){
+    document.getElementById("address").innerHTML ="Nhập địa chỉ mới:<input type='text' id='diachithem' name'diachimoi' onchange='thaydoidiachi()' value=''/>";
+}
+function thaydoidiachi(){
+	
+var diachia = document.getElementById("diachithem").value;
+if(diachia !=""){document.getElementById("diachism").value = diachia;}
+else{
+	document.getElementById("diachism").value;
+	}
+		
+}
 </script>
 <?php include_once BASEPATH.'controllers/giohang.php';
 $tongtien = 0;

@@ -138,6 +138,56 @@ class quanlytintuc extends JATOVI_Controller
 			}
 		}
 	public function edit(){
+		
+		
+		$uploadOk=0;
+		$mangtype= array('png','PNG','jpg','JPG', 'jpeg', 'gif','GIF' );
+		if(isset($_FILES['hinhanh']) and isset($_POST['changeimage']) and $_POST['changeimage']=='changed'){
+			$mangfile = $_FILES["hinhanh"];
+			// upload file
+			$target_file = "../public/images/tintuc/" .  basename($mangfile['name']);
+			$uploadOk = 0;
+			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+			
+			// check fake
+			$check = getimagesize($mangfile["tmp_name"]);
+			if($check != false) {
+				$uploadOk = 1;
+			} else {
+				$uploadOk = 0;
+			}
+			
+			// Check if file already exists
+			if (file_exists($target_file)) {
+				$uploadOk = 0;
+			}
+			
+			// Check file size (100mb)
+			if ($mangfile["size"] > 100*1024*1024) {
+				$uploadOk = 0;
+			} 
+			
+			// Allow certain file formats
+			if( !in_array($imageFileType, $mangtype) ) {
+				$uploadOk = 0;
+			}
+			
+			// Check if $uploadOk is set to 0 by an error
+			if ($uploadOk == 0) {
+			} else {
+				if (move_uploaded_file($mangfile["tmp_name"], $target_file)) {
+					$hinhanh = $mangfile['name'];
+				} else {
+					echo "Sorry, there was an error uploading your file.";
+				}
+			
+			}
+			$hinhanh =$mangfile["name"];
+		}
+		else{
+				$hinhanh = $_POST["hinhanhcu"];
+			}
+		
 	 $tieude = $noidung = $id	="";
 		if(isset($_POST['tieude'])&& isset($_POST['noidung'])){
 			
@@ -145,7 +195,7 @@ class quanlytintuc extends JATOVI_Controller
 			$tieude =$_POST['tieude'];
 			$noidung = $_POST['noidung'];
 			include_once 'models/admin/quanlytintuc_model.php';
-			$edit = $quanlytintuc_model->edit($tieude,$noidung, $id);
+			$edit = $quanlytintuc_model->edit($tieude,$noidung, $id, $hinhanh);
 			header("Location:".base_url."index.php?module=quanlytintuc");
 
 			}
