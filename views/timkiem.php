@@ -7,15 +7,18 @@
 					
        				 $limit = 8;
 					 $total_page = ceil($total_records / $limit);
+
 					if ($current_page > $total_page){
 						$current_page = $total_page;
-					}
+					} 
 					else if ($current_page < 1){
 						$current_page =1;
 					}
 									?>
                     <?php if ($list==NULL){ ?>
-							<h2 style="color:red;">Không Có Sản Phẩm Bạn Cần Tìm.</h2>
+							<center><h3>Không có sản phẩm bạn cần tìm. </h3></center>
+                            <br>
+                            <br>
 					<?php }else{ ?>
 					<div class="nhomsp_items">
                         <div class="row">
@@ -26,6 +29,7 @@
                                                 <img src="public/images/sanpham/<?=$v['hinhanh']?>" width="130px" height="170px" >
                                             </div>
                                             <div class="sp_name">
+            
                                                 <?=$v['ten'];?>
                                             </div>
                                         </a>

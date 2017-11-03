@@ -105,7 +105,6 @@ class taikhoanadmin extends JATOVI_Controller
 		$matkhau = $_POST['newpass'];
 
 		$mang = array('ten_taikhoan'=>$ten_taikhoan, 'hoten'=>$hoten, 'matkhau'=>$matkhau, 'gioitinh'=> $gioitinh, 'id_nhom'=>$id_nhom);
-		
 		$taikhoanadmin_model->update($id,$mang);
 		header("Location:".base_url."index.php?module=taikhoanadmin");
 	}
