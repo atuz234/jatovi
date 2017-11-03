@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 02, 2017 lúc 05:03 PM
+-- Thời gian đã tạo: Th10 03, 2017 lúc 08:36 AM
 -- Phiên bản máy phục vụ: 10.1.25-MariaDB
 -- Phiên bản PHP: 7.1.7
 
@@ -73,7 +73,9 @@ CREATE TABLE `tb_chitietdonhang` (
 
 INSERT INTO `tb_chitietdonhang` (`id`, `id_sanpham`, `id_donhang`, `soluong`, `dongia`, `thanhtien`) VALUES
 (1, 8, 2, 1, 180000, 180000),
-(2, 8, 3, 1, 180000, 180000);
+(2, 8, 3, 1, 180000, 180000),
+(3, 8, 4, 3, 180000, 540000),
+(4, 8, 4, 3, 180000, 540000);
 
 -- --------------------------------------------------------
 
@@ -110,7 +112,8 @@ INSERT INTO `tb_chucnang` (`id`, `ten`, `trangthai`, `url`, `f_order`, `id_paren
 (10, 'Quản lý tin tức', 1, 'quanlytintuc', 1, 9, 'quanlytintuc', 1, ''),
 (11, 'Nhà sản xuất', 1, 'nhasanxuat', 3, 3, 'nhasanxuat', 1, ''),
 (12, 'Phân quyền', 1, 'phanquyen', 3, 1, 'phanquyen', 1, ''),
-(13, 'Liên hệ', 1, 'lienhe', 3, 9, 'lienhe', 1, '');
+(13, 'Liên hệ', 1, 'lienhe', 3, 9, 'lienhe', 1, ''),
+(14, 'Thống kê', 1, 'thongke', 1, 0, 'thongke', 1, '');
 
 -- --------------------------------------------------------
 
@@ -155,9 +158,10 @@ CREATE TABLE `tb_donhang` (
 --
 
 INSERT INTO `tb_donhang` (`id_donhang`, `id_khachhang`, `diachi`, `sotien`, `ngaydathang`, `tinhtrang`) VALUES
-(1, 3, 'my dinh, hanoi', 360000, '2017-11-01 17:00:00', '1'),
 (2, 3, 'hanoi', 180000, '2017-11-01 17:00:00', '1'),
-(3, 3, 'hanoi', 180000, '2017-11-01 17:00:00', '1');
+(3, 3, 'hanoi', 180000, '2017-11-01 17:00:00', '1'),
+(4, 3, 'hanoi', 540000, '2017-11-01 17:00:00', '1'),
+(5, 3, 'hanoi', 540000, '2017-11-01 17:00:00', '1');
 
 -- --------------------------------------------------------
 
@@ -183,10 +187,8 @@ CREATE TABLE `tb_khachhang` (
 
 INSERT INTO `tb_khachhang` (`id`, `email`, `matkhau`, `sodienthoai`, `ten`, `ngaysinh`, `gioitinh`, `diachi`, `trangthai`) VALUES
 (1, 'buitanthanh211098', 'tanthanh98', '0964474680', 'thanh', '2017-09-21', 1, 'xuan ai ', 1),
-(2, 'asdf', 'adsf', '1231', 'adf', '2017-09-29', 1, 'asdf', 0),
-(3, 'khachhang', 'khachhang', '0988234234', 'tuan', '2017-11-01', 1, 'hanoi', 0),
-(4, 'a', 'a', '12', 'a', '2017-11-02', 1, 'a', 0),
-(5, 'a', 'a', '12', 'a', '2017-11-02', 1, 'a', 0);
+(2, 'asdf', 'adsf', '988888888', 'adf', '2017-09-29', 1, 'asdf', 0),
+(3, 'khachhang', 'khachhang', '0988234234', 'tuan', '2017-11-01', 1, 'hanoi', 0);
 
 -- --------------------------------------------------------
 
@@ -214,7 +216,8 @@ INSERT INTO `tb_lienhe` (`id`, `ten`, `email`, `tieude`, `noidung`) VALUES
 (10, 'Họ tên', 'Email@gmail.com', 'Tiêu đề', 'Phản hồi'),
 (11, 'Họ tên', 'Email@gmail.com', 'Tiêu đề', 'Phản hồi'),
 (12, 'Họ tên', 'Email@gmail.com', 'Tiêu đề', 'Phản hồi'),
-(13, 'teen', 'email@gmail.com', 'tieude', 'phanhoi');
+(13, 'teen', 'email@gmail.com', 'tieude', 'phanhoi'),
+(14, 'ten', 'Email@gmail.com', 'a', 'a');
 
 -- --------------------------------------------------------
 
@@ -325,7 +328,8 @@ INSERT INTO `tb_phanquyen` (`id`, `id_nhom`, `id_chucnang`) VALUES
 (23, 1, 11),
 (24, 3, 11),
 (25, 1, 12),
-(26, 1, 13);
+(26, 1, 13),
+(27, 1, 14);
 
 -- --------------------------------------------------------
 
@@ -506,12 +510,12 @@ ALTER TABLE `tb_admin`
 -- AUTO_INCREMENT cho bảng `tb_chitietdonhang`
 --
 ALTER TABLE `tb_chitietdonhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT cho bảng `tb_chucnang`
 --
 ALTER TABLE `tb_chucnang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT cho bảng `tb_danhmuc`
 --
@@ -521,17 +525,17 @@ ALTER TABLE `tb_danhmuc`
 -- AUTO_INCREMENT cho bảng `tb_donhang`
 --
 ALTER TABLE `tb_donhang`
-  MODIFY `id_donhang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_donhang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT cho bảng `tb_khachhang`
 --
 ALTER TABLE `tb_khachhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT cho bảng `tb_lienhe`
 --
 ALTER TABLE `tb_lienhe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT cho bảng `tb_menu`
 --
@@ -541,7 +545,7 @@ ALTER TABLE `tb_menu`
 -- AUTO_INCREMENT cho bảng `tb_nhasanxuat`
 --
 ALTER TABLE `tb_nhasanxuat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT cho bảng `tb_nhomnguoidung`
 --
@@ -551,7 +555,7 @@ ALTER TABLE `tb_nhomnguoidung`
 -- AUTO_INCREMENT cho bảng `tb_phanquyen`
 --
 ALTER TABLE `tb_phanquyen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT cho bảng `tb_sanpham`
 --

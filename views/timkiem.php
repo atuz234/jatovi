@@ -20,6 +20,9 @@
                             <br>
                             <br>
 					<?php }else{ ?>
+                    <div>
+                        <h3><?=count($tongdong)?> kết quả tìm kiếm</h3>
+                    </div>
 					<div class="nhomsp_items">
                         <div class="row">
                             <?php foreach($list as $v) : ?>

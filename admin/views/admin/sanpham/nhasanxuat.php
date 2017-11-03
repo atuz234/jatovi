@@ -20,7 +20,7 @@
 											<input type="text" name="diachi" value="" class="form-control" >
 
 											<label for="sodienthoai">Số điện thoại</label>
-											<input type="phone" name="sodienthoai" value="" class="form-control" >
+											<input type="text" name="sodienthoai" value="" class="form-control" pattern="[0-9,+]{10,15}" title="Số điện thoại không hợp lệ">
 
 											<label for="email">Email</label>
 											<input type="email" name="email" value="" class="form-control" >
@@ -103,7 +103,7 @@
 													<input type="text" name="txtdiachi" value="<?=$value['nsx_diachi']?>" class="form-control" >
 
 													<label for="txtsodienthoai">Số điện thoại</label>
-													<input type="text" name="txtsodienthoai" value="<?=$value['nsx_sodienthoai']?>" class="form-control" >
+													<input type="text" name="txtsodienthoai" value="<?=$value['nsx_sodienthoai']?>" class="form-control" pattern="[0-9,+]{10,15}" title="Số điện thoại không hợp lệ" >
 
 													<label for="txtemail">Email</label>
 													<input type="email" name="txtemail" value="<?=$value['nsx_email']?>" class="form-control" >
