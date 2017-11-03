@@ -98,9 +98,8 @@
 	{
 		$uploadOk=0;
 		$mangtype= array('png','PNG','jpg','JPG', 'jpeg', 'gif','GIF' );
-		if(isset($_FILES['hinhanh']) and $_FILES['hinhanh'] != NULL){
-		$mangfile = $_FILES["hinhanh"];}
-		elseif (isset($_FILES['hinhanhcu'])) {$mangfile = $_FILES["hinhanhcu"];}
+		if(isset($_FILES['hinhanh']) and isset($_POST['changeimage']) and $_POST['changeimage']=='changed'){
+			$mangfile = $_FILES["hinhanh"];
 			// upload file
 			$target_file = "../public/images/sanpham/" .  basename($mangfile['name']);
 			$uploadOk = 0;
@@ -139,6 +138,13 @@
 				}
 			
 			}
+			$hinhanh =$mangfile["name"];
+		}
+		else{
+				$hinhanh = $_POST["hinhanhcu"];
+			}
+
+			
 			// end upload file
 		include BASEPATH.'models/admin/quanlysanpham_model.php';
 		$id = $_POST['idtxt'];
@@ -149,7 +155,7 @@
 		$ngaysanxuat = $_POST['ngaysanxuattxt'];
 		$hansudung = $_POST['hansudungtxt'];
 		$donvi = $_POST['donvitxt'];
-		$hinhanh =$mangfile["name"];
+		
 		$mang = array('id'=>$id,'ten' => $ten, 'mota' => $mota, 'giacu' => $giacu, 'giamoi' =>$giamoi, 'ngaysanxuat' => $ngaysanxuat, 'hansudung'=> $hansudung, 'donvi' => $donvi, 'hinhanh' => $hinhanh);
 		$quanlysanpham_model->update($mang);
 		header("Location:".base_url."index.php?module=quanlysanpham");
