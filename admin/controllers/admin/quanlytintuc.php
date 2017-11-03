@@ -196,7 +196,7 @@ class quanlytintuc extends JATOVI_Controller
 			$noidung = $_POST['noidung'];
 			include_once 'models/admin/quanlytintuc_model.php';
 			$edit = $quanlytintuc_model->edit($tieude,$noidung, $id, $hinhanh);
-			header("Location:".base_url."index.php?module=quanlytintuc");
+			//header("Location:".base_url."index.php?module=quanlytintuc");
 
 			}
 		}
