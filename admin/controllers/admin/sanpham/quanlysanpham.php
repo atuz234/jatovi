@@ -175,7 +175,7 @@
 		
 		include BASEPATH.'models/admin/quanlysanpham_model.php';
 		$quanlysanpham_model->insert($ten, $mota, $id_danhmuc, $id_nsx, $xuatsu, $giacu, $giamoi, $ngaysanxuat, $hansudung, $donvi, $hinhanh );
-		//header("Location:".base_url."index.php?module=quanlysanpham");
+		header("Location:".base_url."index.php?module=quanlysanpham");
 	}
 
  }
