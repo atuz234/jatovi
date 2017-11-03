@@ -160,13 +160,13 @@
                                     <?php unset($_SESSION['tentktontai']); ?>
                                 <?php endif ?>
                                 <label for="txttaikhoan">Email</label>
-                                <input type="text" name="email" value="" class="form-control" required="required">
+                                <input type="email" name="email" value="" class="form-control" required="required">
                                 
                                 <label for="txttaikhoan">Mật Khẩu</label>
                                 <input type="password" name="matkhau" value="" class="form-control" required="required">
                                 
                                 <label for="txthoten">Số Điện Thoại</label>
-                                <input type="number" name="sodienthoai" value="" class="form-control" required="required">
+                                <input type="text" name="sodienthoai" value="" class="form-control" required="required" pattern="[0-9,+]{10,15}" title="Số điện thoại không hợp lệ">
                                 
                                 <label for="txthoten">Họ tên</label>
                                 <input type="text" name="ten" value="" class="form-control" required="required">    

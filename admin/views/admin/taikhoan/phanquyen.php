@@ -48,70 +48,13 @@ div.tab button.active {
 </style>
 <script>
 	$(document).ready(function() {
-		
+		$('cnchon').change()
 	});
 </script>
 <div class="row">
 	<div class="col-md-12">
 		<div class="popover-title">
 			<h2>Phân quyền</h2>
-			<!-- <a class="btn btn-primary" data-toggle="modal" href="#insertdiv"><i class="fa fa-plus-square"></i> Thêm nhóm</a>
-			<a class="btn btn-primary" data-toggle="modal" href="#insertdiv2"><i class="fa fa-plus-square"></i> Thêm chức năng</a>
-			<div class="clearfix"></div> -->
-		</div>
-		<!-- <div class="modal fade" id="insertdiv">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-							&times;
-						</button>
-						<h4 class="modal-title">Thêm nhóm mới</h4>
-					</div>
-					<form action="<?=base_url."index.php?module=phanquyen&action=insertnhom"?>" method="post">
-						<div class="modal-body">
-							<div class="form-group">
-								<label for="insert_taikhoan">Tên nhóm</label>
-								<input type="text" name="insert_nhom" value="" class="form-control" required="required">
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-								<button type="submit" class="btn btn-primary">Thêm</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<div class="modal fade" id="insertdiv2">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-							&times;
-						</button>
-						<h4 class="modal-title">Thêm chức năng</h4>
-					</div>
-					<form action="<?=base_url."index.php?module=phanquyen&action=insertcn"?>" method="post">
-						<div class="modal-body">
-							<div class="form-group">
-								<label for="insert_taikhoan">Tên chức năng  </label>
-								<input type="text" name="insert_nhom" value="" class="form-control" required="required">
-								<label for="insert_taikhoan">Trạng thái  </label>
-								<input type="checkbox" name="insert_trangthai" value="" checked='checked'>
-								<br>
-								<label for="insert_taikhoan">URL </label>
-								<input type="text" name="insert_nhom" value="" class="form-control" required="required">
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-								<button type="submit" class="btn btn-primary">Thêm</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div> -->
 	</div>
 </div>
 <div class="row">
@@ -120,22 +63,20 @@ div.tab button.active {
 			<!-- hiển thị nhóm -->
 			<div class="tab">
 				<?php foreach($nhoms as $nhom): ?>
-					<?php  
-						echo"<button class='tablinks' onclick='openphanquyen(event, {$nhom['idnhom']})'";
-						if($nhom['idnhom']==1){echo "id='defaultOpen'";}
-						echo">{$nhom['tennhom']}</button>";
-					?>
+					<button class='tablinks' onclick='openphanquyen(event, <?=$nhom['idnhom']?>)' <?php if($nhom['idnhom']==1){echo "id='defaultOpen'";} ?> > 
+						<?=$nhom['tennhom']?> 
+					</button>
 				<?php endforeach; ?>
 			</div>
 			<!-- Tất cả chức năng -->
 			<?php foreach($nhoms as $nhom): ?>
-				<div id="<?=$nhom['idnhom']?>" class="tabcontent">
+				<div id="<?=$nhom['idnhom']?>" class="tabcontent" style="overflow-y:auto;">
 					<table class="table table-striped">
 						<caption><?=$nhom['tennhom']?></caption>
 						<thead>
 							<tr>
 								<th>Chức năng</th>
-								<th>Chọn</th>
+								<th>Kích hoạt</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -143,6 +84,7 @@ div.tab button.active {
 								<tr>
 									<td><?php echo $chucnang['ten']; ?></td>
 									<td>
+										<input type="hidden" name="idchucnang" value="<?=$chucnang['id']?>">
 										<input type="checkbox" name="cnchon" 
 											<?php
 												foreach ($dulieu as $value) {
