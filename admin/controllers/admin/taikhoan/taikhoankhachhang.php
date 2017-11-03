@@ -118,11 +118,13 @@ class taikhoankhachhang extends JATOVI_Controller
 				$ngaysinh =$_POST['edit_ngaysinh'];
 				$gioitinh = $_POST['edit_gioitinh'];
 				$diachi = $_POST['edit_diachi'];
-				
+				if(isset($_POST['chkkh'])){
+				$trangthai = $_POST['chkkh'];	
+				}else {$trangthai=0;}
 
 				include_once 'models/admin/taikhoankhachhang_model.php';
 
-				$edit = $taikhoan_model->edit( $id, $email, $sodienthoai, $ten, $ngaysinh, $gioitinh, $diachi);
+				$edit = $taikhoan_model->edit( $id, $email, $sodienthoai, $ten, $ngaysinh, $gioitinh, $diachi,$trangthai);
 				header("Location:".base_url."index.php?module=taikhoankhachhang");
 			}
 		}

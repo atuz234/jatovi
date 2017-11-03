@@ -100,6 +100,7 @@ class quanlydonhang extends JATOVI_Controller
 				include "models/admin/quanlydonhang_model.php";
 				$capnhat = $quanlydonhang_model->capnhat($tinhtrang, $id_donhang);
 				}
+				header("Location:".base_url."index.php?module=quanlydonhang");
 			}
 }
 $quanlydonhang = new quanlydonhang($JATOVI);
