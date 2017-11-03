@@ -1,3 +1,13 @@
+<script>
+function checkkh(){
+	alert ("ahihihi");
+var check = document.getElementById('chk').checked = '';
+	value = document.getElementById('chk').value = '';
+if (check == ""){document.getElementById('chk').checked = 'checked';
+				value = "1";	}
+else if(check == "checked")	{document.getElementById('chk').checked = '';value = "0";}
+}
+</script>
 <div class="row">
 	<div class="col-md-12">
 		<div class="popover-title">
@@ -108,7 +118,7 @@
                             <td><?=$value['sinhnhat']?></td>
                             <td><?php if($value['gioitinh']==1){echo "Nam";}else if($value['gioitinh']==0){echo "Nữ";}else{echo "Khác";};?></td>
                             <td><?=$value['diachi']?></td>
-                            <td><?=$value['trangthai']?></td>
+                            <td><?php if($value['trangthai']==0){echo"Chưa kích hoạt";}elseif($value['trangthai']==1){echo "Đã kích hoạt";}else {echo "Chưa xác định";} ?></td>
 							<!-- Nút sửa -->
 							<td>
 								<a href="#edit<?=$value['id'];?>" class="btn btn-primary btn-sm" data-toggle="modal">
@@ -149,6 +159,8 @@
 														<br>
 														<label for="txthoten">Địa Chỉ</label>
 														<input type="text" name="edit_diachi" value="<?= $value['diachi']; ?>" class="form-control" required="required">	
+                                                        <label><input id="chk"  name="chkkh" type="checkbox"<?php if($value['trangthai']==0){echo"value='1'";}
+elseif($value['trangthai']==1){echo "checked='checked'"; echo"value='0'";}?>   />Kích hoạt tài khoản</label>
 													</div>
 												</div>
 												<div class="modal-footer">

@@ -96,6 +96,50 @@
 	}
 	public function update()
 	{
+		$uploadOk=0;
+		$mangtype= array('png','PNG','jpg','JPG', 'jpeg', 'gif','GIF' );
+		if(isset($_FILES['hinhanh']) and $_FILES['hinhanh'] != NULL){
+		$mangfile = $_FILES["hinhanh"];}
+		elseif (isset($_FILES['hinhanhcu'])) {$mangfile = $_FILES["hinhanhcu"];}
+			// upload file
+			$target_file = "../public/images/sanpham/" .  basename($mangfile['name']);
+			$uploadOk = 0;
+			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+			
+			// check fake
+			$check = getimagesize($mangfile["tmp_name"]);
+			if($check != false) {
+				$uploadOk = 1;
+			} else {
+				$uploadOk = 0;
+			}
+			
+			// Check if file already exists
+			if (file_exists($target_file)) {
+				$uploadOk = 0;
+			}
+			
+			// Check file size (100mb)
+			if ($mangfile["size"] > 100*1024*1024) {
+				$uploadOk = 0;
+			} 
+			
+			// Allow certain file formats
+			if( !in_array($imageFileType, $mangtype) ) {
+				$uploadOk = 0;
+			}
+			
+			// Check if $uploadOk is set to 0 by an error
+			if ($uploadOk == 0) {
+			} else {
+				if (move_uploaded_file($mangfile["tmp_name"], $target_file)) {
+					$hinhanh = $mangfile['name'];
+				} else {
+					echo "Sorry, there was an error uploading your file.";
+				}
+			
+			}
+			// end upload file
 		include BASEPATH.'models/admin/quanlysanpham_model.php';
 		$id = $_POST['idtxt'];
 		$ten = $_POST['sanphamtxt'];
@@ -105,11 +149,10 @@
 		$ngaysanxuat = $_POST['ngaysanxuattxt'];
 		$hansudung = $_POST['hansudungtxt'];
 		$donvi = $_POST['donvitxt'];
-		$hinhanh = $_POST['hinhanhtxt'];
-		
+		$hinhanh =$mangfile["name"];
 		$mang = array('id'=>$id,'ten' => $ten, 'mota' => $mota, 'giacu' => $giacu, 'giamoi' =>$giamoi, 'ngaysanxuat' => $ngaysanxuat, 'hansudung'=> $hansudung, 'donvi' => $donvi, 'hinhanh' => $hinhanh);
 		$quanlysanpham_model->update($mang);
-		//header("Location:".base_url."index.php?module=quanlysanpham");
+		header("Location:".base_url."index.php?module=quanlysanpham");
 	}
 
 
@@ -117,7 +160,7 @@
 	{
 		$uploadOk=0;
 		$mangtype= array('png','PNG','jpg','JPG', 'jpeg', 'gif','GIF' );
-		$mangfile = $_FILES["hinhanh"];
+		$mangfile = $_FILES["hinhanhup"];
 			foreach($mangfile['name'] as $value){
 				}
 			for($i=0; $i <count($mangfile["name"]); $i++){

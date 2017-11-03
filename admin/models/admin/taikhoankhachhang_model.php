@@ -43,9 +43,9 @@ class taikhoan_model extends JATOVI_Model
 		}
 		return False;
 	}
-	public function edit( $id,$email, $sodienthoai, $ten, $ngaysinh, $gioitinh, $diachi)
+	public function edit( $id,$email, $sodienthoai, $ten, $ngaysinh, $gioitinh, $diachi,$trangthai)
 	{
-		$sql = "UPDATE {$this->_table2} SET email = '{$email}', sodienthoai = {$sodienthoai}, ten = '{$ten}', ngaysinh = '{$ngaysinh}', gioitinh = {$gioitinh}, diachi = '{$diachi}' WHERE id={$id}";
+		echo $sql = "UPDATE {$this->_table2} SET email = '{$email}', sodienthoai = {$sodienthoai}, ten = '{$ten}', ngaysinh = '{$ngaysinh}', gioitinh = {$gioitinh}, diachi = '{$diachi}', trangthai='{$trangthai}' WHERE id={$id}";
 		$query = $this->connection->prepare($sql);
  		$query->execute();
 	}

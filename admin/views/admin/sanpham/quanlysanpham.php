@@ -1,9 +1,15 @@
 <script>
-	function myFunction() {
-		$("#chonfile").append("<input type='file' name='hinhanh[]'>");
-}
+$(document).ready(function() {
+		$(".changepass").change(function() {
+			if ($(".changepass").is(":checked")) {
+				$(".hinhanh").addClass('show');
+			}else {
+				$(".hinhanh").removeClass('show');
+			}
+		});
+});
+	
 </script>
-
 <div class="row">
 	<div class="col-md-12">
 		<div class="popover-title">
@@ -70,7 +76,7 @@
 
 									<label for="">Hình ảnh</label>
                                                          <div id="chonfile">
-															<input type="file" name="hinhanh[]"required="required" multiple>
+															<input type="file" name="hinhanhup[]" required="required" multiple>
                                                         </div>
                                                         <div onclick="myFunction()"   class="btn btn-primary  btn-sm "  id="themanh">
                                                             
@@ -164,7 +170,7 @@
 											</button>
 											<h4 class="modal-title">Thay đổi thông tin sản phẩm: <?=$value['ten'];?></h4>
 										</div>
-										<form action="<?=base_url."index.php?module=quanlysanpham&action=update"?>" method="post">
+										<form enctype="multipart/form-data" action="<?=base_url."index.php?module=quanlysanpham&action=update"?>" action="view/upload/xuly.php?id=<?php echo $id ?>" method="post">
 											<div class="modal-body">
 												<div class="form-group">
 													<input type="hidden" name="idtxt" value="<?=$value['id']?>">
@@ -193,11 +199,25 @@
 
 													<label for="donvitxt">Đơn vị tính</label>
 													<input type="text" name="donvitxt" value="<?=$value['donvi']?>" class="form-control" required="required">
+													<label for="">Hình ảnh</label>
+                                                          
+															<input type="text" id="imgdf" disabled="disabled" class="form-control" name="hinhanhcu" value="<?=$value['hinhanh']?>" />
+                                                            
+      <!-- Nút chọn hiển thị  -->
+														<div class="form-inline">
+															<label for="tennhom">Đổi hình ảnh<span class="required"></span>
+															</label>
+															<div class="checkbox">
+																<input class="changepass" name="changepass" type="checkbox" class="js-switch">
+															</div>
+														</div>
 
-													<label for="hinhanh">Hình ảnh</label>
-													<input type="text" name="hinhanhtxt" value="<?=$value['hinhanh']?>" class="form-control" required="required">
-
-													</input>
+														<!-- thay hinh anh -->
+														<div class="hinhanh" style="display: none">
+															<div><label>Hình ảnh mới: </label>
+                                                            <input type="file" id="img" name="hinhanh"  multiple >
+															<div>
+														</div>
 												</div>
 											</div>
 
@@ -210,6 +230,8 @@
 									</div>
 								</div>
 							</div>
+                            
+														
 						</td>
 
 						<!--Nút xóa -->

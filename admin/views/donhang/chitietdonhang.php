@@ -26,9 +26,9 @@
 								<td><?= $value['ten'];?></td>
 								<td><?= $value['ngaydathang'];?></td>
 								<td><?= $value['soluong'];?></td>
-	                            <td><?= $value['dongia'];?></td>
+	                            <td><?= number_format($value['dongia'])?>&nbsp;VNĐ</td>
 								<td><?php $hanhtien =$value['soluong'] * $value['dongia'];
-								echo $hanhtien;?></td>
+								echo number_format($hanhtien);?>&nbsp;VNĐ</td>
 						<?php endforeach;?>
 					<?php else: ?>
 						<tr>

@@ -1,16 +1,13 @@
 <script>
-function themdiachi(){
-    document.getElementById("address").innerHTML ="Nhập địa chỉ mới:<input type='text' id='diachithem' name'diachimoi' onchange='thaydoidiachi()' value=''/>";
-}
-function thaydoidiachi(){
-	
-var diachia = document.getElementById("diachithem").value;
-if(diachia !=""){document.getElementById("diachism").value = diachia;}
-else{
-	document.getElementById("diachism").value;
-	}
-		
-}
+$(document).ready(function() {
+		$(".changepass").change(function() {
+			if ($(".changepass").is(":checked")) {
+				$(".newpass").addClass('show');
+			}else {
+				$(".newpass").removeClass('show');
+			}
+		});
+	});
 </script>
 <?php include_once BASEPATH.'controllers/giohang.php';
 $tongtien = 0;
@@ -41,10 +38,24 @@ $tongtien = 0;
 <tr>
 <th>Địa Chỉ</th>
 	<td colspan="2"><?=$_SESSION['khachhang_Address']."<br>";?>
- 
- <label onclick="themdiachi()">
-     <input type="checkbox" id="address1" value=""  />Thay đổi địa chỉ?</label><br />
- <label id="address"></label>
+ <!-- Thêm Địa Chỉ-->
+														<div class="form-inline">
+															<label for="tennhom">Thay Đổi Địa Chỉ <span class="required">*</span>
+															</label>
+															<div class="checkbox">
+																<input class="changepass" name="changepass" type="checkbox" class="js-switch">
+															</div>
+														</div>
+
+														<!-- Dòng nhập mật khẩu mới -->
+														<div class="newpass" style="display: none">
+															<label for="newpass">Mật khẩu mới <span class="required">*</span>
+															</label>
+															
+															<input type="password" name="newpass" class="form-control" >
+														</div>
+													</div>
+ <!------------->
     </td>
 </tr>
 <input type="hidden" name="iddh" value="<?= $maxdh+1?>"/>

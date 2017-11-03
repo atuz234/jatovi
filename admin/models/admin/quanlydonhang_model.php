@@ -47,7 +47,6 @@ public function sodong($search)
 	public function capnhat($tinhtrang, $id_donhang)
 	{
 		$sql = "UPDATE tb_donhang SET tinhtrang = '{$tinhtrang}' WHERE `tb_donhang`.`id_donhang` = '{$id_donhang}' ";
-		echo $sql;
 		$query = $this->connection->prepare($sql);
  		$query->execute();
 		$result = $query->fetchAll();
