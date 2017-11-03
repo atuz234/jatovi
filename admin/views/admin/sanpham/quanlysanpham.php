@@ -98,7 +98,7 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>ID</th>
+						<th>STT</th>
 						<th>Tên sản phẩm</th>
 						<th>Nhà sản xuất</th>
 						<th>Mô tả</th>
@@ -134,18 +134,18 @@
 						<tr>
 							<td colspan="15">Không Có Tin Tức </td>
 						</tr>
-					<?php }else { ?>
-					<?php foreach ($list as $value):
-					 ?> 
+					<?php }else { $i=1;?>
+					<?php foreach ($list as $value):?> 
+                    <?php $a = explode(',', $value['mota']);?>
 						<tr>
-							<td><?=$value['id']?></td>
+							<td><?=$i++;?></td>
 							<td><?=$value['ten'] ?></td>
 							<td><?=$value['nsx_ten']?></td>
-							<td><?=$value['mota']?></td>
+							<td><?=$a[0].",".$a[1]."."?></td>
 							<td><?=$value['datesanxuat']?></td>
 							<td><?=$value['datesudung']?></td>
-							<td><?=$value['giacu']?></td>
-							<td><?=$value['giamoi']?></td>
+							<td><?=number_format($value['giacu']);?>&nbsp;VNĐ</td>
+							<td><?=number_format($value['giamoi'])?>&nbsp;VNĐ</td>
 							<td><?=$value['donvi']?></td>
 							<td><img width="150px" height="150px" src="../public/images/sanpham/<?=$value['hinhanh']?>" /></td>
 							<td><?=$value['luotxem']?></td>
@@ -167,28 +167,29 @@
 										<form action="<?=base_url."index.php?module=quanlysanpham&action=update"?>" method="post">
 											<div class="modal-body">
 												<div class="form-group">
-													<input type="hidden" name="txtid" value="<?=$value['id']?>">
+													<input type="hidden" name="idtxt" value="<?=$value['id']?>">
 
 													<label for="txtsanpham">Tên sản phẩm</label>
-													<input type="text" name="txtsanpham" value="<?=$value['ten']?>" class="form-control" required="required">
+													<input type="text" name="sanphamtxt" value="<?=$value['ten']?>" class="form-control" required="required">
 
 
 													<label for="motatxt">Mô tả</label>
-													<input type="text" name="motatxt" value="<?=$value['mota']?>" class="form-control" required="required">
+													<textarea name="motatxt"  class="form-control" required="required"><?=$value['mota']?></textarea>
 
 
 
 													<label for="ngaysanxuattxt">Ngày sản xuất</label>
-													<input type="text" name="ngaysanxuattxt" value="<?=$value['datesanxuat']?>" class="form-control" required="required">
+													<input type="date" name="ngaysanxuattxt" value="<?=$value['datesanxuat']?>" class="form-control" required="required">
 
 													<label for="hansudungtxt">Hạn sử dụng</label>
-													<input type="text" name="hansudungtxt" value="<?=$value['datesudung']?>" class="form-control" required="required">
+                                                    
+													<input type="date" name="hansudungtxt" value="<?=$value['datesudung']?>" class="form-control" required="required">
 
 													<label for="giacutxt">Giá cũ</label>
-													<input type="text" name="giacutxt" value="<?=$value['giacu']?>" class="form-control" required="required">
+													<input type="text"  name="giacutxt" value="<?=number_format($value['giacu']);?>&nbsp;VNĐ" class="form-control" required="required">
 
 													<label for="giamoitxt">Giá mới</label>
-													<input type="text" name="giamoitxt" value="<?=$value['giamoi']?>" class="form-control" required="required">
+													<input type="text" name="giamoitxt" value="<?=number_format($value['giamoi']);?>&nbsp;VNĐ" class="form-control" required="required">
 
 													<label for="donvitxt">Đơn vị tính</label>
 													<input type="text" name="donvitxt" value="<?=$value['donvi']?>" class="form-control" required="required">
@@ -205,6 +206,7 @@
 												<button type="submit" class="btn btn-defaults">Lưu</button>
 											</div>
 										</form>
+                                        
 									</div>
 								</div>
 							</div>

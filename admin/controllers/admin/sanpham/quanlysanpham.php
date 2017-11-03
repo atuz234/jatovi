@@ -97,20 +97,19 @@
 	public function update()
 	{
 		include BASEPATH.'models/admin/quanlysanpham_model.php';
-		$ten = $_POST['txtten'];
-		$mota = $_POST['txtmota'];
-		$id_danhmuc = $_POST['txtid_danhmuc'];
-		$id_nsx = $_POST['txtid_nsx'];
-		$giacu = $_POST['txtgiacu'];
-		$giamoi = $_POST['txtgiamoi'];
-		$ngaysanxuat = $_POST['txtngaysanxuat'];
-		$hansudung = $_POST['txthansudung'];
-		$donvi = $_POST['txtdonvi'];
-		$hinhanh = $_POST['txthinhanh'];
+		$id = $_POST['idtxt'];
+		$ten = $_POST['sanphamtxt'];
+		$mota = $_POST['motatxt'];
+		$giacu = $_POST['giacutxt'];
+		$giamoi = $_POST['giamoitxt'];
+		$ngaysanxuat = $_POST['ngaysanxuattxt'];
+		$hansudung = $_POST['hansudungtxt'];
+		$donvi = $_POST['donvitxt'];
+		$hinhanh = $_POST['hinhanhtxt'];
 		
-		$mang = array('ten' => $ten, 'mota' => $mota, 'id_danhmuc' => $id_danhmuc, 'id_nsx' => $id_nsx ,'xuatsu' =>$xuatsu, 'giacu' => $giacu, 'giamoi' =>$giamoi, 'ngaysanxuat' => $ngaysanxuat, 'hansudung'=> $hansudung, 'donvi' => $donvi, 'hinhanh' => $hinhanh);
+		$mang = array('id'=>$id,'ten' => $ten, 'mota' => $mota, 'giacu' => $giacu, 'giamoi' =>$giamoi, 'ngaysanxuat' => $ngaysanxuat, 'hansudung'=> $hansudung, 'donvi' => $donvi, 'hinhanh' => $hinhanh);
 		$quanlysanpham_model->update($mang);
-		header("Location:".base_url."index.php?module=quanlysanpham");
+		//header("Location:".base_url."index.php?module=quanlysanpham");
 	}
 
 

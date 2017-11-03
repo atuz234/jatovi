@@ -13,13 +13,14 @@ $i =0; ?>
 </tr>
 </thead>
 <?php foreach ($list as $value): ?>
-	<tr>
-    	<td><?=$value['ten'];?></td>
+    <tr>
+        <td><?=$value['ten'];?></td>
         <td><?=$value['soluong'];?></td>
         <td><?= number_format($value['dongia'])."&nbsp;VNĐ";?></td>
         <td><?=number_format($value['thanhtien'])."&nbsp;VNĐ";?></td>        
     </tr>
-	<?php endforeach;?>
+<?php endforeach;?>
+    
 	
 </table>
 </div>

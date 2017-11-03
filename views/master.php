@@ -89,6 +89,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-11">
+                                <h3>Đăng nhập</h3>
                                 <label><b>Tên tài khoản</b></label><span class="error_form" id="uname_error"></span>
                                 <input type="text" name="tentk" id="form_uname" placeholder="Điền tên tài khoản của bạn" required="required">
 
@@ -122,6 +123,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-11">
+                                <h3>Đăng ký</h3>
                                 <label for="txttaikhoan">Email</label>
                                 <input type="text" name="email" value="" class="form-control" required="required">
                                 
