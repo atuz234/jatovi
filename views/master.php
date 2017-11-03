@@ -6,28 +6,56 @@
     <link rel="shortcut icon" href="public/images/site/jatovi_icon.png">
     <title>JATOVI | Trang chủ</title>
     <?php $JATOVI->load->view('partial/header'); ?>
-<?php
-	$ok=1;
-	if(isset($_SESSION['cart']))
-	{
-		foreach($_SESSION['cart'] as $k=>$v)
-		{
-			if(isset($k))
-			{
-			$ok=2;
-			}
-		}
-	}
+    <?php
+    	$ok=1;
+    	if(isset($_SESSION['cart']))
+    	{
+    		foreach($_SESSION['cart'] as $k=>$v)
+    		{
+    			if(isset($k))
+    			{
+    			$ok=2;
+    			}
+    		}
+    	}
 
-	if ($ok != 2)
-	 {
-		$sosp=0;
-	} else {
-		$items = $_SESSION['cart'];
-		$sosp = count($items);
-		
-	}
-	?>
+    	if ($ok != 2)
+    	 {
+    		$sosp=0;
+    	} else {
+    		$items = $_SESSION['cart'];
+    		$sosp = count($items);
+    		
+    	}
+    ?>
+
+<!-- Hiển thị lỗi đăng nhập-->
+<?php if (isset($_SESSION['error_incorrect'])): ?>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            document.getElementById('id01').style.display='block';
+        });
+    </script>
+<?php endif ?>
+
+<!-- Hiển thị lỗi đăng ký -->
+<?php if (isset($_SESSION['tentktontai'])): ?>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            document.getElementById('formdangky').style.display='block';
+        });
+    </script>
+<?php endif ?>
+<?php if (isset($_SESSION['dangkythanhcong'])): ?>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            alert("Tài khoản của bạn đã đăng ký thành công!");
+        });
+    </script>
+
+<?php unset($_SESSION['dangkythanhcong']); endif ?>
+
+    
 </head>
 <body>
     <div class="wrapper">
@@ -81,18 +109,23 @@
             <!--Form login-->
             <div id="id01" class="modal" style="z-index: 999999;">
                 <form class="modal-content animate" action="<?=base_url?>index.php?module=khachhang&action=dangnhap" id="dangnhap" method="post">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                     <div class="imgcontainer" style="opacity: 0.6;">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
                     </div>
                     <div class="container">
                         <div class="row">
                             <div class="col-md-11">
-                                <h3>Đăng nhập</h3>
-                                <label><b>Tên tài khoản</b></label><span class="error_form" id="uname_error"></span>
-                                <input type="text" name="tentk" id="form_uname" placeholder="Điền tên tài khoản của bạn" required="required">
+                                <h3 style="text-align: center;">Đăng nhập</h3>
+                                <?php if (isset($_SESSION['error_incorrect'])):?>
+                                    <span style="color: red">Tài khoản hoặc mật khẩu không chính xác, vui lòng nhập lại</span><br>
+                                    <?php unset($_SESSION['error_incorrect']); ?>
+                                <?php endif ?>
+                                
+                                <input type="text" name="tentk" id="form_uname" placeholder="Email" required="required">
 
-                                <label><b>Mật khẩu</b></label><span class="error_form" id="psw_error"></span>
-                                <input type="password" name="mk" id="form_psw" placeholder="Điền mật khẩu của bạn" required="required">
+                                
+                                <input type="password" name="mk" id="form_psw" placeholder="Mật khẩu" required="required">
 
                                 <button type="submit" >Đăng nhập</button>
                             </div>
@@ -115,13 +148,18 @@
             <!-- Form đăng ký -->
             <div id="formdangky" class="modal" style="z-index: 999999;">
                 <form method="post" class="modal-content animate" action="<?=base_url."index.php?module=khachhang&action=dangky"?>">
+                    <span onclick="document.getElementById('formdangky').style.display='none'" class="close" title="Close Modal">&times;</span>
                     <div class="imgcontainer" style="opacity: 0.6;">
-                        <span onclick="document.getElementById('formdangky').style.display='none'" class="close" title="Close Modal">&times;</span>
+                        
                     </div>
                     <div class="container">
                         <div class="row">
                             <div class="col-md-11">
-                                <h3>Đăng ký</h3>
+                                <h3 style="text-align: center;">Đăng ký</h3>
+                                <?php if (isset($_SESSION['tentktontai'])):?>
+                                    <span style="color: red">Email đã tồn tại. Đăng nhập hoặc sử dụng tài khoản email khác để đăng ký</span><br>
+                                    <?php unset($_SESSION['tentktontai']); ?>
+                                <?php endif ?>
                                 <label for="txttaikhoan">Email</label>
                                 <input type="text" name="email" value="" class="form-control" required="required">
                                 

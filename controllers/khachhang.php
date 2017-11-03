@@ -77,6 +77,7 @@ class khachhang extends JATOVI_Controller
 		
 		$check = $khachhang_model->dangnhap($tentk, $mk);
 		if (count($check) > 0) {
+			unset($_SESSION['error_incorrect']);
 			foreach ($check as $value) {
 				$_SESSION['khachhang_ID'] = $value['id'];
 				$_SESSION['khachhang_Name'] = $value['ten'];
@@ -86,10 +87,10 @@ class khachhang extends JATOVI_Controller
 				$_SESSION['khachhang_Address'] = $value['diachi'];
 			}
 		}else{
-			echo "NNOOOOOOO";
+			$_SESSION['error_incorrect'] = 'True';
 		};  
-		
 		header("Location:".base_url."index.php");
+		
 	}
 
 	public function dangxuat()
@@ -109,24 +110,40 @@ class khachhang extends JATOVI_Controller
 		$email = $sodienthoai = $ngaysinh = $gioitinh = $matkhau = $diachi= $ten = "";
 		unset($_SESSION['dangkythanhcong']);
 		if(isset($_POST['email'])&& isset($_POST['sodienthoai'])&&isset($_POST['diachi'])&& isset($_POST['matkhau'])){
-			echo $email =$_POST['email'];
-			$matkhau = $_POST['matkhau'];
-			$sodienthoai = $_POST['sodienthoai'];
-			$ten = $_POST['ten'];
-			$ngaysinh =$_POST['ngaysinh'];
-			$gioitinh = $_POST['gioitinh'];
-			$diachi = $_POST['diachi'];
+				$email =$_POST['email'];
+				$matkhau = $_POST['matkhau'];
+				$sodienthoai = $_POST['sodienthoai'];
+				$ten = $_POST['ten'];
+				$ngaysinh =$_POST['ngaysinh'];
+				$gioitinh = $_POST['gioitinh'];
+				$diachi = $_POST['diachi'];
 
-			include_once 'models/khachhang_model.php';
+				include_once 'models/khachhang_model.php';
 
-			$add = $khachhang_model->add($email, $matkhau, $sodienthoai, $ten, $ngaysinh, $gioitinh, $diachi);
-			$_SESSION['dangkythanhcong']="True";
-			
+				$thongtin = $khachhang_model->select_by_email($email);
+				if (count($thongtin)>0) {
+					$_SESSION['tentktontai'] = 'True';
+				}else{
+					$add = $khachhang_model->add($email, $matkhau, $sodienthoai, $ten, $ngaysinh, $gioitinh, $diachi);
+					
+					foreach ($thongtin as $value) {
+						$_SESSION['khachhang_ID'] = $value['id'];
+						$_SESSION['khachhang_Name'] = $value['ten'];
+						$_SESSION['khachhang_Phone'] = $value['sodienthoai'];
+						$_SESSION['khachhang_Birthday'] = $value['ngaysinh'];
+						$_SESSION['khachhang_Gender'] = $value['gioitinh'];
+						$_SESSION['khachhang_Address'] = $value['diachi'];
+					}
+					unset($_SESSION['tentktontai']);
+					$_SESSION['dangkythanhcong']='True';
+				}
+					
+				
+			}
+				header("Location:".base_url."index.php");
 		}
-		header("Location:".base_url."index.php");
 
 		
-	}
 		public function chitietdh(){
 		$id = '';
 		if(isset($_GET['id'])){

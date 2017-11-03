@@ -19,7 +19,7 @@
                                 <input type="text" name="ten" class="formcontrol" placeholder="Họ tên" style="width: 100%;" required="required">
                             </div>
                             <div class="col-md-6  wow fadeInLeftBig" >
-                                <input type="email" name="email" class="formcontrol" placeholder="Địa chỉ Email" style="width: 100%;" required="required">
+                                <input type="text" name="email" class="formcontrol" placeholder="Địa chỉ Email" style="width: 100%;" required="required">
                             </div>
                         </div>
                         <div class="form-group  wow fadeInUpBig">

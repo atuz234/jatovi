@@ -12,6 +12,15 @@ class khachhang_model extends JATOVI_Model
 		parent::__construct();
 	}
 
+	public function select_by_email($email)
+	{
+		$sql = "SELECT * FROM {$this->_table} WHERE email ='{$email}' ";
+		$query = $this->connection->prepare($sql);
+		$query->execute();
+		$result = $query->fetchAll();
+		return $result;
+	}
+
 	public function dangnhap($tk, $mk)
 	{
 		$sql = "SELECT * FROM {$this->_table} WHERE email ='{$tk}' AND matkhau='{$mk}' ";
