@@ -70,6 +70,7 @@ class home extends JATOVI_Controller
 		}
 		else if(isset($_POST['timkiem']) )
 		{
+			$_SESSION['gtritimkiem'] = $_POST['timkiem'];
 			$search = $_POST['timkiem'];
 			$data['contentdata']['search']= $search;
 		}

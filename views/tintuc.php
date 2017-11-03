@@ -1,8 +1,9 @@
 <?php include_once BASEPATH.'controllers/tintuc.php'; ?>
-<table border="1">
+<div class="row">
+	<div class="col-md-12">
+<table class="table table-striped">
 			<thead>
 					<tr>
-						
 						<th>Tiêu Đề </th>
 						<th>Hình Ảnh</th>
 						<th>Nội Dung</th>
@@ -44,6 +45,8 @@
                     <?php }?>
 				</tbody>
 			</table>
+		</div>
+	</div>
             <?php
             if($total_records>4){ ?>
             <div  align="center">

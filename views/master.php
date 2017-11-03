@@ -28,6 +28,8 @@
 		
 	}
 	?>
+
+        
 </head>
 <body>
     <div class="wrapper">
@@ -60,7 +62,7 @@
                             <div class="_widget">
                                 <ul class="pull-right">
                                     <li>
-                                        <a class="" href="<?=base_url."index.php?module=giohang&action=index"?>"><div><i class="fa fa-shopping-cart"></i>&nbsp; &nbsp;<span class="slsp"><?= $sosp?> sản phẩm</span></div></a>
+                                        <a class="" href="<?=base_url."index.php?module=giohang&action=index"?>"><div><i class="fa fa-shopping-cart"></i>&nbsp; &nbsp;<span class="slsp"><?= $sosp?> Sản phẩm</span></div></a>
                                     </li>
                                     <li>
 
@@ -93,7 +95,7 @@
                                 <label><b>Mật khẩu</b></label><span class="error_form" id="psw_error"></span>
                                 <input type="password" name="mk" id="form_psw" placeholder="Điền mật khẩu của bạn" required="required">
 
-                                <button type="submit" >Đăng nhập</button>
+                                <button type="submit">Đăng nhập</button>
                             </div>
                         </div>
                     </div>
@@ -216,7 +218,12 @@
                             </ul>
                             <form class="navbar-form navbar-right" action="<?=base_url."index.php?module=timkiem&action=timkiem"?>" method="post" style="margin-bottom:0px; margin-top: -3px;">
                                 <div class="input-group">
-                                    <input type="text" name="timkiem" class="form-control" placeholder="Search Product...">
+                                    <input type="text" name="timkiem" class="form-control" placeholder="Tìm kiếm sản phẩm..." value="<?php if(isset($_SESSION['gtritimkiem'])){ 
+                                        echo ($_SESSION['gtritimkiem']);
+
+                                        unset($_SESSION['gtritimkiem']);} ?>">
+
+
                                     <div class="input-group-btn">
                                         <button class="btn btn-default" type="submit">
                                             <i class="fa fa-search"></i>
