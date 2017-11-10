@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 03, 2017 lúc 08:36 AM
+-- Thời gian đã tạo: Th10 03, 2017 lúc 08:51 AM
 -- Phiên bản máy phục vụ: 10.1.25-MariaDB
 -- Phiên bản PHP: 7.1.7
 
@@ -75,7 +75,9 @@ INSERT INTO `tb_chitietdonhang` (`id`, `id_sanpham`, `id_donhang`, `soluong`, `d
 (1, 8, 2, 1, 180000, 180000),
 (2, 8, 3, 1, 180000, 180000),
 (3, 8, 4, 3, 180000, 540000),
-(4, 8, 4, 3, 180000, 540000);
+(4, 8, 4, 3, 180000, 540000),
+(5, 7, 6, 1, 150000, 150000),
+(6, 1, 6, 1, 200000, 200000);
 
 -- --------------------------------------------------------
 
@@ -161,7 +163,8 @@ INSERT INTO `tb_donhang` (`id_donhang`, `id_khachhang`, `diachi`, `sotien`, `nga
 (2, 3, 'hanoi', 180000, '2017-11-01 17:00:00', '1'),
 (3, 3, 'hanoi', 180000, '2017-11-01 17:00:00', '1'),
 (4, 3, 'hanoi', 540000, '2017-11-01 17:00:00', '1'),
-(5, 3, 'hanoi', 540000, '2017-11-01 17:00:00', '1');
+(5, 3, 'hanoi', 540000, '2017-11-01 17:00:00', '1'),
+(6, 3, 'hanoi', 350000, '2017-11-02 17:00:00', '1');
 
 -- --------------------------------------------------------
 
@@ -362,12 +365,12 @@ CREATE TABLE `tb_sanpham` (
 --
 
 INSERT INTO `tb_sanpham` (`id`, `ten`, `mota`, `id_danhmuc`, `id_nsx`, `xuatsu`, `giacu`, `giamoi`, `ngaysanxuat`, `hansudung`, `donvi`, `hinhanh`, `dshinhanh`, `damua`, `luotxem`, `tgcapnhat`, `trangthai`) VALUES
-(1, 'a', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n', 1, 1, 'a', 1000000, 200000, '2017-10-04', '2017-10-05', 'q', 'sp1.jpg', '', 0, 0, '2017-11-02 15:51:08', 0),
+(1, 'a', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n', 1, 1, 'a', 1000000, 200000, '2017-10-04', '2017-10-05', 'q', 'sp1.jpg', '', 1, 0, '2017-11-03 07:42:19', 0),
 (2, 'b', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 1, 'b', 1500000, 120000, '2017-10-28', '2017-10-29', 'cai', 'sp2.jpg', '', 0, 0, '2017-11-02 15:51:13', 0),
 (3, 'sanpham1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 3, 1, 'vn', 1500000, 100000, '2017-10-29', '2017-10-29', 'hop', 'sp1.jpg', '', 2, 5, '2017-11-02 15:51:21', 0),
 (5, 'sanpham2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 5, 1, 'japan', 200000, 190000, '2017-10-29', '2017-10-29', 'lo', 'sp1.jpg', '', 5, 10, '2017-11-02 15:51:45', 0),
 (6, 'sanpham3', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 4, 1, 'vn', 190000, 170000, '2017-10-29', '2017-10-29', 'hop', 'sp2.jpg', '', 1, 10, '2017-11-02 15:51:41', 0),
-(7, 'sanpham4', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 2, 1, 'vn', 1900000, 150000, '2017-10-29', '2017-10-29', 'hop', 'sp3.jpg', '', 0, 19, '2017-11-02 15:51:17', 0),
+(7, 'sanpham4', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 2, 1, 'vn', 1900000, 150000, '2017-10-29', '2017-10-29', 'hop', 'sp3.jpg', '', 1, 19, '2017-11-03 07:42:19', 0),
 (8, 'son duong moi', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 3, 3, 'Nhật bản', 2000000, 180000, '2017-10-29', '2017-10-29', 'hop', 'sp2.jpg', '', 9, 20, '2017-11-02 15:51:24', 0),
 (9, 'sanpham5', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 3, 2, 'vietnam', 100000, 99000, '2017-10-27', '2017-10-31', 'hop', 'sp3.jpg', '', 0, 0, '2017-11-02 15:51:33', 0),
 (12, 'Thuoc tam trang', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n', 1, 3, 'Nhật Bản', 1000000, 99000, '0000-00-00', '0000-00-00', '', 'sp1.jpg', '', 0, 0, '2017-11-02 15:39:57', 0),
@@ -510,7 +513,7 @@ ALTER TABLE `tb_admin`
 -- AUTO_INCREMENT cho bảng `tb_chitietdonhang`
 --
 ALTER TABLE `tb_chitietdonhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT cho bảng `tb_chucnang`
 --
@@ -525,7 +528,7 @@ ALTER TABLE `tb_danhmuc`
 -- AUTO_INCREMENT cho bảng `tb_donhang`
 --
 ALTER TABLE `tb_donhang`
-  MODIFY `id_donhang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_donhang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT cho bảng `tb_khachhang`
 --

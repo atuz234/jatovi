@@ -41,7 +41,7 @@
                                         <img src="public/images/sanpham/<?=$v['hinhanh']?>">
                                     </div>
                                     <div class="sp_name">
-                                        <?=$v['ten'];?>
+                                        <?=$v['ten'];?><?php if($v['trangthai'] == 0){echo " (Hết hàng)";} ?>
                                     </div>
                                 </a>
                                 <div class="sp_price">

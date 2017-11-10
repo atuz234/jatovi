@@ -23,7 +23,10 @@
 				</div>
 			</div>
 			<div class="col-md-7">
-				<div class="tensp" style="font-weight: bold; font-size: 25px;color: red;"><?=$sanphams['ten']?></div>
+				<div class="tensp" style="font-weight: bold; font-size: 25px;color: red;">
+					<?=$sanphams['ten']?>
+					<?php if($sanphams['trangthai'] == 0){echo " (Hết hàng)";} ?>
+				</div>
 				<div class="gia" style=" font-size: 30px; border-bottom: dotted 1px black;">
 					<span class="nhan_gia" style="font-weight: bold; color: pink;">Giá: </span>
 					<span class="old_price"><?=$sanphams['giacu'] ?></span> 

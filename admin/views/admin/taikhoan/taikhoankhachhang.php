@@ -1,6 +1,5 @@
 <script>
 function checkkh(){
-	alert ("ahihihi");
 var check = document.getElementById('chk').checked = '';
 	value = document.getElementById('chk').value = '';
 if (check == ""){document.getElementById('chk').checked = 'checked';
@@ -159,8 +158,8 @@ else if(check == "checked")	{document.getElementById('chk').checked = '';value =
 														<br>
 														<label for="txthoten">Địa Chỉ</label>
 														<input type="text" name="edit_diachi" value="<?= $value['diachi']; ?>" class="form-control" required="required">	
-                                                        <label><input id="chk"  name="chkkh" type="checkbox"<?php if($value['trangthai']==0){echo"value='1'";}
-elseif($value['trangthai']==1){echo "checked='checked'"; echo"value='0'";}?>   />Kích hoạt tài khoản</label>
+                                                        <label><input id="chk"  name="chkkh" type="checkbox"<?php if($value['trangthai']==0){echo"value='0'";}
+elseif($value['trangthai']==1){echo "checked='checked'"; echo"value='1'";}?>   />Kích hoạt tài khoản</label>
 													</div>
 												</div>
 												<div class="modal-footer">

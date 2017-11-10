@@ -13,8 +13,7 @@ class lienhe_model extends JATOVI_Model
 
 	public function selectall()
 	{
-		$sql = "SELECT *
-		FROM {$this->_table}";
+		$sql = "SELECT * FROM {$this->_table}";
 		$query = $this->connection->prepare($sql);
 		$query->execute();
 		$result = $query->fetchAll();

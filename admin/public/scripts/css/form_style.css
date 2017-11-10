@@ -1,0 +1,17 @@
+.login_wrapper {
+  width: 800px;
+  height: 400px;
+  margin: 50px auto; }
+  .login_wrapper .form_login {
+    width: 50%;
+    height: 50%;
+    background: #00b3b3;
+    margin: auto;
+    border-radius: 20px; }
+    .login_wrapper .form_login table {
+      padding-top: 50px;
+      margin: auto; }
+      .login_wrapper .form_login table td input {
+        border-radius: 15px; }
+
+/*# sourceMappingURL=form_style.css.map */

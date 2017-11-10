@@ -29,7 +29,7 @@ class taikhoan_model extends JATOVI_Model
 	}
 	public function add($email, $matkhau, $sodienthoai, $ten, $ngaysinh, $gioitinh, $diachi)
 	{
-		$sql = "insert into {$this->_table2}(email, matkhau, sodienthoai, ten, ngaysinh, gioitinh, diachi) values ('{$email}', '{$matkhau}', {$sodienthoai}, '{$ten}', '{$ngaysinh}', {$gioitinh}, '{$diachi}' )";
+		$sql = "insert into {$this->_table2}(email, matkhau, sodienthoai, ten, ngaysinh, gioitinh, diachi) values ('{$email}', '{$matkhau}', '{$sodienthoai}', '{$ten}', '{$ngaysinh}', {$gioitinh}, '{$diachi}' )";
 		$query = $this->connection->prepare($sql);
  		$query->execute();
 	}
@@ -45,7 +45,7 @@ class taikhoan_model extends JATOVI_Model
 	}
 	public function edit( $id,$email, $sodienthoai, $ten, $ngaysinh, $gioitinh, $diachi,$trangthai)
 	{
-		echo $sql = "UPDATE {$this->_table2} SET email = '{$email}', sodienthoai = {$sodienthoai}, ten = '{$ten}', ngaysinh = '{$ngaysinh}', gioitinh = {$gioitinh}, diachi = '{$diachi}', trangthai='{$trangthai}' WHERE id={$id}";
+		echo $sql = "UPDATE {$this->_table2} SET email = '{$email}', sodienthoai = '{$sodienthoai}', ten = '{$ten}', ngaysinh = '{$ngaysinh}', gioitinh = {$gioitinh}, diachi = '{$diachi}', trangthai='{$trangthai}' WHERE id={$id}";
 		$query = $this->connection->prepare($sql);
  		$query->execute();
 	}

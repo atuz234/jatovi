@@ -16,6 +16,7 @@
 
 	<!-- Custom css: file css tùy biến đặt tại đây -->
 	<link rel="stylesheet" href="public/scripts/css/style.css">
+	
     
 
 </head>

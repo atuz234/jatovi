@@ -14,6 +14,7 @@ include_once BASEPATH.'controllers/admin/sanpham/nhasanxuat.php';
 include_once BASEPATH.'controllers/admin/sanpham/danhmucsanpham.php';
 include_once BASEPATH.'controllers/admin/quanlydonhang.php';
 include_once BASEPATH.'controllers/admin/lienhe.php';
+include_once BASEPATH.'controllers/admin/thongke/baocao.php';
 
 
 include_once BASEPATH.'controllers/site/home.php';
@@ -27,6 +28,9 @@ if (isset($_GET['module'])) {
 	$module = $_GET['module'];
 }
 switch ($module) {
+	case 'baocao':
+		$baocao->dieuhuong();
+		break;
 	case 'lienhe':
 		$lienhe->dieuhuong();
 		break;

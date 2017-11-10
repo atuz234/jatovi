@@ -1,0 +1,23 @@
+.login_wrapper
+{
+	width: 800px;
+    height: 400px;
+    margin: 50px auto;
+	.form_login
+	{
+		width: 50%;
+	    height: 50%;
+	    background: #00b3b3;
+	    margin: auto;
+	    border-radius: 20px;
+	    table
+	    {
+	    	padding-top: 50px;
+	    	margin:auto;
+	    	td input
+	    	{
+	    		border-radius: 15px;
+	    	}
+	    }
+	}
+}

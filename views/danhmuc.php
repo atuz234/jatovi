@@ -31,6 +31,7 @@
                                         </div>
                                         <div class="sp_name">
                                             <?=$v['ten'];?>
+                                            <?php if($v['trangthai'] == 0){echo " (Hết hàng)";} ?>
                                         </div>
                                     </a>
                                     <div class="sp_price">
