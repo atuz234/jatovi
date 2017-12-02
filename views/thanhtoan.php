@@ -2,15 +2,7 @@
 function themdiachi(){
     document.getElementById("address").innerHTML ="Nhập địa chỉ mới:<input type='text' id='diachithem' name'diachimoi' onchange='thaydoidiachi()' value=''/>";
 }
-function thaydoidiachi(){
-	
-var diachia = document.getElementById("diachithem").value;
-if(diachia !=""){document.getElementById("diachism").value = diachia;}
-else{
-	document.getElementById("diachism").value;
-	}
-		
-}
+
 </script>
 <?php include_once BASEPATH.'controllers/giohang.php';
 $tongtien = 0;
@@ -40,29 +32,10 @@ $tongtien = 0;
 <?php $tongtien += $thanhtien;  endforeach;?>
 <tr>
 <th>Địa Chỉ</th>
-	<td colspan="2"><?=$_SESSION['khachhang_Address']."<br>";?>
- <!-- Thêm Địa Chỉ-->
-														<div class="form-inline">
-															<label for="tennhom">Thay Đổi Địa Chỉ <span class="required">*</span>
-															</label>
-															<div class="checkbox">
-																<input class="changepass" name="changepass" type="checkbox" class="js-switch">
-															</div>
-														</div>
-
-														<!-- Dòng nhập mật khẩu mới -->
-														<div class="newpass" style="display: none">
-															<label for="newpass">Mật khẩu mới <span class="required">*</span>
-															</label>
-															
-															<input type="password" name="newpass" class="form-control" >
-														</div>
-													</div>
- <!------------->
+	<td colspan="2"><input type="text" name="diachi" value="<?=$_SESSION['khachhang_Address'];?>">
     </td>
 </tr>
 <input type="hidden" name="iddh" value="<?= $maxdh+1?>"/>
-<input type="hidden" name="diachi" id="diachism" value="<?php echo $diachi;?>" />
 <input type="hidden" name="tongtien" value="<?= $tongtien;?>" />
 <tr><th>Tổng Cộng</th><th colspan="2"><?php echo number_format( $tongtien)."&nbsp;VNĐ" ;?></th></tr>
 <tr><td colspan="3" align="center"><button type="submit" name="submit" class="btn btn-default" >Đặt Hàng</button></td></tr>
